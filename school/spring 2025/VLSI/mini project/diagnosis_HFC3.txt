@@ -1,0 +1,38 @@
+ Check expected data completed: 35 out of 35 failures were checked
+ Diagnosis summary for failure file failure_HFC3.txt
+ #failing_pat=21, #failures=35, #defects=1, #faults=7, CPU_time=0.03
+ Simulated : #failing_pat=21, #passing_pat=10, #failures=35
+ ------------------------------------------------------------------------------
+ Defect 1: stuck fault model, #faults=7, #failing_pat=21, #passing_pat=10, #failures=35
+ ------------------------------------------------------------------------------
+ match=30.61%, #explained patterns: <failing=8, passing=2>
+ sa0   DS   GATE4926500/ZN   (ND2D0BWPHVT)
+ sa0   --   GATE4926499/A2   (NR2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=28.57%, #explained patterns: <failing=6, passing=10>
+ sa0   DS   GATE4926974/ZN   (ND3D0BWPHVT)
+ sa0   --   GATE4926600/A3   (NR3D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=21.62%, #explained patterns: <failing=0, passing=10>
+ sa0   DS   GATE4926769/ZN   (INVD0BWPHVT)
+ sa1   --   GATE4926769/I   (INVD0BWPHVT)
+ sa1   --   GATE4926770/ZN   (NR2D0BWPHVT)
+ sa0   --   GATE4926768/A2   (NR2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=11.43%, #explained patterns: <failing=0, passing=10>
+ sa0   DS   GATE4926683/A1   (NR2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=11.43%, #explained patterns: <failing=0, passing=10>
+ sa1   DS   GATE4926683/ZN   (NR2D0BWPHVT)
+ sa1   --   GATE4926682/A2   (ND2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=11.11%, #explained patterns: <failing=0, passing=10>
+ sa1   DS   GATE4926900/A2   (ND2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=11.11%, #explained patterns: <failing=0, passing=10>
+ sa1   DS   GATE4926898/ZN   (ND2D0BWPHVT)
+ sa0   --   GATE4926898/A2   (ND2D0BWPHVT)
+ sa0   --   GATE4926898/A1   (ND2D0BWPHVT)
+ sa0   --   GATE4926900/ZN   (ND2D0BWPHVT)
+ sa1   --   GATE4926897/A2   (ND2D0BWPHVT)
+ ------------------------------------------------------------------------------

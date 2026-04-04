@@ -1,0 +1,11 @@
+Change Component Designator: OldDesignator=S? NewDesignator=S1
+Added Component: Designator=s2(Standoff_hole)
+Added Component: Designator=s3(Standoff_hole)
+Added Component: Designator=s4(Standoff_hole)
+Added Component: Designator=s(Standoff_hole)
+Added Member To Class: ClassName=Top Member=Component R1 4608X-101-103LF
+Added Member To Class: ClassName=Top Member=Component s2 STANDOFF_HOLE
+Added Member To Class: ClassName=Top Member=Component s3 STANDOFF_HOLE
+Added Member To Class: ClassName=Top Member=Component s4 STANDOFF_HOLE
+Added Member To Class: ClassName=Top Member=Component s STANDOFF_HOLE
+Added Room: Name=Top

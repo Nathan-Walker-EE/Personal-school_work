@@ -1,0 +1,1 @@
+ Error: Failure file contains no failing patterns. (M123)

@@ -1,0 +1,49 @@
+format compact; clear; clc; close all
+
+% Define the functions y1 and K
+k1 = @(t) (3*exp(-2*t) + 4*exp(-5*t)) .* (t >= 0);
+K = @(t) (5/2 - (exp(-4*t).*(3*exp(2*t) + 2)/2)).*(t >= 0);
+
+% Define y2 as K(3-t)
+y1 = @(t) k1(2 - t);
+y2 = @(t) K(2 - t);
+
+% Define inner product function
+inner_product = @(f, g) integral(@(t) f(t) .* g(t), 0, 2);
+
+% Compute inner products
+I11 = inner_product(y1, y1);
+I12 = inner_product(y1, y2);
+I21 = inner_product(y2, y1);
+I22 = inner_product(y2, y2);
+
+% Display results
+fprintf('<y1, y1> = %.4f\n', I11);
+fprintf('<y1, y2> = %.4f\n', I12);
+fprintf('<y2, y1> = %.4f\n', I21);
+fprintf('<y2, y2> = %.4f\n', I22);
+G = [I11, I12; I21, I22];
+b = [2;3];
+c = b\G
+
+n = 0:0.01:2.99;
+x = c(1) * (3*exp(-2*(2-n)) + 4*exp(-5*(2-n)));
+x2 = c(2) *(5/2 - (exp(-4*(2-n)).*(3*exp(2*(2-n)) + 2)/2));
+Y2 = @(t) c(1)*y1(t) + c(2)*y2(t);
+integral(@(t) Y2(t), 0, 2)
+x = x/norm(x,2);
+x2 = x
+x = x + x2;
+figure(1)
+plot(n,x);
+hold on
+plot(n,x2);
+hold off
+h = (exp(-4.*n) + exp(-3.*n));
+Y = conv(x,h);
+figure(2)
+n2 = 0:1:length(Y)-1;
+n2 = n2/100;
+plot(n2, Y)
+xline(3)
+yline(2)

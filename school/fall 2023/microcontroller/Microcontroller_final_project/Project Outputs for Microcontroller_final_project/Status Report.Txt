@@ -1,0 +1,22 @@
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : Variant [[No Variations]] of Project [Microcontroller_final_project.PrjPcb]
+   Generated File[Stylophone_Copper_Signal_Top.gbr]
+   Generated File[Stylophone_Copper_Signal_Bot.gbr]
+   Generated File[Stylophone_Legend_Top.gbr]
+   Generated File[Stylophone_Legend_Bot.gbr]
+   Generated File[Stylophone_Soldermask_Top.gbr]
+   Generated File[Stylophone_Soldermask_Bot.gbr]
+   Generated File[Stylophone_Paste_Top.gbr]
+   Generated File[Stylophone_Paste_Bot.gbr]
+   Generated File[Stylophone_Profile.gbr]
+   Generated File[Stylophone_NPTH_Drill.gbr]
+   Generated File[Stylophone_PTH_Drill.gbr]
+   Generated File[Stylophone.EXTREP]
+   Generated File[Stylophone.REP]
+
+
+Files Generated   : 13
+Documents Printed : 0
+
+Finished Output Generation At 17:13:38 On 11/24/2023

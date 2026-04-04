@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "AMP_Dock")(type "KiCad")(uri "${KIPRJMOD}/AMP_Dock.kicad_sym")(options "")(descr ""))
+)

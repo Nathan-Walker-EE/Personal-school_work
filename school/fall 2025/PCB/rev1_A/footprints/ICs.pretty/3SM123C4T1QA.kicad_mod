@@ -1,0 +1,116 @@
+(footprint "3SM123C4T1QA"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "M"
+		(at -0.1 -2 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "558e6ba8-91e4-4c3c-ba23-4c22ff80b4bb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Microphone"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a4cb8e04-2d77-42c3-a7bd-9a79ed32f23f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4b23fe6c-756a-445a-b1ef-3b3e28b3af94")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Integrated MEMS microphone"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "86ad5038-73d2-4462-a1c4-cbf1a560af14")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2 -1)
+		(end 1.8 1.28)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "4bc92cec-4e37-4ba1-93cf-50a15838ddf0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "c8876594-355a-49c3-aec5-570384af7bde")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 1.23 -0.435)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c0fa8510-4f4c-4504-8a9f-9e4e174c1186")
+	)
+	(pad "2" smd circle
+		(at -1.43 -0.435)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "cc17d29f-5633-496f-a8e4-4a62dd52b3ab")
+	)
+	(pad "3" smd circle
+		(at 1.23 0.715)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "cfcb65a0-3a3e-4afe-9b15-f702aaee2721")
+	)
+	(pad "4" smd circle
+		(at -1.43 0.715)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "84d79024-386e-4dc5-9ef5-002d45c1c694")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/footprints/3SM123C4T1QA.step"
+		(offset
+			(xyz -0.1 -0.14 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)

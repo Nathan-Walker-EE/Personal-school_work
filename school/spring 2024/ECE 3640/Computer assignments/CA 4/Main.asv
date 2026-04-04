@@ -1,0 +1,79 @@
+clear
+clc
+close all
+
+len = 321;
+h = firpm(len-1,[0.005 0.995], [1 1], 'hilbert'); h = h(:);
+d = zeros(len,1); d((len+1)/2) = 1;
+ht = d + j * h;
+
+freqz(h);
+saveas(gcf,'freqz(h)','png');
+figure();
+freqz(d);
+saveas(gcf,'freqz(d)','png');
+figure();
+freqz(ht);
+saveas(gcf,'freqz(ht)','png');
+
+tic
+[x, fs] = audioread("fireflyintro.wav");
+yr = myconv(x,d);
+yi = myconv(x,h);
+
+%put at output of hilbert filter in a for loop
+pzold = 0;
+fi = zeros(size(yr));
+x = zeros(size(yr));
+for i = 1:length(yr)
+    pz = atan2(yi(i),yr(i));
+    fi(i) = (pz-pzold);
+    if (fi(i) > pi) 
+        fi(i) = fi(i) - 2*pi;
+    else if(fi(i) < -pi) 
+            fi(i) = fi(i) + 2*pi;
+    end
+    end
+    pzold = pz;
+    x(i) = cos(pz);
+end
+
+
+%gaussian filter
+g = gausswin(301,2);
+g = g/sum(g);
+
+freqz(g);
+saveas(gcf,'freqz(g)','png');
+figure();
+
+
+fi = myconv(fi, g);
+fin = fi;
+
+figure();
+NFFT = 2^14;
+[S, F, T] = spectrogram(x,hamming(NFFT),round(0.9*NFFT),NFFT,fs);
+imagesc(T,F,20*log10(abs(S)),[0 60]);
+colorbar;
+set(gca,'YDir','normal');
+ylim([0 1500])
+xlabel('Time [seconds]');
+ylabel('Frequency [Hertz]');
+title('Spectrogram of the Input x[n]');
+saveas(gcf,'firefly_intro','png');
+grid on;
+hold on
+plot((0:length(fin)-1)/fs, fs*fin/(2*pi),"red");
+title('Instaneous frequency overlayed');
+saveas(gcf,'fi_over_intro','png');
+shg
+ 
+% plot((0:length(fin)-1)/fs, fin);
+% ylim([0 1500]);
+% xlim([0 10]);
+% yticks([200 400 600 800 1000 1200 1400]);
+% shg
+
+toc
+

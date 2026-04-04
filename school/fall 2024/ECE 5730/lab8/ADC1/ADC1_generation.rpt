@@ -1,0 +1,55 @@
+Info: Starting: Create simulation model
+Info: qsys-generate "C:\Users\natew\Documents\ECE 5730\lab8\ADC1.qsys" --simulation=VHDL --allow-mixed-language-simulation --output-directory="C:\Users\natew\Documents\ECE 5730\lab8\ADC1\simulation" --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading lab8/ADC1.qsys
+Progress: Reading input file
+Progress: Adding modular_adc_0 [altera_modular_adc 23.1]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ADC1: Generating ADC1 "ADC1" for SIM_VHDL
+Info: modular_adc_0: "ADC1" instantiated altera_modular_adc "modular_adc_0"
+Info: control_internal: "modular_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: ADC1: Done "ADC1" with 3 modules, 8 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd="C:\Users\natew\Documents\ECE 5730\lab8\ADC1\ADC1.spd" --output-directory="C:/Users/natew/Documents/ECE 5730/lab8/ADC1/simulation/" --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\Users\natew\Documents\ECE 5730\lab8\ADC1\ADC1.spd --output-directory=C:/Users/natew/Documents/ECE 5730/lab8/ADC1/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/Users/natew/Documents/ECE 5730/lab8/ADC1/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for RIVIERA simulator in C:/Users/natew/Documents/ECE 5730/lab8/ADC1/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/natew/Documents/ECE 5730/lab8/ADC1/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate "C:\Users\natew\Documents\ECE 5730\lab8\ADC1.qsys" --block-symbol-file --output-directory="C:\Users\natew\Documents\ECE 5730\lab8\ADC1" --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading lab8/ADC1.qsys
+Progress: Reading input file
+Progress: Adding modular_adc_0 [altera_modular_adc 23.1]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate "C:\Users\natew\Documents\ECE 5730\lab8\ADC1.qsys" --synthesis=VHDL --output-directory="C:\Users\natew\Documents\ECE 5730\lab8\ADC1\synthesis" --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading lab8/ADC1.qsys
+Progress: Reading input file
+Progress: Adding modular_adc_0 [altera_modular_adc 23.1]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ADC1: Generating ADC1 "ADC1" for QUARTUS_SYNTH
+Info: modular_adc_0: "ADC1" instantiated altera_modular_adc "modular_adc_0"
+Info: control_internal: "modular_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: ADC1: Done "ADC1" with 3 modules, 9 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

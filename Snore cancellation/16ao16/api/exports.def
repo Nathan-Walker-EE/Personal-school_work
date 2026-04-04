@@ -1,0 +1,6 @@
+ao16_close
+ao16_init
+ao16_ioctl
+ao16_open
+ao16_read
+ao16_write

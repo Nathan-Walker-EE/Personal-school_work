@@ -1,0 +1,35 @@
+[N
+6
+1
+50 C:/Users/natew/Documents/ECE 5730/lab1.1/sims/work
+6
+13 MAX10_CLK2_50
+3
+10 behavioral
+2
+18 lab1_10bit_counter
+5
+10 ADC_CLK_10
+4
+13 MAX10_CLK1_50
+]
+[P
+1
+2
+3
+6
+5
+1
+0
+0
+]
+[P
+1
+2
+3
+4
+5
+1
+0
+0
+]

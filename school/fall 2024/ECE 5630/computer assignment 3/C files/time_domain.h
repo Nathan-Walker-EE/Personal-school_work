@@ -1,0 +1,1 @@
+double FIR_filtering(double* h, double input, double* filter_buffer, int length);

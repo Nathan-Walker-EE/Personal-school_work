@@ -1,0 +1,32 @@
+/***********************************
+EXTERNAL PERIPHERIAL INTERUPTS
+	create global variable of current time(CURR_TIME)
+	turn on interupts
+		NVIC->ISER[0] = 1 << 6
+		NVIC->ISER[0] = 1 << 7
+		NVIC->ISER[0] = 1 << 8
+		set priority lower than systick
+		NVIC->IP[7] = ####
+	setup ISR
+		depending on port #
+		continue counting
+			enable systick
+		stop counting
+			disable systick
+		reset
+			dont touch systick
+			reset LCD value
+		
+	Turn on systick	
+		systick->ctl = ####
+		sets to system clock
+		SysTick->CTRL |= SysTick_CTRL_CLKSOURCE
+	set load value
+		systick->LOAD = 1,599,999
+		
+	systick ISR
+		increment(CURR_TIME)
+		display CURR_TIME on LCD
+		
+	
+***********************************/

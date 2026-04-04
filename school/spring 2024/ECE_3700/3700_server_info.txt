@@ -1,0 +1,20 @@
+ECE 3700
+	username: naw720
+	password: SHHpWXeY7OFtqQFPpTrRMZbQ3mx758cd
+	ssh key: ssh naw720@genesys.bluezone.usu.edu
+	
+Daily sync commands
+	git pull origin master
+	git fetch upstream
+	git merge upstream/master
+	
+Hourly
+	git pull origin master
+	git commit . -m "message describing change"
+	git push origin master
+	
+file management 
+	new file or merge conflict: git add <filename>
+	restore file: git restore <filename>
+	remove file: git rm <filename>
+	

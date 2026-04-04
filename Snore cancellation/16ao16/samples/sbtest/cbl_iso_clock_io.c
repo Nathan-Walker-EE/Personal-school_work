@@ -1,0 +1,128 @@
+// $URL: http://subversion:8080/svn/gsc/trunk/drivers/LINUX/16AO16/16AO16_Linux_2.x.x.x_DN/samples/sbtest/cbl_iso_clock_io.c $
+// $Rev: 42931 $
+// $Date: 2018-05-31 13:03:40 -0500 (Thu, 31 May 2018) $
+
+// 16AO16: Sample Application: source file
+
+#include "main.h"
+
+
+
+//*****************************************************************************
+static int _service_test(int fd, s32 passive)
+{
+	static const service_data_t	list_1[]	=
+	{
+		{
+			/* service	*/	SERVICE_NORMAL,
+			/* cmd		*/	AO16_IOCTL_CBL_ISO_CLOCK_IO,
+			/* arg		*/	AO16_CBL_ISO_NORM,
+			/* reg		*/	AO16_GSC_BOR,
+			/* mask		*/	0x100000,
+			/* value	*/	0
+		},
+		{
+			/* service	*/	SERVICE_NORMAL,
+			/* cmd		*/	AO16_IOCTL_CBL_ISO_CLOCK_IO,
+			/* arg		*/	AO16_CBL_ISO_OUT_0,
+			/* reg		*/	AO16_GSC_BOR,
+			/* mask		*/	0x100000,
+			/* value	*/	0x100000
+		},
+
+		{ SERVICE_END_LIST }
+	};
+
+	static const s32	list_2[3]	=
+	{
+		AO16_CBL_ISO_NORM,
+		AO16_CBL_ISO_OUT_0,
+		-1
+	};
+
+	int	err;
+	int	errs	= 0;
+	int	i;
+	int	ret;
+	s32	val;
+
+	errs	+= ao16_initialize(fd, -1, 0);
+
+	if (passive)
+	{
+		errs	+= service_ioctl_set_reg_list(fd, list_1);
+		errs	+= service_ioctl_reg_get_list(fd, list_1);
+
+		errs	+= service_ioctl_set_reg_list(fd, list_1);
+		errs	+= service_ioctl_reg_get_list(fd, list_1);
+	}
+	else
+	{
+		for (i = 0; i <= 2; i++)
+		{
+			val		= list_2[i];
+			ret		= ao16_ioctl(fd, AO16_IOCTL_CBL_ISO_CLOCK_IO, &val);
+			err		= ret ? 1 : 0;
+			errs	+= err;
+
+			if ((err == 0) && (val != AO16_CBL_ISO_NORM))
+			{
+				printf(	"FAIL <---  (Unexpected return value: %ld)\n",
+						(long) val);
+				errs++;
+			}
+		}
+	}
+
+	errs	+= ao16_initialize(fd, -1, 0);
+
+	return(errs);
+}
+
+
+
+//*****************************************************************************
+static int _function_test(int fd)
+{
+	// Testing this requires additional equipment.
+	return(0);
+}
+
+
+
+/******************************************************************************
+*
+*	Function:	cbl_iso_clock_io_test
+*
+*	Purpose:
+*
+*		Perform a test of the IOCTL service AO16_IOCTL_CBL_ISO_CLOCK_IO.
+*
+*	Arguments:
+*
+*		fd		The handle for the board to access.
+*
+*	Returned:
+*
+*		>= 0	The number of errors encounterred.
+*
+******************************************************************************/
+
+int cbl_iso_clock_io_test(int fd)
+{
+	int	errs	= 0;
+	s32	passive	= 0;
+
+	gsc_label("AO16_IOCTL_CBL_ISO_CLOCK_IO");
+	errs	+= ao16_query(fd, -1, 0, AO16_QUERY_CABLE_PASSIVE_3, &passive);
+	errs	+= _service_test(fd, passive);
+	errs	+= _function_test(fd);
+
+	if (errs == 0)
+		printf("PASS\n");
+
+	return(errs);
+}
+
+
+

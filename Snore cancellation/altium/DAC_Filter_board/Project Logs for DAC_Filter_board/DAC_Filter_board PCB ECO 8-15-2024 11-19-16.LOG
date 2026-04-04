@@ -1,0 +1,70 @@
+Add Pin To Net: Unknown Pin: Pin J1-1
+Add Pin To Net: Unknown Pin: Pin J2-1
+Add Pin To Net: Unknown Pin: Pin J3-1
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip1-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip1 Pin=J4_Filter_chip1-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip2-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip2 Pin=J4_Filter_chip2-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip3-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip3 Pin=J4_Filter_chip3-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip4-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip4 Pin=J4_Filter_chip4-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip5-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip5 Pin=J4_Filter_chip5-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip6-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip6 Pin=J4_Filter_chip6-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip7-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip7 Pin=J4_Filter_chip7-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip8-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip8 Pin=J4_Filter_chip8-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip9-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip9 Pin=J4_Filter_chip9-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip10-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip10 Pin=J4_Filter_chip10-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip11-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip11 Pin=J4_Filter_chip11-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip12-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip12 Pin=J4_Filter_chip12-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip13-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip13 Pin=J4_Filter_chip13-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip14-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip14 Pin=J4_Filter_chip14-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip15-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip15 Pin=J4_Filter_chip15-3
+Added Pin To Net: NetName=GND Pin=J4_Filter_chip16-1
+Added Pin To Net: NetName=OUTPUT_AUDIO_Filter_chip16 Pin=J4_Filter_chip16-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip1-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip1 Pin=J5_Filter_chip1-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip2-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip2 Pin=J5_Filter_chip2-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip3-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip3 Pin=J5_Filter_chip3-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip4-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip4 Pin=J5_Filter_chip4-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip5-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip5 Pin=J5_Filter_chip5-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip6-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip6 Pin=J5_Filter_chip6-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip7-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip7 Pin=J5_Filter_chip7-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip8-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip8 Pin=J5_Filter_chip8-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip9-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip9 Pin=J5_Filter_chip9-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip10-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip10 Pin=J5_Filter_chip10-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip11-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip11 Pin=J5_Filter_chip11-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip12-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip12 Pin=J5_Filter_chip12-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip13-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip13 Pin=J5_Filter_chip13-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip14-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip14 Pin=J5_Filter_chip14-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip15-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip15 Pin=J5_Filter_chip15-3
+Added Pin To Net: NetName=GND Pin=J5_Filter_chip16-1
+Added Pin To Net: NetName=INPUT_AUDIO_Filter_chip16 Pin=J5_Filter_chip16-3
+Add Class Member: Failed to add class member : Component J1 BANANA_CONN
+Add Class Member: Failed to add class member : Component J2 BANANA_CONN
+Add Class Member: Failed to add class member : Component J3 BANANA_CONN

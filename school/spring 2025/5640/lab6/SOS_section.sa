@@ -1,0 +1,61 @@
+		.title "SOS_section.sa"
+		.def _SOS_section
+		.sect ".code"
+		.global _SOS_section
+		;A4: a's B4: b's A6: d's B6: input A8: mask B8: rounding
+		;A10 input_scale
+_SOS_section .proc A4, B4, A6, B6, A8, B8, A10, B3
+		.reg pa, pb, pd, a, b, d,
+		.reg input, mask, rounding, input_scale
+		.reg prod, sumx, sumy, temp
+		mv A4 , pa
+		mv B4 , pb
+		mv A6 , pd
+		mv B6 , input
+		mv A8 , mask
+		mv B8 , rounding
+		mv A10, input_scale
+		
+		smpyh x, scale, x
+		add x, rounding, x
+		and x, mask, x
+		
+		ldw *pd[1], d
+		ldw *pa[1], a
+		smpyh a, d, prod
+		add prod, round, prod
+		and prod, mask, prod
+		add prod, sumx, sumx
+		ldw *pb[2], b
+		smpyh b, d, prod
+		add prod, round, prod
+		and prod, mask, prod
+		add prod, sumy, sumy
+		
+		ldw *pd, d
+		ldw *pa, a
+		stw d, *p_d[1]
+		smpyh a, d, prod
+		add prod, round, prod
+		and prod, mask, prod
+		add prod, sumd, sumd,
+		ldw *p_b[1], b
+		smpyh b, d, prod
+		add prod, round, prod
+		and prod, mask, prod
+		add prod, sumy, sumy
+		
+		add input, sumd, sumd
+		shl sumd, 1, sumd
+		stw sumd, *pd
+		ldw *pb, b
+		smpyh b, sumd, prod
+		add prod, round, prod
+		and prod, mask, prod
+		add prod, sum, sumy
+		
+		mv sumy, A4
+		.endproc A4, B3
+		
+		b B3
+		nop 5

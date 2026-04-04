@@ -1,0 +1,340 @@
+; $URL: http://subversion:8080/svn/gsc/trunk/drivers/LINUX/16AO16/16AO16_Linux_2.x.x.x_DN/doc/release.txt $
+; $Rev: 45292 $
+; $Date: 2019-07-15 12:56:05 -0500 (Mon, 15 Jul 2019) $
+
+16AO16 Linux Driver Release Notes
+
+The Linux specific portion of the device driver is covered by GPL.
+Users are free to apply the GPL version of their choosing, unless otherwise stated.
+The affected files include a GPL statement near the top of the file.
+All other source files are released to the general public.
+
+Revision History
+================
+
+--------------------------------------------------------------------------------
+
+Version 3.5.86.28.0, Released 7/15/2019
+
+driver: Added support for the 5.x kernel series.
+driver: Added support for Big Endian hosts.
+driver: Updated per OS specific DMA memory allocation interface.
+driver: Added DMA support for an IOMMU.
+driver: Added error reporting when DMA memory cound not be allocated.
+driver: Reduced code included when read and writ are both unsupported.
+driver: Added error reporting when IRQ cound not be acquired during open requests.
+driver: Some minor code reorganization.
+
+--------------------------------------------------------------------------------
+
+Version 3.4.85.27.0, Released 5/17/2019
+
+driver: Updated BMDMA macro spelling.
+driver: Several minor code changes.
+driver: White space cleanup.
+driver: Fixed bug in gsc_dma_perform(): timeouts were being ignored.
+driver: Fixed bug in gsc_dma_perform(): the timeout detection logic was incorrect.
+driver: Improved register validation.
+driver: Subsystem Vendor ID and Subsystem ID can each be ignored if -1 in device table.
+driver: #define for GSC_REG_ENCODE_MASK is moved here from gsc_reg.c.
+driver: Enhanced error reporting for the process of validating register definitions.
+driver: Fixed bug in DMA completion code.
+driver: Updated initialization for the write service.
+driver: Updated BAR creation logic.
+
+--------------------------------------------------------------------------------
+
+Version 3.3.81.26.1, Released 10/24/2018
+
+Updated user manual.
+
+--------------------------------------------------------------------------------
+
+Version 3.3.81.26.0, Released 10/23/2018
+
+driver: Updated per changes to common code.
+driver: Changed some field names for consistency.
+driver: Updated muti-channel ISR code for new I/O streams structure.
+driver: DEV_WAIT_IO_ALL is now required if WAIT is supported along with READ or WRITE
+driver: I/O WAIT macros are now defined by the device API and are passed to GSC code in dev_io_t.
+driver: Updated Block Mode DMA macro name (_DMA to _BMDMA).
+driver: Added I/O, DMA and register access debug code.
+driver: Added stream selection field in the "size" argument for the read and writecalls.
+driver: Added OS IRQ calls: os_irq_create() and os_irq_destroy()
+driver: Renamed field in gsc_irq_t for clarity.
+driver: Implemented support for a stream selection field in the I/O bytes argument.
+driver: Implemented register access debug code.
+driver: Implemented calls: os_irq_create() and os_irq_destroy()
+driver: Field in gsc_irq_t renamed for clarity.
+driver: Changed macro name for clarity.
+
+--------------------------------------------------------------------------------
+
+Version 3.2.77.22.1, Released 6/7/2018
+
+Implemented the API Library as a shared library.
+
+--------------------------------------------------------------------------------
+
+Version 3.2.77.22.0, Released 6/1/2018
+
+driver: Bug fix: was ignoring BAR setup return value.
+driver: Updated per changes to the OS specific PCI services.
+driver: Made updates for DEV_SUPPORTS_XXX macro changes.
+driver: Modified code so open succeeds even if initialization fails.
+driver: Fixed a bug in which wait list node removal didn't always have the list locked.
+driver: Added support for some DMA metrics.
+driver: Improved IOCTL argument validation.
+driver: Moved a typedef to device specific code.
+driver: Udated some utility services: applying a setting, end by reading it back
+driver: Updated for support of some drivers under older kernels.
+driver: Updated #include files for consistancy.
+driver: Fixed a DMA timeout calculation bug.
+driver: Updated to accommodate porting to Windows KMDF.
+driver: Updated per changes to the low level register interface.
+driver: Updated the driver initialization logic.
+driver: Updated IOCTL init and reset code.
+driver: Added support to exclude the WAIT feature.
+driver: Updated macros to include/exclude IRQ support.
+driver: Fixed bug in init code where last PCI device is one of ours.
+driver: Updated to accomodate Fedora 27.
+driver: Updated the low level register interface.
+
+--------------------------------------------------------------------------------
+
+Version 3.1.68.18.0, Released 11/30/2016
+
+driver: The BAR code has been updated to include the data under a single structure.
+driver: The register definitions have been updated.
+driver: I/O services now pass around an os_mem_t structure instead of a buffer pointer.
+driver: White space cleanup.
+driver: Changed the arbitrary wait event callback argument to a void* type.
+driver: Modified to allow multiple apps to simultaneously access a single device.
+driver: Correct access to BAR0 and BAR1 (is RO, was RW).
+driver: Added an infinite I/O timeout option.
+driver: Corrected the IOCTL code for the register write and mod services.
+driver: Added special case for register I/O where register id value is 0.
+driver: An event wait timeout value of zero now means do not timeout.
+driver: Fixed an I/O bug.
+driver: Updated the version number macros.
+driver: Updated the format and encoding of register macros.
+driver: Fixed DMA bug.
+driver: Moved some BAR functionality to the OS specific code.
+driver: I/O now passes around an os_mem_t structure instead of a buffer pointer.
+driver: Copying to and from user space is now done with more use specific routines.
+driver: Made more ISR functionality subject to the GSC_IRQ_ISR_FLAG_DETECT_ONLY flag.
+driver: Dropped I/O register access services.
+driver: Performed some LINTing.
+driver: Simplified error messages.
+driver: Fixed ul2hex().
+driver: The macro S32_MAX is defined only if not already done so.
+driver: Added the utility service ul2hex().
+driver: Changed register offsets to u16 from unsigned long.
+driver: Changed printk's to printf's.
+driver: Removed an RTX compiler warning in gsc_poll_u32.
+driver: Made ISR access more OS agnostic.
+driver: Made PCI registers accessible from inside an ISR.
+driver: Added special case handling for reads of register id value 0.
+driver: Removed use of function check_mem_region() in 4.x kernels.
+driver: Implemented support for the 4.x kernels.
+driver: Added checks on some pointers before using them.
+driver: Added safety check in EVENT_RESUME_IRQ().
+driver: Removed unused macro (OS_CAST_VOIDP_TO_U32).
+driver: Moved some BAR functionality here from more common code.
+driver: Renamed os_event_cleanup() to os_event_destroy().
+driver: Simplified use of os_mem_t structures and content.
+driver: Removed the use of __DATE__ and __TIME__.
+
+--------------------------------------------------------------------------------
+
+Version 3.0.60.8.0, Released 9/14/2015
+
+driver: Updated to use the newer common driver sources.
+driver: Fixed a bug in the dev_write_startup() service.
+driver: Removed GNU notice from non-Linux specific files.
+driver: Removed Linux specific content from non-Linux specific source files.
+driver: Now using a spinlock rather than enabling and disabling interrupts.
+driver: Updated gsc_irq_open() and gsc_irq_close().
+driver: Updated gsc_dma_open() and gsc_dma_close().
+aout: Changed one or more variable names.
+fsamp: Changed one or more variable names.
+mcao: Replaced some Linux specific data types.
+mcao: Changed one or more variable names.
+sbtest: Replaced some Linux specific data types.
+sbtest: Updated several of the wait event tests.
+txrate: Changed one or more variable names.
+LINTed various sources.
+White space cleanup.
+Updated to use the newer common Linux driver sources.
+
+--------------------------------------------------------------------------------
+
+Version 2.6.57.0, Released 10/23/2014
+
+driver: Now using the globally common file gsc_common.h.
+driver: Removed dead code (i.e. excluded by #if 0).
+driver: Removed additional compiler warnings.
+mcao: Removed dead code (i.e. excluded by #if 0).
+
+--------------------------------------------------------------------------------
+
+Version 2.6.53.0, Released 7/18/2014
+
+driver: Added support for the 49.152MHz reference clock.
+driver: Added support for the High Voltage Range feature.
+driver: Added support for the Cable Signal Polarity feature.
+driver: Added support for the Cable Signal Isolation feature.
+id: Added support for the High Voltage Range feature.
+id: Added support for the Cable Signal Polarity feature.
+id: Added support for the Cable Signal Isolation feature.
+mcao: Added sample application.
+sbtest: Added support for the High Voltage Range feature.
+sbtest: Added support for the Cable Signal Polarity feature.
+sbtest: Added support for the Cable Signal Isolation feature.
+Added support for DMDMA.
+Updated application usage data.
+Changed device node names from 16ao16n to 16ao16.n.
+
+--------------------------------------------------------------------------------
+
+Version 2.5.52.0, Released 2/27/2014
+
+driver: Reduced #include list in driver interface header.
+Additional LINTing.
+White space cleanup.
+
+--------------------------------------------------------------------------------
+
+Version 2.4.51.1, Released 1/9/2014
+
+--------------------------------------------------------------------------------
+
+Version 2.4.51.0, Released 1/7/2014
+
+driver: Modified the conditional definition of flags used by kmalloc().
+driver: Updated /proc file support for the 3.10 kernel changes.
+driver: Additional porting for the 2.2 kernel.
+
+--------------------------------------------------------------------------------
+
+Version 2.4.48.0, Released 11/8/2013
+
+driver: The IOCTL command code is now treated as an integer.
+driver: Numerous minor changes for LINTing of the code.
+fsamp: Fixed a command line argument parsing bug.
+
+--------------------------------------------------------------------------------
+
+Version 2.4.45.0, Released 7/3/2013
+
+driver: Fixed a bug in the write() routine.
+driver: Freeing the board interrupt is now conditioned upon it being acquired.
+driver: Corrected definition of register GSC_PLX_9056_PABTADR.
+driver: Added support for the Bus Abort interrupt.
+driver: Updated DMA reads to improve performance.
+driver: Changed how I/O buffers are allocated.
+driver: Changed how s8 ... u32 are included.
+driver: Enhanced the IOCTL service code to accommodate unsupported services.
+driver: Updated the BAR mapping failure messages.
+driver: Added s8 ... u32 definitions for application use.
+driver: Updated gsc_dma_destroy() - now zero fills memory when done.
+driver: Updated gsc_irq_destroy() - does cleanup when done.
+
+--------------------------------------------------------------------------------
+
+Version 2.4.39.1, Released 9/5/2012
+
+sbtest: Updated the Load Request test. Added the SERVICE_SLEEP_MS service.
+
+--------------------------------------------------------------------------------
+
+Version 2.4.39.0, Released 12/12/2011
+
+driver: Updated for the 3.x kernel.
+driver: Corrected a system clock roll over bug in ioctl.c.
+driver: Added support for boards that need additional setup after a DMA channel has been selected.
+driver: Made the IOCTL buffer larger - 512 bytes.
+driver: Removed compile warnings from the copy_from_user_ret macro.
+Updated the makefile for consistency.
+White space cleanup.
+Updated the utils interface for consistency.
+Updated the parameter list to gsc_id_driver().
+
+--------------------------------------------------------------------------------
+
+Version 2.3.34.0, Released 12/12/2011
+
+driver: BAR0 and BAR2 are now the only BAR regions used.
+driver: All common driver sources are included though not all are used.
+Split the utility code into two libraries: common and device specific.
+
+--------------------------------------------------------------------------------
+
+Version 2.2.30.0, Released 10/31/2011
+
+driver: Modified driver start script to correct messages under Ubuntu.
+driver: Numerous updates per changes to the common code base. See main.h.
+driver: Updated the set of IOCTL services.
+driver: Implemented support for the common PIO I/O routines.
+driver: Removed compiler warnings for Fedora 15.
+clockout: Corrected output spelling.
+id: Corrected output spelling.
+id: Updated register output data.
+sbtest: Removed warning under 64-bit Linux.
+sbtest: Removed compile warnings for Fedora 15.
+sbtest: Fixed a bug in the Tx I/O Abort test.
+sbtest: Fixed bugs in the Wait Status test.
+sbtest: Fixed bugs in the Wait Event test.
+sbtest: Reduced the IRQ Select tests as they duplicated the Wait Event tests.
+Updated numerous sources per changes in the set of supported IOCTL services.
+Updated various Auto Cal related strings and macros for consistency.
+Modified makefiles to correct messages under Ubuntu.
+
+--------------------------------------------------------------------------------
+
+Version 2.1.13.0, 12/24/2009
+
+driver: Fixed a DMA bug.
+
+--------------------------------------------------------------------------------
+
+Version 2.1.11.0, 11/16/2009
+
+driver: Fixed a bug in how the driver computes the buffer size.
+driver: Changed AO16_IOCTL_IRQ_STATE to AO16_IOCTL_IRQ_STATUS.
+driver: Implemented support for the common gsc_open() and gsc_close() calls.
+Added more sample applications.
+
+--------------------------------------------------------------------------------
+
+Version 2.0.10.0, 11/4/2009
+
+Overhauled the driver.
+
+--------------------------------------------------------------------------------
+
+Version 1.3.0
+
+Updated the implementation of the Board Reset IOCTL service.
+It now uses built-in kernel waiting services.
+
+--------------------------------------------------------------------------------
+
+Version 1.2.0
+
+Minor mods for support of 64-bit kernels.
+
+--------------------------------------------------------------------------------
+
+Version 1.01
+
+Enabled DMA bus mastering for the newer kernels.
+Updated the test application to use three channels.
+
+--------------------------------------------------------------------------------
+
+Version 1.0
+
+Initial release.
+
+--------------------------------------------------------------------------------

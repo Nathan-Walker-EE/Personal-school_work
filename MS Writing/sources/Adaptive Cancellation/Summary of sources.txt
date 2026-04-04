@@ -1,0 +1,8 @@
+Notes on research:
+
+Application of digital signal processor to snore
+cancellation:
+
+successfully showed that noise cancellation over an area
+could work. however, did not use any array processing.
+used the FXLMS algorithm to accomplish this.

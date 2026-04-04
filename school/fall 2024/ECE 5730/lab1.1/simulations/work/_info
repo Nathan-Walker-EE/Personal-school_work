@@ -1,0 +1,128 @@
+m255
+K4
+z2
+Z0 !s12c _opt1
+Z1 !s99 nomlopt
+R0
+R1
+!s12c _opt
+R1
+!s11e vcom 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z2 dC:/intelFPGA_lite/23.1std
+T_opt
+!s110 1726424260
+V7^ba]g0g:?c:FEe][W25M0
+Z3 04 21 10 work lab1_10bit_counter_tb behavioral 1
+=1-6c02e0ce081b-66e724c3-1-4290
+R1
+Z4 !s12b OEM100
+Z5 !s124 OEM10U2 
+o-quiet -auto_acc_if_foreign -work work
+Z6 tCvgOpt 0
+n@_opt
+Z7 OL;O;2023.3;77
+R2
+T_opt1
+!s110 1726424532
+VXz44i;oBEJk3O^cn=m[Pm0
+R3
+=1-6c02e0ce081b-66e725d3-1df-69d0
+R1
+R4
+R5
+o-quiet -auto_acc_if_foreign -work work +acc
+R6
+n@_opt1
+R7
+Elab1_10bit_counter
+Z8 w1726423970
+Z9 DPx4 ieee 11 numeric_std 0 22 F8@]:i<mFK7<TjIzKcTGi0
+Z10 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z11 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+!i122 8
+Z12 dC:/Users/natew/Documents/ECE 5730/lab1.1/sims
+Z13 8C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter.vhd
+Z14 FC:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter.vhd
+l0
+L6 1
+V@J4T;X7gP0fD;1:DIUVFR3
+!s100 L9Km9U4GP9lUb74J1dbJk1
+Z15 OL;C;2023.3;77
+32
+Z16 !s110 1726424505
+!i10b 1
+Z17 !s108 1726424505.000000
+Z18 !s90 -reportprogress|300|-work|work|C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter.vhd|
+Z19 !s107 C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter.vhd|
+!i113 0
+Z20 o-work work
+Z21 tExplicit 1 CvgOpt 0
+Abehavioral
+R9
+R10
+R11
+DEx4 work 18 lab1_10bit_counter 0 22 @J4T;X7gP0fD;1:DIUVFR3
+!i122 8
+l22
+L17 27
+VQeT1>][Z6Um>11PMUzmDO1
+!s100 fOH:aj<izQ@3^VK2_B3;13
+R15
+32
+R16
+!i10b 1
+R17
+R18
+R19
+!i113 0
+R20
+R21
+Elab1_10bit_counter_tb
+Z22 w1726424494
+R9
+R10
+R11
+!i122 9
+R12
+Z23 8C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter_tb.vhd
+Z24 FC:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter_tb.vhd
+l0
+L5 1
+VoTJ@z@4a;@oBK<bG3ndR;0
+!s100 l@iQOA4:aPjk5@@41m=1d1
+R15
+32
+R16
+!i10b 1
+R17
+Z25 !s90 -reportprogress|300|-work|work|C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter_tb.vhd|
+Z26 !s107 C:/Users/natew/Documents/ECE 5730/lab1.1/sims/Lab1_10Bit_counter_tb.vhd|
+!i113 0
+R20
+R21
+Abehavioral
+R9
+R10
+R11
+DEx4 work 21 lab1_10bit_counter_tb 0 22 oTJ@z@4a;@oBK<bG3ndR;0
+!i122 9
+l26
+L8 48
+VQ@>o5Oa`63m74B2RHnKWj2
+!s100 XL7PILiSm9jb0D:NHW7Yc0
+R15
+32
+R16
+!i10b 1
+R17
+R25
+R26
+!i113 0
+R20
+R21

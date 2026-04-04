@@ -1,0 +1,9 @@
+Added Component: Designator=J1(PANEL MOUNT BNC)
+Added Component: Designator=J2(PANEL MOUNT BNC)
+Added Component: Designator=J3(PANEL MOUNT BNC)
+Added Pin To Net: NetName=VS+ Pin=J1-1
+Added Pin To Net: NetName=VS- Pin=J2-1
+Added Pin To Net: NetName=GND Pin=J3-1
+Added Member To Class: ClassName=Top Member=Component J1 BANANA_CONN
+Added Member To Class: ClassName=Top Member=Component J2 BANANA_CONN
+Added Member To Class: ClassName=Top Member=Component J3 BANANA_CONN

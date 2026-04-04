@@ -1,0 +1,53 @@
+1. why is Queue better than global variables
+
+-Queues allow the RTOS to ensure that shared 
+data is transferred safely between tasks without 
+corruption or overwriting. They provide controlled 
+access to data so tasks can read messages without 
+the risk of other tasks modifying or consuming the 
+data simultaneously.
+
+2. describe pros and cons of queue by copy vs
+queue by reference
+
+queue by copy
+
+pros:
+	-each queue gets its own copy of the data
+	-no threat of queue data getting overwritten
+cons:
+	-overhead from copying data from large points of data
+	-high memory
+
+queue by reference
+pros:
+	-fast since only a pointer is copied
+	-potentially memory efficient
+cons:
+	-more complex and error prone
+	-data can be written over in the queue
+	
+3. In FreeRTOS, what is typically the scope of a queue 
+declaration?  Why?
+
+-it is declared as a global or a file variable. this allows
+it to be shared between tasks while providing safe data 
+transfer between tasks.
+
+4. What is the difference between the FreeRTOS API 
+functions xQueueSendToFront() and xQueueSendToBack()?
+
+xQueueSendToBack()- this is standard use case. since most
+queues are essentially FIFO's, this puts data in the back of 
+the line.
+
+xQueueSendToFront()- this essentially line cuts the FIFO or 
+queue. if X is the front of queue and this function is called
+for Y. then Y is first and X is second.
+
+5. Describe a use case for using a queue as a mailbox.
+
+- when you have a single point of data that changes value
+and you dont need to record all values that it has been.
+for instance a flag where you don't care about the sequence
+of flag changes. Thus you can just care about the current value.

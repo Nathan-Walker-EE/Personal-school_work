@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Mon Dec  2 21:10:50 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 Patches 0.02std SC Lite Edition
+Revision Name : Lab8_ADC
+Top-level Entity Name : Lab8_ADC
+Family : MAX 10
+Total logic elements : 159
+    Total combinational functions : 120
+    Dedicated logic registers : 137
+Total registers : 137
+Total pins : 53
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 1

@@ -1,0 +1,50 @@
+Chapter 6
+
+Why should ISRs be as brief as possible?
+
+can mess with timing of other interrupts or itself. 
+could run so long where the ISR doesn't finish before 
+the next interrupt happens.
+
+What is a safe way to send information from an ISR to a task in FreeRTOS?
+
+using ISR variants of API's like:
+xQueueSendFromISR()
+xSemaphoreGiveFromISR()
+vTaskNotifyGiveFromISR()
+
+What is the purpose of a semaphore?
+
+coordinate use of hardware between tasks. (traffic light).
+
+Chapter 7
+
+Describe the purpose of a mutex
+
+protects shared resources by allowing ownership of the shared resource
+
+What is priority inversion?  How does priority inheritance solve this problem?
+
+A high priority task can be blocked by a lower priority task because of the 
+mutex. allowing a different task to be ran than those two.
+
+inheritance fixes this by letting the low priority have the high priority, which
+then it can finish the task and release the mutex.
+
+Chapter 8
+
+What is the purpose of a FreeRTOS event group?
+
+multiple events can be tracked in a single object. helps with synchronization
+ 
+
+Chapter 9
+
+Why are task notifications better than queues, semaphores, or event groups?
+
+faster, low memory usage, and lightweight compared to the others.
+
+What specific benefits are produced by the task notification strategy employed in the 
+UART example (compare Example 16 with Example 24)?
+
+Lower Latency, Less overhead, more efficient, simpler.

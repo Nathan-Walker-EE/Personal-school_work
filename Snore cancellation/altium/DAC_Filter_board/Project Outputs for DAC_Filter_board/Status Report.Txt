@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [DAC_Filter_board.PrjPcb]
+   Generated File[DAC_Filter_board-RoundHoles.TXT]
+   Generated File[DAC_Filter_board-SlotHoles.TXT]
+   Generated File[DAC_Filter_board.LDP]
+   Generated File[DAC_Filter_board.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 11:01:16 On 8/30/2024

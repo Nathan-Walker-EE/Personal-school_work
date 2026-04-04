@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,9.0.6*%
+%TF.CreationDate,2025-11-01T14:17:31-06:00*%
+%TF.ProjectId,Servo_PWM_PCB,53657276-6f5f-4505-974d-5f5043422e6b,R1.0-A*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 9.0.6) date 2025-11-01 14:17:31*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.200000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X231500000Y-114000000D02*
+X266900000Y-114000000D01*
+X266900000Y-151000000D01*
+X231500000Y-151000000D01*
+X231500000Y-114000000D01*
+M02*

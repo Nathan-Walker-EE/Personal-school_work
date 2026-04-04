@@ -1,0 +1,10 @@
+This project is simple as it takes in a mono audio source
+does a voltage division goes into an op amp and outputs it 
+to another mono audio output. there is a 3 pin connector 
+for power and GND. 
+
+There are errors in the ERC. This is due to Kicad labeling pins
+on schematic symbols. They are expecting certain inputs and outputs 
+that the symbol is expecting. I tried to figure it out but did not have 
+time. Although electrically the circuit is sound and there is not "real"
+electrical errors or warnings.

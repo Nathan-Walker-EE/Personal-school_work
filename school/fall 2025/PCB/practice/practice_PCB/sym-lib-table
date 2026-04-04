@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "audio_jack")(type "KiCad")(uri "C:/Users/natew/Downloads/STX_3000/KiCADv6/2025-09-17_22-18-20.kicad_sym")(options "")(descr ""))
+  (lib (name "Digi_key power")(type "KiCad")(uri "C:/Users/natew/Downloads/B3B_XH_A/B3B-XH-A.kicad_sym")(options "")(descr ""))
+)

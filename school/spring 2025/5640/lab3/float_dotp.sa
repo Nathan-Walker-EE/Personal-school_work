@@ -1,0 +1,25 @@
+		.title "float_dotp.sa"
+		.def _dotp
+		.sect "code"
+		.global _dotp
+_dotp: 	.proc A5, B5, A6, B3
+		.reg p_m, m, p_n, n, prod, sum, count
+		mv	A5, p_m
+		mv 	B5, p_n
+		mv 	A6, count
+		mvk 0 , sum
+		
+loop: 	.trip 40
+
+		ldw *p_m++, m
+		ldw *p_n++, n
+		mpysp m, n, prod
+		addsp prod, sum, sum
+[count] sub count, 1, count
+[count] b 	loop
+
+		mv 	sum, A5
+		.end proc A5, B3
+		
+		b 	B3
+		nop 5

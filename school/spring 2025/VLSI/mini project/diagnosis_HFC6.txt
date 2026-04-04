@@ -1,0 +1,13 @@
+ Check expected data completed: 36 out of 36 failures were checked
+ Diagnosis summary for failure file failure_HFC6.txt
+ #failing_pat=8, #failures=36, #defects=1, #faults=2, CPU_time=0.01
+ Simulated : #failing_pat=8, #passing_pat=23, #failures=36
+ ------------------------------------------------------------------------------
+ Defect 1: stuck fault model, #faults=2, #failing_pat=8, #passing_pat=23, #failures=36
+ ------------------------------------------------------------------------------
+ match=83.72%, #explained patterns: <failing=8, passing=22>
+ sa1   DS   GATE2367761/A1   (ND2D0BWPHVT)
+ ------------------------------------------------------------------------------
+ match=66.67%, #explained patterns: <failing=8, passing=17>
+ sa0   DS   GATE2367761/ZN   (ND2D0BWPHVT)
+ ------------------------------------------------------------------------------

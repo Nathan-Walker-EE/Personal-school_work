@@ -1,0 +1,45 @@
+1. Define "soft real-time".  List 3 examples of soft real-time requirements.
+
+- soft real-time is a system that runs in real-time that has deadlines for tasks,
+However missing the deadline for tasks is not detrimental to the system. i.e. 
+the system can still run without damage to user or the system itself.
+
+examples
+	- smart watch
+	- smart fridge
+	- Car radio
+
+2. Define "hard real-time".  List 3 examples of hard real-time requirements.
+
+- Hard real-time is similar to soft real-time such that it has deadlines for tasks,
+However missing the dealines is dangerous and potentially fatal. Missing deadlines
+can lead to loss of life or severe damage to system(financial penalty).
+
+examples 
+	- Radar's 
+	- missile guidance
+	- drone control
+	
+3. What is the purpose of a real-time kernel such as FreeRTOS?
+
+- It allows the user to program with the capabilities of an OS that
+is made specifically for real-time operation. This allows the user to 
+better manage timing constraints and allows for the possibility for 
+multi-threading for tasks.
+
+4. List 2 pros and 2 cons of using free software such as FreeRTOS.
+
+pros
+	- Free to use for the public
+	- Can be used to make commercial products
+	
+cons
+	- Lack of official support from a company
+	- potential lack of features from a paid license products
+	
+5. List 5 benefits of using an RTOS.
+	- Very flexible with task priority assignments
+	- Queues
+	- Event groups
+	- Can be Pre-emptive
+	- Use's software(easier turn around then HDL's)

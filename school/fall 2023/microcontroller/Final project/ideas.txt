@@ -1,0 +1,3 @@
+Microcontroller final project ideas:
+
+stand offs to hold up the PCB

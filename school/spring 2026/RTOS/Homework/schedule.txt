@@ -1,0 +1,31 @@
+Scheduling HW
+
+-p1 determine if the following are schedulable
+	n*(2^1/n - 1)
+	task set 1:
+		U = 30/80 + 30/90 + 20/120 = .875 not less than 0.7797
+	task set 2:
+		U = 30/80 + 40/120 + 40/150 = .975 not less than 0.7797
+	task set 3:
+		U = 40/80 + 20/100 + 25/120 = .9083 not less than 0.7797
+	
+	None are schedulable due to the sufficient not necessary test
+	
+-p2 determine system utilization and draw a timing diagram for 
+RMA, EDF, LST
+	
+	U = 1/8 + 3/12 + 3/18 + 5/24 = .75 utilization
+	
+-p3 determine if the task set clears the RMA sufficient not necessary
+test, is it schedulable with RMA, and draw a diagram for RMA< EDF, LST
+
+	U = 5/10 + 5/20 + 10/40 = 1.0, 3*(2^(1/3)-1) = 0.7798
+	fails the RMA sufficient not necessary test
+	
+	
+	
+
+-p4 given the task set is it schedulable for RMA. 
+
+	U = 2/10 + 4/12 + 5/15 + 2/30 = 0.933, 4*(2^(1/4)-1) = .7568
+	fails the sufficient not necessary test

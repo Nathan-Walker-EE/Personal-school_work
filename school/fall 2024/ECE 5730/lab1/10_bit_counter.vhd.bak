@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity 10_bit_counter is
+	port (
+		ADC_CLK_10 : IN STD_LOGIC;
+		MAX10_CLK1_50 : IN STD_LOGIC;
+		MAX10_CLK2_50 : IN STD_LOGIC;
+		KEY : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+		LEDR : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+END 10_bit_counter;
+
+architecture Behavioral of 10_bit_counter is
+	signal big_counter : STD_LOGIC_VECTOR(26 downto 0)
+begin
+	
+	process (MAX10_CLK1_50, KEY(0)) 
+	begin
+		if KEY(0) = '1' then
+			LEDR <= "0000000000";
+			big_counter <= "000000000000000000000000000"
+	elsif rising_edge(MAX10_CLK1_50) then
+		big_counter <= big_counter + 1;
+		if(big_counter = "10111110101111000010000000")
+			big_counter <= "000000000000000000000000000";
+			LEDR <= LEDR + 1;
+	end
+			
+end Behavioral

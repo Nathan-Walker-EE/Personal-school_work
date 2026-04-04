@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <fstream>
+#include <vector>
+#include <chrono>
+#define L 3
+#define M 4
+#define N 479
+#define PI  3.14159265358979323846

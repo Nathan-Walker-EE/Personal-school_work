@@ -1,0 +1,16 @@
+# Compile of factorial_ram.vhd was successful.
+# Compile of Memory.vhd failed with 6 errors.
+# 2 compiles, 1 failed with 6 errors.
+# Compile of Memory.vhd failed with 3 errors.
+# Compile of register.vhd was successful.
+# Compile of register_pkg.vhd was successful.
+# 3 compiles, 1 failed with 3 errors.
+# Compile of Memory.vhd failed with 1 errors.
+# Compile of Memory.vhd failed with 2 errors.
+# Compile of Memory.vhd failed with 1 errors.
+# Compile of Memory.vhd was successful.
+# Compile of factorial_ram.vhd was successful.
+# Compile of Memory.vhd was successful.
+# Compile of register.vhd was successful.
+# Compile of register_pkg.vhd was successful.
+# 4 compiles, 0 failed with no errors.

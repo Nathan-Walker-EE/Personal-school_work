@@ -1,0 +1,117 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.35.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Brady Forbush, Utah State University, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.35.0.2
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.35.0.2
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+C:\Users\A02364124\Desktop\lab 8\lab8.uvprojx
+Project File Date:  11/10/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+main.c(41): warning: // comments are not allowed in this language [-Wcomment]
+                // 1. Software can start one ADC conversion by setting the ADC_CR_ADSTART bit in the ADC1 ->CR register
+                ^
+main.c(40): warning: no previous prototype for function 'ADC_Conversion_Seq' [-Wmissing-prototypes]
+void ADC_Conversion_Seq(void){          
+     ^
+main.c(40): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void ADC_Conversion_Seq(void){          
+^
+static 
+main.c(51): warning: no previous prototype for function 'ADC1_Wakeup' [-Wmissing-prototypes]
+void ADC1_Wakeup (void){ //for GPIO PA.1
+     ^
+main.c(51): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void ADC1_Wakeup (void){ //for GPIO PA.1
+^
+static 
+main.c(84): warning: passing 'uint8_t []' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                        strcpy(USART2_Buffer_Wx, "");
+                               ^~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h(77): note: passing argument to parameter here
+extern _ARMABI char *strcpy(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+                                                    ^
+main.c(85): warning: passing 'uint8_t []' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                        strcpy(USART2_Buffer_Wx, "CPU Temperature is: ");
+                               ^~~~~~~~~~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h(77): note: passing argument to parameter here
+extern _ARMABI char *strcpy(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+                                                    ^
+main.c(100): warning: passing 'uint8_t [32]' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                        strcpy(string, "Warning: Not a valid input.\n");
+                               ^~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h(77): note: passing argument to parameter here
+extern _ARMABI char *strcpy(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+                                                    ^
+main.c(78): warning: no previous prototype for function 'printTemp' [-Wmissing-prototypes]
+void printTemp(){
+     ^
+main.c(78): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void printTemp(){
+^
+static 
+main.c(78): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void printTemp(){
+              ^
+main.c(113): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+  GPIOA->MODER &= ~(0xF << (2*2)); // Clear mode bits for pin 2 and 3
+               ~~ ^~~~~~~~~~~~~~~
+main.c(117): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        GPIOA->PUPDR &= ~(0xF<<(2*2));
+                     ~~ ^~~~~~~~~~~~~
+main.c(121): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+  GPIOA->OTYPER &= ~(0x3<<2);
+                ~~ ^~~~~~~~~
+main.c(194): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+12 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=10452 RO-data=1020 RW-data=0 ZI-data=1672  
+".\Objects\lab1.axf" - 0 Error(s), 12 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.8.0.pack
+                ARM.CMSIS.5.8.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.5.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.1.pack
+                Keil.STM32L4xx_DFP.2.6.1
+                STMicroelectronics STM32L4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\Admin\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include
+  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.5.0
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# system info base_ADC on 2024.11.11.15:31:50
+system_info:
+name,value
+DEVICE,10M50DAF484C7G
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1731364309
+#
+#
+# Files generated for base_ADC on 2024.11.11.15:31:50
+files:
+filepath,kind,attributes,module,is_top
+simulation/base_ADC.vhd,VHDL,,base_ADC,true
+simulation/submodules/base_ADC_modular_adc_0.vhd,VHDL,,base_ADC_modular_adc_0,false
+simulation/submodules/altera_modular_adc_control.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+simulation/submodules/altera_modular_adc_control_avrg_fifo.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+simulation/submodules/altera_modular_adc_control_fsm.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+simulation/submodules/chsel_code_converter_sw_to_hw.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+simulation/submodules/fiftyfivenm_adcblock_primitive_wrapper.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+simulation/submodules/fiftyfivenm_adcblock_top_wrapper.v,VERILOG,,base_ADC_modular_adc_0_control_internal,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+base_ADC.modular_adc_0,base_ADC_modular_adc_0
+base_ADC.modular_adc_0.control_internal,base_ADC_modular_adc_0_control_internal

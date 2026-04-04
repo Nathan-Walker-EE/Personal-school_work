@@ -1,0 +1,486 @@
+m255
+K4
+z2
+!s11e vcom 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/23.1std
+Efetch
+Z0 w1769551443
+Z1 DPx4 work 16 ripple_adder_pkg 0 22 onkl_Pi=XIh`Ph252h1J01
+Z2 DPx4 work 7 mux_pkg 0 22 LlnM5`QS;<WGhZ?Q[Redd0
+Z3 DPx4 work 12 register_pkg 0 22 4_7Nm714LFFgY4XjMQ_GM3
+Z4 DPx4 ieee 11 numeric_std 0 22 F8@]:i<mFK7<TjIzKcTGi0
+Z5 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z6 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+!i122 195
+Z7 dC:/school/spring 2026/ADV RFIG/Lab 3
+Z8 8C:/school/spring 2026/ADV RFIG/Lab 3/fetch.vhd
+Z9 FC:/school/spring 2026/ADV RFIG/Lab 3/fetch.vhd
+l0
+L10 1
+VeG:V^MbdMoe339Nl:2@330
+!s100 ?=PanVJXz>8lXZZHWG?@_1
+Z10 OL;C;2023.3;77
+32
+Z11 !s110 1769551450
+!i10b 1
+Z12 !s108 1769551450.000000
+Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/fetch.vhd|
+!s107 C:/school/spring 2026/ADV RFIG/Lab 3/fetch.vhd|
+!i113 0
+Z14 o-work work -2002 -explicit
+Z15 tExplicit 1 CvgOpt 0
+Acomponent_list
+R1
+R2
+R3
+R4
+R5
+R6
+DEx4 work 5 fetch 0 22 eG:V^MbdMoe339Nl:2@330
+!i122 195
+l36
+L25 61
+VhG:o2hK<zzZ]0n`LTJdSO1
+!s100 WnKkaVe@:5GE21Bo85KB:2
+R10
+32
+R11
+!i10b 1
+R12
+R13
+Z16 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/fetch.vhd|
+!i113 0
+R14
+R15
+Efull_adder
+Z17 w1769549602
+Z18 DPx4 work 14 half_adder_pkg 0 22 WibF3E_o>QD>PGRJF^Zn=3
+R4
+R5
+R6
+!i122 185
+R7
+Z19 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder.vhd
+Z20 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder.vhd
+l0
+L8 1
+VoEeQnJV8FAiPa^R9]9id61
+!s100 ZDC=G>S;=5aI3C^5^3A<k1
+R10
+32
+Z21 !s110 1769551448
+!i10b 1
+Z22 !s108 1769551448.000000
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder.vhd|
+Z24 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder.vhd|
+!i113 0
+R14
+R15
+Artl
+R18
+R4
+R5
+R6
+Z25 DEx4 work 10 full_adder 0 22 oEeQnJV8FAiPa^R9]9id61
+!i122 185
+l24
+L18 24
+Ve56:dB^jbbV3=jQfBCefb0
+!s100 BHBjV5Yz_[Z8=:NAA?0LB0
+R10
+32
+R21
+!i10b 1
+R22
+R23
+R24
+!i113 0
+R14
+R15
+Pfull_adder_pkg
+R5
+R6
+!i122 186
+Z26 w1769227837
+R7
+Z27 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder_pkg.vhd
+Z28 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder_pkg.vhd
+l0
+L4 11
+VXaEl>8`:W_aPK?n<XjleU3
+!s100 64TYD34mKPlaSQG0@GiF20
+R10
+32
+R21
+!i10b 1
+R22
+Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder_pkg.vhd|
+Z30 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/full_adder_pkg.vhd|
+!i113 0
+R14
+R15
+Bbody
+Z31 DPx4 work 14 full_adder_pkg 0 22 XaEl>8`:W_aPK?n<XjleU3
+R5
+R6
+!i122 186
+l0
+L16 2
+Vo:]DISMZl20WhLVcY;6=d0
+!s100 GIk<:?fj9JWX4N5N^_0]>2
+R10
+32
+R21
+!i10b 1
+R22
+R29
+R30
+!i113 0
+R14
+R15
+Ehalf_adder
+Z32 w1769227110
+R4
+R5
+R6
+!i122 187
+R7
+Z33 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder.vhd
+Z34 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder.vhd
+l0
+L5 1
+V;^?D31N:iLWG`VV1NN[KX3
+!s100 =YQ<h`PgF<jMke0NiGhn91
+R10
+32
+R21
+!i10b 1
+R22
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder.vhd|
+Z36 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder.vhd|
+!i113 0
+R14
+R15
+Artl
+R4
+R5
+R6
+DEx4 work 10 half_adder 0 22 ;^?D31N:iLWG`VV1NN[KX3
+!i122 187
+l15
+L14 5
+Va][6EMz`]AWL1Jg1EbmQ50
+!s100 ec9b@B7>9^^mc[[@dVdjJ2
+R10
+32
+R21
+!i10b 1
+R22
+R35
+R36
+!i113 0
+R14
+R15
+Phalf_adder_pkg
+R5
+R6
+!i122 188
+Z37 w1769227300
+R7
+Z38 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder_pkg.vhd
+Z39 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder_pkg.vhd
+l0
+L4 10
+VWibF3E_o>QD>PGRJF^Zn=3
+!s100 <7[05okme5YLL4bT:>7_11
+R10
+32
+Z40 !s110 1769551449
+!i10b 1
+Z41 !s108 1769551449.000000
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder_pkg.vhd|
+Z43 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/half_adder_pkg.vhd|
+!i113 0
+R14
+R15
+Bbody
+R18
+R5
+R6
+!i122 188
+l0
+L15 2
+V^e^TI;<51gNXTN^`DVXal3
+!s100 ffFEj;^YkT]z7g6kdf7V^1
+R10
+32
+R40
+!i10b 1
+R41
+R42
+R43
+!i113 0
+R14
+R15
+Emux
+Z44 w1769551085
+R4
+R5
+R6
+!i122 193
+R7
+Z45 8C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX.vhd
+Z46 FC:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX.vhd
+l0
+L5 1
+VkfzCM:2HB:L3=zJVY2Nf01
+!s100 ADdfGKQU`TzcOUKU^8@co0
+R10
+32
+R11
+!i10b 1
+R12
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX.vhd|
+Z48 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX.vhd|
+!i113 0
+R14
+R15
+Artl
+R4
+R5
+R6
+DEx4 work 3 mux 0 22 kfzCM:2HB:L3=zJVY2Nf01
+!i122 193
+l19
+L17 7
+V652>i@3BNlcA>hNKBfAFS3
+!s100 I]`0?R6nUSgEdLYIJ7aGm3
+R10
+32
+R11
+!i10b 1
+R12
+R47
+R48
+!i113 0
+R14
+R15
+Pmux_pkg
+R5
+R6
+!i122 194
+Z49 w1769551108
+R7
+Z50 8C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX_pkg.vhd
+Z51 FC:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX_pkg.vhd
+l0
+Z52 L4 16
+VLlnM5`QS;<WGhZ?Q[Redd0
+!s100 9noP>2faT9>DCS70Gb9FY3
+R10
+32
+R11
+!i10b 1
+R12
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX_pkg.vhd|
+Z54 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/MUX/MUX_pkg.vhd|
+!i113 0
+R14
+R15
+Bbody
+R2
+R5
+R6
+!i122 194
+l0
+Z55 L21 2
+VW07eP_SQX429^?:P]_1oh0
+!s100 b]K5T=ELf7894A0LYkVSR0
+R10
+32
+R11
+!i10b 1
+R12
+R53
+R54
+!i113 0
+R14
+R15
+Ereggi
+Z56 w1769550991
+R4
+R5
+R6
+!i122 191
+R7
+Z57 8C:/school/spring 2026/ADV RFIG/Lab 3/Register/register.vhd
+Z58 FC:/school/spring 2026/ADV RFIG/Lab 3/Register/register.vhd
+l0
+L5 1
+VO4Y_<Z74F=>dG:DS8oO8j0
+!s100 e3mQ8Mh6SS@`PDo]NNQ123
+R10
+32
+R40
+!i10b 1
+R41
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/Register/register.vhd|
+Z60 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/Register/register.vhd|
+!i113 0
+R14
+R15
+Abehavioral
+R4
+R5
+R6
+DEx4 work 5 reggi 0 22 O4Y_<Z74F=>dG:DS8oO8j0
+!i122 191
+l22
+L17 19
+V7AzX:WQej93V[^=cl6nTS3
+!s100 VfPVWNBIDFm]W`XQGKl>^1
+R10
+32
+R40
+!i10b 1
+R41
+R59
+R60
+!i113 0
+R14
+R15
+Pregister_pkg
+R5
+R6
+!i122 192
+Z61 w1769551028
+R7
+Z62 8C:/school/spring 2026/ADV RFIG/Lab 3/Register/register_pkg.vhd
+Z63 FC:/school/spring 2026/ADV RFIG/Lab 3/Register/register_pkg.vhd
+l0
+R52
+V4_7Nm714LFFgY4XjMQ_GM3
+!s100 _5NPTLSISiBoZLNZ[9^mL3
+R10
+32
+R11
+!i10b 1
+R12
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/Register/register_pkg.vhd|
+Z65 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/Register/register_pkg.vhd|
+!i113 0
+R14
+R15
+Bbody
+R3
+R5
+R6
+!i122 192
+l0
+R55
+V;DimEh9Azb<ffTgIDGP2R3
+!s100 l7W^SaW1^Qe]oTI0Ofifn2
+R10
+32
+R11
+!i10b 1
+R12
+R64
+R65
+!i113 0
+R14
+R15
+Eripple_adder
+Z66 w1769550598
+R31
+R4
+R5
+R6
+!i122 189
+R7
+Z67 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder.vhd
+Z68 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder.vhd
+l0
+L8 1
+Vm7U=O;2Z2ASkzd?WDVb;z3
+!s100 R3gWj=>38JGib8ofKhQ`n0
+R10
+32
+R40
+!i10b 1
+R41
+Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder.vhd|
+Z70 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder.vhd|
+!i113 0
+R14
+R15
+Artl
+R18
+R25
+R31
+R4
+R5
+R6
+DEx4 work 12 ripple_adder 0 22 m7U=O;2Z2ASkzd?WDVb;z3
+!i122 189
+l25
+L21 22
+VhheDdU20LO>;FR:am>7GR0
+!s100 Z5zN_:g@fFM9Fcn8JO]RT2
+R10
+32
+R40
+!i10b 1
+R41
+R69
+R70
+!i113 0
+R14
+R15
+Pripple_adder_pkg
+R5
+R6
+!i122 190
+Z71 w1769228880
+R7
+Z72 8C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder_pkg.vhd
+Z73 FC:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder_pkg.vhd
+l0
+L4 17
+Vonkl_Pi=XIh`Ph252h1J01
+!s100 LR3K:_?Ca:GSI:AY<KS441
+R10
+32
+R40
+!i10b 1
+R41
+Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder_pkg.vhd|
+Z75 !s107 C:/school/spring 2026/ADV RFIG/Lab 3/ripple_adder/ripple_adder_pkg.vhd|
+!i113 0
+R14
+R15
+Bbody
+R1
+R5
+R6
+!i122 190
+l0
+L22 2
+VbjA9`kmOVF?W6[:IYRWJ^3
+!s100 Gj;JlZ<XlM::nQ90O4XRP3
+R10
+32
+R40
+!i10b 1
+R41
+R74
+R75
+!i113 0
+R14
+R15

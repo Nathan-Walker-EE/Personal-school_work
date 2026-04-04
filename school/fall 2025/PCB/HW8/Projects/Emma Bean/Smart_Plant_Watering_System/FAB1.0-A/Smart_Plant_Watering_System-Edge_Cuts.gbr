@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,9.0.5*%
+%TF.CreationDate,2025-11-01T20:29:23-06:00*%
+%TF.ProjectId,Smart_Plant_Watering_System,536d6172-745f-4506-9c61-6e745f576174,V1.0-A*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 9.0.5) date 2025-11-01 20:29:23*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.050000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X122105000Y-70835771D02*
+X169105000Y-70835771D01*
+X169105000Y-111335771D01*
+X122105000Y-111335771D01*
+X122105000Y-70835771D01*
+M02*

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "DSP_development_sch_lib")(type "KiCad")(uri "${KIPRJMOD}/sch_lib/DSP_development_sch_lib.kicad_sym")(options "")(descr ""))
+)

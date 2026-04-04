@@ -1,0 +1,21 @@
+Terminal Commands
+
+start of line: Ctrl-a
+end of line: Ctrl-end
+
+mkdir <name> - makes new directory
+rmdir <name> - removes (empty) directory
+rm -r <directory> - recursive call to empty and delete directory
+
+cat > <filename> - creates new file and allows for quick typing
+cat >> <filename> - adds text to existing file
+
+less <file> - reads file
+
+cp <filename> <newfilename> - makes a copy of file
+
+find ~ -name <file> - searches for file
+
+find ~ -name "*.txt" - finds files with specific type
+
+maybe use scp to copy from server to local machine

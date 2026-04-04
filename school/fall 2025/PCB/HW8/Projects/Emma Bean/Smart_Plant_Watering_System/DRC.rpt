@@ -1,0 +1,40 @@
+** Drc report for Smart_Plant_Watering_System.kicad_pcb **
+** Created on 2025-11-01T17:15:37-0600 **
+
+** Found 8 DRC violations **
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(113.5000 mm, 73.0000 mm): Rectangle on Edge.Cuts
+    @(112.7375 mm, 86.7800 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(113.5000 mm, 73.0000 mm): Rectangle on Edge.Cuts
+    @(112.7375 mm, 95.7200 mm): Segment of J1 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(113.5000 mm, 73.0000 mm): Rectangle on Edge.Cuts
+    @(127.8000 mm, 67.1000 mm): Segment of U4 on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning
+    @(113.5000 mm, 73.0000 mm): Rectangle on Edge.Cuts
+    @(146.2000 mm, 67.1000 mm): Segment of U4 on F.Silkscreen
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(136.5000 mm, 104.5000 mm): Reference field of J2
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(121.5000 mm, 83.0000 mm): Reference field of C10
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(152.0000 mm, 90.5000 mm): Reference field of R5
+    @(152.5900 mm, 90.3500 mm): Segment of U1 on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; warning
+    @(152.0000 mm, 88.0000 mm): Reference field of C9
+    @(152.5900 mm, 90.3500 mm): Segment of U1 on F.Silkscreen
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** End of Report **

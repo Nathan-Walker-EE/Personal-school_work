@@ -1,0 +1,98 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/23.1std
+Erx_uart
+w1767740217
+Z0 DPx4 ieee 11 numeric_std 0 22 F8@]:i<mFK7<TjIzKcTGi0
+Z1 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z2 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+!i122 10
+Z3 dC:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1
+Z4 8C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/RX_UART.vhd
+Z5 FC:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/RX_UART.vhd
+l0
+L5 1
+Vlli@=90JS3WgHGgg9O4@C2
+!s100 QAD<?O:fVGO0d?E39oTkN1
+Z6 OL;C;2023.3;77
+32
+!s110 1767740222
+!i10b 1
+Z7 !s108 1767740222.000000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/RX_UART.vhd|
+Z9 !s107 C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/RX_UART.vhd|
+!i113 0
+Z10 o-work work -2002 -explicit
+Z11 tExplicit 1 CvgOpt 0
+Acomponent_list
+w1767740361
+R0
+R1
+R2
+DEx4 work 7 rx_uart 0 22 lli@=90JS3WgHGgg9O4@C2
+!i122 12
+l17
+L1 99
+V5W]aQ12IFC`=AV4Aezb>X3
+!s100 2LWc80cn`[5ec908HU^>`2
+R6
+32
+Z12 !s110 1767740369
+!i10b 1
+Z13 !s108 1767740369.000000
+R8
+R9
+!i113 0
+R10
+R11
+Etb_rx_uart
+Z14 w1767734703
+R0
+R1
+R2
+!i122 12
+R3
+Z15 8C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/tb_RX_UART.vhd
+Z16 FC:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/tb_RX_UART.vhd
+l0
+L6 1
+VQ2Z[CBm6:W3l<TjoMH]c22
+!s100 g;l]AMHjIAL<]JzMmehoQ2
+R6
+32
+R12
+!i10b 1
+R13
+Z17 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/tb_RX_UART.vhd|
+Z18 !s107 C:/Users/natew/Documents/school/spring 2026/ADV RFIG/Lab 1/tb_RX_UART.vhd|
+!i113 0
+R10
+R11
+Abehavioral
+R0
+R1
+R2
+Z19 DEx4 work 10 tb_rx_uart 0 22 Q2Z[CBm6:W3l<TjoMH]c22
+!i122 12
+l32
+Z20 L9 57
+Z21 V85YORdf`SjiaN25_fD[]g3
+Z22 !s100 Rk_iZfn8=^F10clP<`[PT1
+R6
+32
+R12
+!i10b 1
+R13
+R17
+R18
+!i113 0
+R10
+R11

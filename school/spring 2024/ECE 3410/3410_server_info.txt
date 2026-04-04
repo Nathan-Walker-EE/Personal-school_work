@@ -1,0 +1,4 @@
+ECE 3410 log in info
+	Username: naw860
+	ssh key: ssh naw860@genesys.bluezone.usu.edu
+	Password: BjugliYWJCWFiM4QYVDh607uPeSM2zlp

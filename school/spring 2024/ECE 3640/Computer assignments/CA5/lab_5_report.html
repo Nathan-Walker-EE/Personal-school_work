@@ -1,0 +1,101 @@
+<ol type="1">
+<li>
+Measure the time required to compute the convolution from CA3 using
+convolution method 1 based on for loops For method 1 the elapsed time
+was 929.139 seconds or 15.48565 minutes.
+</li>
+<li>
+Measure the time required to compute the convolution from CA3 using
+convolution method 2 based on frequency domain convolution For method 2
+the elapsed time was .257337 seconds on a 2^20 or 1048576 point
+transform.
+</li>
+<li>
+verify that the outputs are the same for both methods. Based on a
+subjective listening test the two outputs seem to be equal as the sound
+was the same for both.
+</li>
+</ol>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">
+</th>
+<th style="text-align: center;">
+Sample Rate
+</th>
+<th style="text-align: center;">
+Length of x
+</th>
+<th style="text-align: center;">
+Length of h
+</th>
+<th style="text-align: center;">
+Length of y
+</th>
+<th style="text-align: center;">
+FFT size
+</th>
+<th style="text-align: center;">
+Execution times
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+Method 1
+</td>
+<td style="text-align: center;">
+44100
+</td>
+<td style="text-align: center;">
+896043
+</td>
+<td style="text-align: center;">
+55633
+</td>
+<td style="text-align: center;">
+1033674
+</td>
+<td style="text-align: center;">
+N/A
+</td>
+<td style="text-align: center;">
+929.139 secs
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+Method 2
+</td>
+<td style="text-align: center;">
+44100
+</td>
+<td style="text-align: center;">
+896043
+</td>
+<td style="text-align: center;">
+55633
+</td>
+<td style="text-align: center;">
+1048576
+</td>
+<td style="text-align: center;">
+1048576
+</td>
+<td style="text-align: center;">
+.257337
+</td>
+</tr>
+</tbody>
+</table>

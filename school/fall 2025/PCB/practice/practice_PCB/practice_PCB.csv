@@ -1,0 +1,5 @@
+"Reference","Qty","Value","DNP","Exclude from BOM","Exclude from Board","Footprint","Datasheet"
+"J1,J2","2","STX-3000","","","","Digi_key jack:STX-3000_KYC","STX-3000"
+"J3","1","B3B-XH-A","","","","Digi_key power:JST_B3B-XH-A",""
+"R1,R2,R3,R4","4","R","","","","Resistor_SMD:R_0201_0603Metric","~"
+"U2","1","OP1177AR","","","","Package_SO:SOIC-8_3.9x4.9mm_P1.27mm","https://www.analog.com/media/en/technical-documentation/data-sheets/OP1177_2177_4177.pdf"

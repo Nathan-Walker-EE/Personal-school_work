@@ -1,0 +1,179 @@
+(footprint "3x_Pin_Connector"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "J1"
+		(at 2.2 1 270)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "3f3f8a7e-460e-42a9-ade0-cd0a131bf5af")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.16)
+			)
+		)
+	)
+	(property "Value" "Conn_01x03_Pin"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "95f0131f-9b14-4f42-9ca1-452f5e07380a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "kicad-embed://3x_Pin_Connection_tsw_th.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1028f41b-5d85-4617-b943-d4a22ae1780f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Generic connector, single row, 01x03, script generated"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2df19c6d-39b0-468e-baaa-da960ce701e6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -6.35 1.5)
+		(end 1.27 3.8)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "4d631a4c-ba69-467a-bb8f-26930a1c4c03")
+	)
+	(fp_rect
+		(start -6.6 -0.935)
+		(end 1.52 10.13)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "cf828a3f-2214-4ad1-bb55-f04b8df46cfe")
+	)
+	(fp_rect
+		(start -6.35 1.5)
+		(end 1.27 3.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "c2c29e9b-43de-4b54-9fd7-8001cf247bbe")
+	)
+	(fp_rect
+		(start -6.35 3.8)
+		(end 1.27 9.88)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "7bb73991-800c-4c45-a76c-a13aaf46ce81")
+	)
+	(fp_text user "P"
+		(at -3.4 -1.1 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0dfc6706-184f-4754-a164-2dfc82c857a2")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.16)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "G"
+		(at -6.1 -1.1 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "78cfc32e-7471-4cd2-9203-61aad65e1a14")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.16)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "S"
+		(at -0.9 -1.1 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "e4e0c5c5-5ac7-4e41-bf0d-c99f10f2ce7a")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.16)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "3x_Pin_Connector_TSW-103-08-L-S-RA"
+		(at -0.1 11.7 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "cb978fa7-d1aa-4856-8082-892cf1aeb304")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 1.5 1.5)
+		(drill 1.02)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "96b69f12-adbb-4af8-a486-c7abc8dff882")
+	)
+	(pad "2" thru_hole circle
+		(at -2.54 0)
+		(size 1.5 1.5)
+		(drill 1.02)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "937da769-43bf-4cd0-983d-53ebb4271b5c")
+	)
+	(pad "3" thru_hole roundrect
+		(at -5.08 0)
+		(size 1.5 1.5)
+		(drill 1.02)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.1824817518)
+		(uuid "400dd1e7-2de5-4644-8cbf-805846c61ca6")
+	)
+	(embedded_fonts no)
+)

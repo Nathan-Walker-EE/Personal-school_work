@@ -1,0 +1,31 @@
+\contentsline {chapter}{\textnormal {ABSTRACT}}{ii}{Doc-Start}%
+\contentsline {chapter}{\textnormal {PUBLIC ABSTRACT}}{iii}{Doc-Start}%
+\contentsline {chapter}{\textnormal {\textnormal {ACKNOWLEDGMENTS}}}{v}{chapter*.1}%
+\contentsline {chapter}{\textnormal {LIST OF TABLES}}{vii}{chapter*.3}%
+\contentsline {chapter}{\textnormal {LIST OF FIGURES}}{viii}{chapter*.4}%
+\contentsline {chapter}{\textnormal {\textnormal {ACRONYMS}}}{ix}{chapter*.5}%
+\contentsline {chapter}{\numberline {1}INTRODUCTION}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}RESIDUAL VECTOR QUANTIZATION AND ITS PROBLEMS}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Residual Vector Quantization (RVQ)}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Reasons for the Poor Performance of RVQs}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Methods to Improve RVQ Performance}{6}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Brute Force RVQ or Stagewise RVQ (SRVQ)}{6}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Exhaustive Search RVQ (ESRVQ)}{6}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Deep Search RVQ}{6}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Comparison of SRVQ, DSRVQ, and ESRVQ Encoders}{7}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Algorithm for Generating Jointly Optimized Codebooks}{7}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Reflection Symmetric RVQ (rRVQ)}{7}{subsection.2.3.6}%
+\contentsline {subsubsection}{Binary rRVQ}{7}{section*.10}%
+\contentsline {subsection}{\numberline {2.3.7}Distortion Results and Analysis}{8}{subsection.2.3.7}%
+\contentsline {chapter}{REFERENCES}{9}{section.2.4}%
+\contentsline {chapter}{\textnormal {APPENDICES}}{10}{chapter.3}%
+\contentsline {section}{A\hspace {12pt} List of Edge Vectors}{11}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Definition of an Edge Vector}{11}{subsection.A.0.1}%
+\contentsline {subsection}{\numberline {A.2}Next Codebook Size Description}{11}{subsection.A.0.2}%
+\contentsline {subsection}{\numberline {A.3}Final Set of Codebook Size Descriptions}{11}{subsection.A.0.3}%
+\contentsline {section}{B\hspace {12pt} Another Example Appendix}{17}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Background}{17}{subsection.B.0.1}%
+\contentsline {subsection}{\numberline {B.2}Meat of the Appendix}{17}{subsection.B.0.2}%
+\contentsline {section}{C\hspace {12pt} Example Appendix with Computer Code}{18}{appendix.C}%
+\contentsline {chapter}{\textnormal {\textnormal {CURRICULUM VITAE}}}{23}{appendix*.18}%

@@ -1,0 +1,48 @@
+Chapter 1
+
+1. What file can you modify?
+
+-FreeRTOSConfig.h
+
+2. list 3 examples of hardware that could be setup
+
+-GPIO pins
+-Clock
+-ADC
+-DAC
+-PWM
+
+3. what are the return types
+
+-Void and is in task.c
+-Basetype_t and is in task.c
+-char pointer and is in queue.c
+-unsigned Basetype_t and is in semphr.h
+-void pointer and is in timer.c
+
+Chapter 2
+
+1. How does pvPortMalloc() work differently with the different heaps
+
+Heap_1: has a single heap stack that you can allocate tasks in.
+it is deterministic with no memory fragmentation. However, there 
+is no vPortFree() function implemented meaning no tasks can be deleted
+
+Heap_2: Deprecated(only exists for backwards compatibility). the start
+of heap 4 but was implemented poorly.
+
+Heap_3: Uses stdlib's malloc() and free() functions. TOTAL_HEAP_SIZE has
+no effect on function calls. is thread-safe because scheduler is 
+temporarily suspended.
+
+Heap_4: like Heap_1 it splits array into smaller blocks when allocating. 
+However, vPortFree() can be used and tasks can be deleted. 
+
+Heap_5: like Heap_4 but memory allocation can be down from multiple memory
+spaces.
+
+2. Use case for xPortGetMinimumEverFreeHeapSize(void)
+
+-if later in the program running you need to create a new thread with Y bytes
+on the stack. You could call this to see if there would be any danger creating
+the task. 

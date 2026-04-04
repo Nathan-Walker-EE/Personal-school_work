@@ -1,0 +1,68 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11e vcom 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/Users/natew/Documents/ECE 5730/lab2/simulations
+T_opt
+!s110 1726956789
+VZ9DG3fH8U1keKL<kX@?M62
+04 21 10 work hex_seven_seg_disp_tb behavioral 1
+=1-6c02e0ce081b-66ef44f5-7c-380c
+R0
+!s12b OEM100
+!s124 OEM10U1 
+o-quiet -auto_acc_if_foreign -work work
+tCvgOpt 0
+n@_opt
+OL;O;2023.3;77
+Ehex_seven_seg_disp_tb
+Z2 w1726956415
+Z3 DPx4 ieee 11 numeric_std 0 22 F8@]:i<mFK7<TjIzKcTGi0
+Z4 DPx3 std 6 textio 0 22 LS[?81n5ZHWBI9JkBZTV<2
+Z5 DPx4 ieee 14 std_logic_1164 0 22 6<US`=mgl_dFdCEFF7J=m1
+!i122 0
+R1
+Z6 8C:/Users/natew/Documents/ECE 5730/lab2/simulations/HEX_seven_seg_disp_tb.vhd
+Z7 FC:/Users/natew/Documents/ECE 5730/lab2/simulations/HEX_seven_seg_disp_tb.vhd
+l0
+L5 1
+V95IXYd>1gfI3cUNd282G:1
+!s100 7W]LlAL8XJ1iL?l<AX<iz1
+Z8 OL;C;2023.3;77
+32
+Z9 !s110 1726956771
+!i10b 1
+Z10 !s108 1726956771.000000
+Z11 !s90 -reportprogress|300|-work|work|C:/Users/natew/Documents/ECE 5730/lab2/simulations/HEX_seven_seg_disp_tb.vhd|
+Z12 !s107 C:/Users/natew/Documents/ECE 5730/lab2/simulations/HEX_seven_seg_disp_tb.vhd|
+!i113 0
+Z13 o-work work
+Z14 tExplicit 1 CvgOpt 0
+Abehavioral
+R3
+R4
+R5
+DEx4 work 21 hex_seven_seg_disp_tb 0 22 95IXYd>1gfI3cUNd282G:1
+!i122 0
+l24
+L8 45
+Vmn<e1LoM?S6NcPffWPCjz3
+!s100 C`In8MFOTjBD:2[zCWH<X3
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+R14

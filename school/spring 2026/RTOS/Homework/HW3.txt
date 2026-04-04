@@ -1,0 +1,47 @@
+1. what are 3 requirements for a C function that 
+is used as a FreeRTOS task
+
+-returns void
+-takes a void* as a parameter
+-must not hit a return statement
+
+2. Figure 11 shows an execution pattern for two tasks. 
+what causes task 1 and task 2 to alternate execution
+
+The alternation occurs because both tasks have equal
+priority and repeatedly yield or block, so the scheduler 
+time-slices (round-robins) between them.
+
+3. why is the configTICK_RATE_HZ typically set to 100.
+what reasons are there to set it to 10 or 1000?
+
+it is a good balance of resolution while minimizing CPU
+overhead from constant tick interrupts and switching.
+
+if it was faster it would spend a lot of time on the OS
+rather than the tasks. If it was slower than it would 
+probably fail a task since it took too long to switch tasks.
+
+4. using figure 15. name scenarios for all 8 state transitions
+
+- suspend->ready. another task calls vTaskResume using the 
+task handle
+- ready->running. the scheduler at a tick selects this task to 
+be running.
+- running->ready. the scheduler switches task but task is still
+in the schedule(not suspended)
+- running->block. the task requests a resource or a delay and
+cant continue.
+- blocked->ready. the blocking action has been solved and task 
+is switched.
+- ready->suspended. another task has called the vTaskSuspend
+and the task is no longer ready.
+- running->suspended. the task itself has calls VTaskSuspend on 
+itself 
+- blocked->Suspended. a blocked task is forcibly suspended by 
+another task
+
+5. what is the purpose of the FreeRTOS Idle Task
+
+- so the scheduler has something safe to run if there are 
+no current tasks. 

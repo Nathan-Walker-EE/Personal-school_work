@@ -1,0 +1,7 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "audio_devices")(type "KiCad")(uri "${KIPRJMOD}/footprints/audio_devices.pretty")(options "")(descr ""))
+  (lib (name "ICs")(type "KiCad")(uri "${KIPRJMOD}/footprints/ICs.pretty")(options "")(descr ""))
+  (lib (name "misc")(type "KiCad")(uri "${KIPRJMOD}/footprints/misc.pretty")(options "")(descr ""))
+  (lib (name "DSP_SMD")(type "KiCad")(uri "${KIPRJMOD}/footprints/DSP_SMD.pretty")(options "")(descr ""))
+)

@@ -1,0 +1,23 @@
+Notes on research:
+
+Nearfield broadband adaptive beamforming
+
+Using nearfield beamforming to solve the problem of reverb and
+other talkers interference in teleconference communication
+
+section 2 goes through the math of being able to convince with
+some reasonability that nearfield array processing is possible 
+for a broad spectrum signal given a finite number of sensors.
+
+A Hierarchical algorithm for nearfield acoustic imaging
+
+shows promising work in using hierarchical structures for 
+audio imaging. using sub arrays and then adding sub arrays into
+larger arrays. Due to the frequency of operation the arrays are then
+forced to account for nearfield effects thus making nearfield
+processing a promising solution
+
+ACOUSTIC IMAGING USING NEARFIELD HOLOGRAPH
+
+use of nearfield array processing techniques to make an acoustic
+image

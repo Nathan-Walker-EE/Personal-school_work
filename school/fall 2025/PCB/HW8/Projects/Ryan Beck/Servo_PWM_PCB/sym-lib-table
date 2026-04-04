@@ -1,0 +1,13 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "NE555P_Timer")(type "KiCad")(uri "${KIPRJMOD}/symbols/NE555P_Timer.kicad_sym")(options "")(descr ""))
+  (lib (name "1N914_Signal_Diode")(type "KiCad")(uri "${KIPRJMOD}/symbols/1N914_Signal_Diode.kicad_sym")(options "")(descr ""))
+  (lib (name "My_LM555")(type "KiCad")(uri "${KIPRJMOD}/symbols/My_LM555.kicad_sym")(options "")(descr ""))
+  (lib (name "Nx_Pin_Connector")(type "KiCad")(uri "${KIPRJMOD}/symbols/Nx_Pin_Connector.kicad_sym")(options "")(descr ""))
+  (lib (name "My_LED")(type "KiCad")(uri "${KIPRJMOD}/symbols/My_LED.kicad_sym")(options "")(descr ""))
+  (lib (name "Trim_Pot")(type "KiCad")(uri "${KIPRJMOD}/symbols/Trim_Pot.kicad_sym")(options "")(descr ""))
+  (lib (name "Resistors")(type "KiCad")(uri "${KIPRJMOD}/symbols/Resistors.kicad_sym")(options "")(descr ""))
+  (lib (name "Capacitor")(type "KiCad")(uri "${KIPRJMOD}/symbols/Capacitor.kicad_sym")(options "")(descr ""))
+  (lib (name "Capacitors")(type "KiCad")(uri "${KIPRJMOD}/symbols/Capacitors.kicad_sym")(options "")(descr ""))
+  (lib (name "USB_C_Breakout")(type "KiCad")(uri "${KIPRJMOD}/symbols/USB_C_Breakout.kicad_sym")(options "")(descr ""))
+)

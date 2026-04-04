@@ -1,0 +1,116 @@
+(footprint "MEMS microphone"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "M"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "8bfd0207-deca-452e-bd7b-ebfe2679d6d3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "MEMS Microphone"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a1b3467f-1cab-48e1-8771-7e4ea67d7648")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0126ef9c-19f4-497e-a14a-88b750502536")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "MEMS microphone"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6c4b00dd-8ed2-44d6-8bab-9a646207ecb5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2 0.5)
+		(end 1.8 2.78)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "5e92b0f5-85b6-48de-bdd7-3956b48f8c8b")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "257e2e7b-3d89-448d-a88d-b7392c7fb21d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 1.23 1.065)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ea6ab44d-04e9-4bcc-b348-061e5d489d6a")
+	)
+	(pad "2" smd circle
+		(at -1.43 1.065)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f84b39fb-942e-42b1-b4a3-53dba36c62d7")
+	)
+	(pad "3" smd circle
+		(at 1.23 2.215)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e47a03ea-e801-48ed-9457-df7f4c544cbd")
+	)
+	(pad "4" smd circle
+		(at -1.43 2.215)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9b74db3f-d5ae-41c4-99cf-e68b266e6f37")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/footprints/3SM123C4T1QA.step"
+		(offset
+			(xyz -0.1 -1.65 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)

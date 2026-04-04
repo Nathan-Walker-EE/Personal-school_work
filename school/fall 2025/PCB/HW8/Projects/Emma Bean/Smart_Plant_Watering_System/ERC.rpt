@@ -1,0 +1,21 @@
+ERC report (2025-11-01T17:18:17-0600, Encoding UTF8)
+
+***** Sheet /
+[pin_to_pin]: Pins of type Unspecified and Power input are connected
+    ; warning
+    @(6800 mils, 3500 mils): Symbol SW1 Pin 1 [1, Unspecified, Line]
+    @(6600 mils, 4050 mils): Symbol #PWR09 Pin 1 [Power input, Line]
+[pin_to_pin]: Pins of type Unspecified and Passive are connected
+    ; warning
+    @(7600 mils, 3600 mils): Symbol SW1 Pin 4 [4, Unspecified, Line]
+    @(7600 mils, 3700 mils): Symbol C9 Pin 1 [Passive, Line]
+[pin_to_pin]: Pins of type Unspecified and Power input are connected
+    ; warning
+    @(8550 mils, 3500 mils): Symbol SW2 Pin 1 [1, Unspecified, Line]
+    @(8450 mils, 4050 mils): Symbol #PWR010 Pin 1 [Power input, Line]
+[pin_to_pin]: Pins of type Unspecified and Passive are connected
+    ; warning
+    @(9350 mils, 3600 mils): Symbol SW2 Pin 4 [4, Unspecified, Line]
+    @(9450 mils, 3700 mils): Symbol C10 Pin 1 [Passive, Line]
+
+ ** ERC messages: 4  Errors 0  Warnings 4

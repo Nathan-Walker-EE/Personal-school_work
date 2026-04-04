@@ -1,0 +1,54 @@
+clear all
+clc
+close all
+
+a = [0.3957; -0.2417; 0.0454; -0.3136];
+sig_v = 0.1;
+n = 10;
+taps = 4;
+num_realizations = 5;
+
+for k = 1:1:num_realizations
+    v = sig_v.*randn(1, n+3);
+    xt = zeros(1,4);
+    x = [];
+    for i = 1:1:n+taps -1
+        new_x = xt*-a + v(i);
+        xt = [new_x xt(1:3)];
+        if(i > 3)
+            x = [x; new_x];
+        end
+    end
+    figure(1);
+    subplot(num_realizations, 1, k);
+    plot([1:1:n], x);
+    hold on;
+    A = [];
+    for i=1:1:n
+        A = [A; fliplr(v(i:1:i+taps-1))];
+    end
+    for i=1:1:n
+        A = [A; (v(i:1:i+taps-1))];
+    end
+    fb = [x(1:1:n); flipud(x(1:1:n))];
+    h = inv(A'*A)*A'*fb;
+
+    xt = zeros(1,4);
+    xHat = [];
+    for i=1:1:n+taps-1
+        new_x = xt*h + v(i);
+        xt = [new_x xt(1:3)];
+        if(i > 3)
+            xHat = [xHat; new_x];
+        end
+    end
+    plot([1:1:n], xHat);
+    hold off;
+    avg_error = sum((x - xHat).^2) / n
+    title("error = ", avg_error);
+    w = [-pi + 0.01:0.01:pi - 0.01];
+    Sx = abs(sig_v./(a+a(1).*exp(-j.*w) - h(2).*exp(-j.*w)-h(3)*exp(-j.*w)- ...
+        h(4).*exp(-j.*w)));
+    figure(k+1);plot(w,Sx); title('Sx'); hold on;
+    hold off;
+end
