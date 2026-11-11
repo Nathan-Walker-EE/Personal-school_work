@@ -1,0 +1,44 @@
+\contentsline {chapter}{\textnormal {ABSTRACT}}{iii}{Doc-Start}%
+\contentsline {chapter}{\textnormal {PUBLIC ABSTRACT}}{iv}{Doc-Start}%
+\contentsline {chapter}{\textnormal {\textnormal {ACKNOWLEDGMENTS}}}{vi}{chapter*.1}%
+\contentsline {chapter}{\textnormal {LIST OF TABLES}}{ix}{chapter*.3}%
+\contentsline {chapter}{\numberline {1}INTRODUCTION}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Literature Review}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Near-field Array Processing}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Active Noise Control Systems}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Multi-Channel and Spatial Active Noise Control}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Adaptive Filtering Algorithms for ANC}{5}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Snore Cancellation}{6}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Research and Design Methods}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Array Processing Using Sinc Interpolation}{8}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Mechanical Layout}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Additional Electronics}{12}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Adaptive filtering}{13}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Experimental Setup}{19}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Experimental Results}{22}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Array Processing and Plots}{22}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Runtime Performance}{27}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Programmable Filter Array}{28}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Simple ANC with Adaptive Filters}{32}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Broadband ANC}{35}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Cross-Correlation Analysis of System Delay}{39}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Spatial ANC with LAGS}{42}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Conclusions and Future Work}{46}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of Research}{46}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Contributions}{47}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Discussion}{48}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Real-Time Array Processing}{48}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Adjustable Experimental Platform}{49}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Programmable Filter Bank}{49}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Adaptive Filtering}{50}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Future Work}{51}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Hardware}{51}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Adaptive Algorithms}{52}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Full Array Evaluation}{52}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Final Remarks}{53}{section.5.5}%
+\contentsline {chapter}{REFERENCES}{54}{section.5.6}%
+\contentsline {chapter}{\textnormal {APPENDICES}}{56}{chapter.6}%
+\contentsline {section}{A\hspace {12pt} System Operation and Implementation}{57}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Setting Up the ADC and DAC in a Linux Environment}{57}{subsection.A.0.1}%
+\contentsline {subsection}{\numberline {A.2}How to Use the Code}{58}{subsection.A.0.2}%
+\contentsline {subsection}{\numberline {A.3}Supporting Functions}{59}{subsection.A.0.3}%

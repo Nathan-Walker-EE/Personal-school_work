@@ -1,0 +1,155 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import correlate, correlation_lags
+
+
+def read_binary(filename, dtype):
+    try:
+        with open(filename, 'rb') as file:
+            data = np.fromfile(file, dtype=dtype)
+    except OSError:
+        raise RuntimeError(f"Error opening file: {filename}")
+
+    return data
+
+
+def plot_cross_correlation(signal1, signal2, name1, name2):
+
+    # Equivalent to MATLAB:
+    # [cross_cor, lags] = xcorr(signal1, signal2);
+
+    cross_cor = correlate(
+        signal1,
+        signal2,
+        mode='full'
+    )
+
+    lags = correlation_lags(
+        len(signal1),
+        len(signal2),
+        mode='full'
+    )
+
+    # Find the peak correlation
+    peak_index = np.argmax(np.abs(cross_cor))
+    peak_corr = cross_cor[peak_index]
+    peak_lag = lags[peak_index]
+
+    # Print results
+    print("----------------------------------------")
+    print(f"{name1} → {name2}")
+    print(f"Peak correlation: {peak_corr}")
+    print(f"Peak lag:         {peak_lag} samples")
+    print("----------------------------------------")
+    print()
+
+    # Plot
+    plt.figure(figsize=(10, 5))
+
+    plt.plot(lags, cross_cor)
+
+    # Mark peak
+    plt.plot(
+        peak_lag,
+        peak_corr,
+        'o'
+    )
+
+    # Label peak
+    plt.text(
+    0.98,
+    0.95,
+    f"Peak = {peak_corr:.3e}\nLag = {peak_lag} samples",
+    transform=plt.gca().transAxes,
+    ha='right',
+    va='top',
+    bbox=dict(
+        boxstyle='round',
+        facecolor='white',
+        alpha=0.8
+    )
+    )
+
+    plt.title(
+        f"Cross Correlation: {name1} and {name2}"
+    )
+
+    plt.xlabel("Lag (samples)")
+    plt.ylabel("Cross Correlation")
+
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
+def main():
+
+    # ---------------------------------------------------------
+    # Read signals as C double (64-bit floating point)
+    # ---------------------------------------------------------
+
+    int_mic_close = read_binary(
+        "Internal_white_noise/mic_close.bin",
+        np.float64
+    )
+
+    int_mic_far = read_binary(
+        "Internal_white_noise/mic_far.bin",
+        np.float64
+    )
+
+    int_white_out = read_binary(
+        "Internal_white_noise/white_out.bin",
+        np.float64
+    )
+
+    ex_mic_close = read_binary(
+        "external_white_noise/mic_close.bin",
+        np.float64
+    )
+
+    ex_mic_far = read_binary(
+        "external_white_noise/mic_far.bin",
+        np.float64
+    )
+
+
+    # ---------------------------------------------------------
+    # Cross correlations
+    # ---------------------------------------------------------
+
+    # Internal close mic → internal far mic
+    plot_cross_correlation(
+        int_mic_close,
+        int_mic_far,
+        "Mic Close",
+        "Mic Far"
+    )
+
+    # Internal close mic → white noise output
+    plot_cross_correlation(
+        int_mic_close,
+        int_white_out,
+        "Mic Far",
+        "White Noise"
+    )
+
+    # Internal far mic → white noise output
+    plot_cross_correlation(
+        int_mic_far,
+        int_white_out,
+        "Internal Mic Far",
+        "Internal White Noise"
+    )
+
+    # External close mic → external far mic
+    plot_cross_correlation(
+        ex_mic_close,
+        ex_mic_far,
+        "External Mic Close",
+        "External Mic Far"
+    )
+
+
+if __name__ == "__main__":
+    main()

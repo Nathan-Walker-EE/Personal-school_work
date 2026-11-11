@@ -1,0 +1,132 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
+
+plt.rcParams.update({
+    'font.size': 18,
+    'axes.titlesize': 20,     # Make subplot titles slightly larger
+    'figure.titlesize': 22,   # Make the main suptitle stand out
+    'legend.fontsize': 12     # Shrink legend font slightly so it doesn't block data
+})
+
+def read_binary(filename, dtype):
+    try:
+        with open(filename, 'rb') as file:
+            return np.fromfile(file, dtype=dtype)
+    except OSError:
+        raise RuntimeError(f"Error opening file: {filename}")
+
+
+def calculate_energy(data, start_time, end_time, Fs=8000):
+    """Calculate the signal energy within ay specified time window."""
+
+    start_sample = int(start_time * Fs)
+    end_sample = int(end_time * Fs)
+
+    segment = data[start_sample:end_sample]
+
+    energy = np.sum(segment ** 2)
+
+    return energy/8000
+
+
+def main():
+
+    Fs = 8000
+
+    error = read_binary("error_mic.bin", np.float64)
+
+    # ============================================================
+    # ENERGY CALCULATIONS
+    #
+    # Add/remove time windows here as needed.
+    # Format: (start_time, end_time)
+    # ============================================================
+
+    energy_windows = []
+    #    (12, 14),
+     #   (16, 18),
+      #  (22, 24),
+       # (26, 28),
+        #(30, 32),
+#        (36, 38),
+ #   ]
+
+    print("\n==========================================")
+    print("Error Energy by Time Window")
+    print("==========================================")
+
+    for start_time, end_time in energy_windows:
+
+        energy = calculate_energy(
+            error,
+            start_time,
+            end_time,
+            Fs
+        )
+
+        print(
+            f"{start_time:5.1f} - {end_time:5.1f} s : "
+            f"{energy:.6f}"
+        )
+
+    print("==========================================\n")
+
+
+    # ============================================================
+    # Minimum-energy window
+    # ============================================================
+
+    min_error = error[8000*26:8000*28].copy()
+    min_error *= min_error
+    min_energy = np.sum(min_error)/8000
+
+    plt.figure()
+
+    t = np.arange(len(error)) / 8000
+    plt.plot(t, error)
+    plt.xlabel("Time(seconds)")
+    plt.ylabel("Amplitude")
+    plt.title(f"Error")
+
+
+    # ---------------------------------------------------------
+    # Show energy windows on plot
+    # ---------------------------------------------------------
+
+    for start_time, end_time in energy_windows:
+
+        plt.axvline(
+            x=start_time,
+            color='red',
+            linestyle='--',
+            alpha=0.7
+        )
+
+        plt.axvline(
+            x=end_time,
+            color='red',
+            linestyle='--',
+            alpha=0.7
+        )
+
+    #plt.legend(loc='upper left')
+
+    ax = plt.gca()
+
+    # Labels/ticks every 4 seconds
+    ax.xaxis.set_major_locator(MultipleLocator(4))
+
+    # Minor grid lines every 2 seconds
+    ax.xaxis.set_minor_locator(MultipleLocator(2))
+
+    # Grid lines
+    ax.grid(which='major', axis='x')
+    ax.grid(which='minor', axis='x')
+
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()

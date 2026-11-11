@@ -1,0 +1,59 @@
+%
+%  This is an example of how a LaTeX thesis should be formatted.  This
+%  document contains chapter 1 of the thesis.
+%
+%  Time-stamp: "[sample-chapter1.tex] last modified by Scott Budge (scott) on 2017-01-12 (Thursday, 12 January 2017) at 10:20:50 on goga.ece.usu.edu"
+%
+%  Info: $Id: sample-chapter1.tex 998 2017-03-21 16:44:33Z scott $   USU
+%  Revision: $Rev: 998 $
+% $LastChangedDate: 2017-03-21 10:44:33 -0600 (Tue, 21 Mar 2017) $
+% $LastChangedBy: scott $
+%
+
+\chapter{INTRODUCTION}
+%%%%%%%% This line gets rid of page number on first page of text
+\thispagestyle{empty}
+%%%%%%%%%%%%%
+
+% Array processing uses a multi-sensor system to coherently combine sensor outputs to increase the effective gain. Individual sensors in the system are impacted by noise and a small aperture leading to low resolution. 
+
+Individual sensors in multi-sensor systems are often impacted by measurement noise and limited aperture, resulting in reduced spatial resolution. Array processing techniques address this limitation by coherently combining signals collected from multiple sensors to achieve improved effective gain and spatial selectivity. Coherent combination is enabled by exploiting propagation delays between sensors caused by differences in source-to-sensor distance.
+
+Traditional array processing commonly relies on the far-field approximation. As an acoustic or electromagnetic signal propagates over sufficiently large distances, the wavefront can be approximated as planar across the array aperture. Under this assumption, conventional array processing methods estimate the direction of arrival (DOA) of the source but cannot directly determine source location. Consequently, multiple spatially separated arrays are typically required to perform localization.
+
+Near-field array processing relaxes the planar wave assumption by exploiting the curvature of spherical wave fronts. Prior research has demonstrated that near-field processing enables simultaneous estimation of both direction and range, allowing a single array to localize a source\cite{Single_Array}. This capability is valid when the source lies within the Fresnel region, which can be approximated by $r \approx \frac{2L^2}{\lambda}$, where $L$ represents the largest dimension of the array and $\lambda$ represents the operating wavelength\cite{array_freq_invariance}\cite{Adaptive_Beamforming}.
+
+This research proposes the use of microphone and loudspeaker arrays to implement an active noise control (ANC) system capable of spatially locating and cancelling unwanted acoustic sources. One motivating application is the mitigation of sleep disturbances caused by snoring. Snoring affects approximately 25\% of men and 15\% of women and has been shown to negatively impact sleep quality and interpersonal relationships. Existing mitigation techniques such as CPAP therapy and surgical intervention focus on modifying the physiology of the individual producing the snore\cite{Single_Array}. In contrast, this research aims to reduce perceived acoustic disturbance without requiring behavioral or physiological modification of either individual.
+
+Active noise control systems require adaptive filtering techniques to model acoustic transfer paths and minimize residual error between a reference signal and an error microphone measurement. Given a desired signal $d(n)$ and a reference signal containing delayed and noisy observations $x(n)$, adaptive filters iteratively estimate a transfer function that produces and output $y(n)$ that approximates the desired signal. The error signal is defined as $e(n) = d(n)-y(n)$; the adaptive filter coefficients are adjusted to minimize the error signal.
+
+Several adaptive filtering algorithms have been extensively studied for ANC applications. The Least Mean Squares (LMS) algorithm offers low computational complexity but typically exhibits slower convergence. Recursive Least Squares (RLS) algorithms provide faster convergence and improved tracking performance at the expense of increased computational complexity. This research proposes investigating the Fast Array Recursive Least Squares (FARLS) algorithm as a potential compromise between computational efficiency and convergence performance for array-based ANC systems.
+
+While active noise control and near-field array processing have both been extensively studied, limited work has investigated the integration of near-field localization techniques with computationally efficient adaptive filtering methods for real-time spatially selective acoustic cancellation. Existing ANC systems often assume fixed or poorly localized noise sources, limiting their effectiveness in dynamic environments\cite{RT_exp_ANC}.
+
+The goal of this research is to develop and evaluate a framework that combines near-field array processing with FARLS-based adaptive filtering to enable real-time localization and suppression of acoustic interference in multi-sensor ANC systems.
+
+% The goal of this research is to investigate the feasibility of combining near-field array processing with FARLS-based adaptive filtering to enable real-time localization and suppression of acoustic interference in multi-sensor ANC systems.
+
+%AHHHHHHHHHH
+% Individual sensors in multi-sensor systems are impacted by noise and a small aperture leading to low resolution. Array processing aims to coherently combine the signals from the individual sensors to produce a higher effective gain. This is accomplished by the signal of each sensor being delayed by a different amount through physical propagation. These signals are then further delayed by distance from the source to add the signals coherently. 
+
+% traditional array processing is performed using the far-field approximation. As the signal from the source propagates over some distance, the signal becomes a planar wave. This allows traditional array processing to determine the angle of arrival or rather the direction of the source and not the location of the source. Thus, 2 far-field arrays are needed to determine the location of a source. 
+
+% However, there is literature that proves that near-field array processing is capable of determine the location of a source. This means that a single array is capable of locating the source of a signal. This is accomplished by the property of non-planar waves. as the waves are propagating this is still a curvature from the source that allows determining the source possible. However, this has to be within the distance or $r \approx 2L^2/\lambda$ where L is the largest array dimension and $\lambda$ is the operating wavelength.
+
+% The proposed application is to use a microphone and speaker array to provide active noise cancellation. Both array's will be able to locate the source of the recipient of noise and produce a cancelling signal to bring comfort. This application will be most useful in the case of snoring. Plenty of couples around the world suffer from one partner's extracurricular nighttime noises. This system would aim to remedy this by cancelling the snoring signal.
+
+% Snoring has been found to affect up to 25\% of men and 15\% of woman. This has been shown to impact the quality of the marriage and the quality of life for the couple. There has been shown improvements to sleep by altering the snoreing by CPAP device or surgery. However, this application aims to eliminate the snore without any change on the snorer or the recipient.
+
+% To explore the possibility of cancelling the snoring an adaptive filter must be used. Adaptive filters are able to algorithmically determine the transfer function to reduce the error between a source mic $d(n)$ and a sensor with noise $x(n) = d(n-\tau) + N(n)$. There has been extensive work on adaptive filters with multiple implementations being made. The two main implementations are the Least-Mean squares(LMS) filter and the Recursive Least Squares(RLS) filter. The aim of the project would be to implement a variance of the RLS filter called the Fast Array Recursive Least Squares(FARLS). 
+
+
+% For use with multiple-paper format, uncomment the fillowing:
+% \pagebreak
+% \bibliographystyle{IEEEtran}
+% \bibliography{IEEEabrv,BibFile1}  % uses the references stored in BibFile1.bib for this chapter
+
+% Local Variables:
+% TeX-master: "newhead"
+% End:

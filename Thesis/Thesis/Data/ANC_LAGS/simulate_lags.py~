@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.signal import fftconvolve
+
+
+def read_binary(filename):
+    try:
+        with open(filename, 'rb') as file:
+            return np.fromfile(file, dtype=np.float64)
+    except OSError:
+        raise RuntimeError(f"Error opening file: {filename}")
+
+def FIR_filter(length, filter_buffer, filter_taps, next_sample)
+    sum = 0
+    for j in range(length-1, 0, -1):
+        filter_buffer[j] = filter_buffer[j-1]
+        sum += filter_buffer[j] * filter_taps[j]
+    filter_buffer[0] = next_sample
+    sum += filter_buffer[0] * filter_taps[j]
+
+    return sum
+
+def main():
+
+    cancelling_length = 50
+    cancel_chamber_length = 19
+    src_chamber_length = 32
+    
+    cancelling_delay = np.zeros(cancelling_length)
+    cancelling_delay[0] = 1
+    cancelling_buffer = np.zeros(cancelling_length)
+
+    cancel_chamber_delay = np.zeros(cancel_chamber_length)
+    cancel_chamber_delay[cancel_chamber_length] = 1
+    cancel_chamber_buffer = np.zeros(cancel_chamber_length)
+
+    src_chamber_delay = np.zeros(src_chamber_length)
+    src_chamber_delay[src_chamber_length] = 1
+    src_chamber_buffer = np.zeros(src_chamber_length)
+
+    white_noise = read_binary("white_out.bin")
+    error_mic = read_binary("mic_far.bin")
+
+    for i in range(len(white_noise)):
+
+
+        
+        

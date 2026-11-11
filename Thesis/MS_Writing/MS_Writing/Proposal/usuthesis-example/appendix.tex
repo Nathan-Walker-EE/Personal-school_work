@@ -1,0 +1,414 @@
+%
+%  Example Appendix pages.
+%  Modified to use new usu-thesis-mk2 appendix facilities.
+%
+%  Time-stamp: "[appendix.tex] last modified by Scott Budge (scott) on 2021-06-28 (Monday, 28 June 2021) at 09:03:44 on goga.ece.usu.edu"
+%
+%  Info: $Id: appendix.tex 1183 2021-06-28 16:49:30Z scott $   USU
+%  Revision: $Rev: 1183 $
+% $LastChangedDate: 2021-06-28 10:49:30 -0600 (Mon, 28 Jun 2021) $
+% $LastChangedBy: scott $
+%
+%
+% For a single appendix, use \makeappendix, and place the 
+% body of the appendix after it
+
+%\makeappendix
+
+% < single appendix body here >
+
+% For multiple appendices, use \makeappendices, and create each appendix
+% using \appendix{}
+% For sub-appendices use \appendixsection{} and \appendixsubsection{}
+
+\makeappendices
+\appendix{List of Edge Vectors}
+\label{chap:appendix}
+
+
+\appendixsection{Definition of an Edge Vector}
+\label{sec:edge-def}
+
+Before we list the table of edge vectors, we need to describe what an
+edge vector is.  In this section we will describe in detail the theory
+that results in the edge vectors.  The first set of edge vectors is
+given in Table~\ref{table1}.
+
+\begin{table}[!t]
+% increase table row spacing, adjust to taste
+  \renewcommand{\arraystretch}{1.3}
+
+  \caption{List of edge vectors for a codebook with b=8 and d=3, for a
+    $4 \times 4$ vector size.}
+  \label{table1}
+
+  \centering
+  \begin{tabular}{|c|c|} \hline
+    Level & Edge Vectors \\ \hline
+
+    & (5) \\ 
+    L1 & (6) \\
+    & (7) \\ \hline
+
+    & (3,1)\\
+    & (3,2)\\
+    & (3,5)\\
+    & (4,0)\\
+    L2 & (4,2)\\
+    & (4,3)\\
+    & (4,4)\\
+    & (4,5)\\
+    & (4,6) \\ \hline
+
+    & (3,4,1)\\
+    & (3,4,2)\\
+    & (3,7,0)\\
+    & (3,7,2)\\
+    & (3,7,4)\\
+    L3 & (4,1,0)\\
+    & (4,1,1)\\
+    & (4,1,2)\\
+    & (4,1,3)\\
+    & (4,1,4)\\
+    & (4,1,5)\\
+    & (4,1,6) \\ \hline
+
+  \end{tabular}
+
+\end{table}
+
+
+\appendixsection{Next Codebook Size Description}
+\label{sec:next-size}
+
+In this section we do the next size codebook.  This is different from
+the previous case in that the codebook size is different.  The next
+set of edge vectors is given in Table \ref{table2}.
+
+\appendixsection{Final Set of  Codebook Size Descriptions}
+\label{sec:final-size}
+
+The following three tables contain the data for codebook sizes that
+are different than the previous sizes.  We note that the differences
+in the tables are due to the differences in the sizes of the codebook
+edge vectors.  Note the values given in Table \ref{table3} --
+Table \ref{table5}.
+
+
+\begin{table}[!t]
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+
+  \caption{List of edge vectors for a codebook with b=4 and d=3, for a
+    $4 \times 4$ vector size.}
+  \label{table2}
+
+  \begin{tabular}{|c|c|} \hline
+    Level & Edge Vectors \\ \hline
+
+    & (1)\\
+    L1 & (2)\\
+    & (3) \\ \hline
+
+    L2 & (0,3) \\ \hline
+
+    & (0,2,0)\\
+    L3 & (0,2,2)\\
+    & (0,2,3) \\ \hline
+
+  \end{tabular}
+
+\end{table}
+
+\begin{table}[!t]
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+
+  \caption{List of edge vectors for a codebook with b=16 and d=3, for
+    a $4 \times 4$ vector size.}
+  \label{table3}
+
+  \begin{tabular}{|c|c|} \hline
+    Level & Edge Vectors \\ \hline
+
+    & (11)\\
+    & (12)\\
+    L1 & (13)\\
+    & (14)\\
+    & (15) \\ \hline
+
+    & (7,0)\\
+    & (7,1)\\
+    & (7,2)\\
+    & (7,6)\\
+    L2 & (8,4)\\
+    & (8,5)\\
+    & (8,6)\\
+    & (9,6)\\
+    & (9,14)\\
+    & (10,1) \\ \hline
+
+    & (4,6,14)\\
+    & (5,6,6)\\
+    & (6,14,0)\\
+    & (6,14,3)\\
+    L3 & (6,14,4)\\
+    & (6,14,5)\\
+    & (7,7,0)\\
+    & (7,14,7)\\
+    & (9,5,3)\\
+    & (9,5,10)\\
+    & (9,5,11) \\ \hline
+
+  \end{tabular}
+
+\end{table}
+
+\begin{table}[!t]
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+
+  \caption{ List of edge vectors for a codebook with b=16 and d=3, for
+    a $2 \times 2$ vector size.}
+  \label{table4}
+
+  \begin{tabular}{|c|c|} \hline
+    Level & Edge Vectors \\ \hline
+
+    & (9)\\
+    & (10)\\
+    L1 & (11)\\
+    & (12)\\
+    & (13) \\ \hline
+
+    L2 & (6,0)\\
+    & (6,3) \\ \hline
+
+    & (2,2,8)\\
+    & (6,5,1)\\
+    & (6,5,4)\\
+    & (6,5,6)\\
+    & (6,5,7)\\
+    & (6,5,8)\\
+    L3 & (6,5,15)\\
+    & (7,0,14)\\
+    & (8,0,1)\\
+    & (8,15,3)\\
+    & (8,15,4)\\
+    & (8,15,10) \\ \hline
+
+  \end{tabular}
+
+\end{table}
+
+\begin{table}[!t]
+  \renewcommand{\arraystretch}{1.3}
+  \centering
+
+  \caption{ List of edge vectors for a codebook with b=16 and d=3, for
+    a $6 \times 6$ vector size.}
+  \label{table5}
+
+  \begin{tabular}{|c|c|} \hline
+    Level & Edge Vectors \\ \hline
+
+    & (6)\\
+    & (7)\\
+    & (8)\\
+    & (9)\\
+    L1 & (10)\\
+    & (11)\\
+    & (12)\\
+    & (13)\\
+    & (14)\\
+    & (15) \\ \hline
+
+    & (2,8)\\
+    & (2,13)\\
+    & (4,1)\\
+    & (4,6)\\
+    L2 & (4,7)\\
+    & (4,8)\\
+    & (4,10)\\
+    & (4,11)\\
+    & (4,13)\\
+    & (4,15) \\ \hline
+
+    & (1,7,0)\\
+    & (1,7,1)\\
+    & (1,7,2)\\
+    L3 & (1,7,3)\\
+    & (1,7,4)\\
+    & (1,7,6)\\
+    & (1,7,9)\\
+    & (1,7,12) \\ \hline
+
+  \end{tabular}
+
+\end{table}
+
+\appendix{Another Example Appendix}
+
+
+\appendixsection{Background}
+\label{sec:back}
+
+
+Some random appended text for this section of the appendix....
+
+
+\appendixsection{Meat of the Appendix}
+\label{sec:meat}
+
+Here we have the data that is so important to be included in this
+appendix.
+
+\appendix{Example Appendix with Computer Code}
+
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+\begin{lstlisting}
+#include "ISATLib.hch"
+
+/*****************************************************************************
+ Macro Proc:		pipe_divide_uints                                    
+                                                               
+ Arguments
+   x			Dividend.
+   y			Divisor.
+   val			Pointer to the result.
+   fracBitsOut	Number of bits in the fraction of the fixed-point quotient.
+                                                              
+ Description 
+   Takes two signed integer inputs in any (non-Celoxica) fixed-point
+   representation and finds their quotient.  The number of fractional bits in
+   the signed output is user specified.  This is pipelined at one clock per pair
+   with latency fracBitsOut+width(x)+2.
+                      
+******************************************************************************/
+
+macro proc
+pipe_divide_uints(x,y,val,fracBitsOut)
+{
+
+
+  FLAG shift_sign[(width(x)+fracBitsOut)+1];
+  unsigned (log2ceil(width(x)+1)+1) shift[(width(x)+fracBitsOut)+1];
+  unsigned diff[(width(x)+fracBitsOut)+1];
+  unsigned divisor[(width(x)+fracBitsOut)+1];
+  unsigned quotient[(width(x)+fracBitsOut)+1];
+
+  int in_shifts;
+  unsigned in_divisor,in_divisor0,in_diff,in_diff0;
+  unsigned (log2ceil(width(x)+1)) msb_dividend,msb_divisor;
+
+  macro expr ext(p) = (int)((unsigned 1)0 @ p);
+
+  // Macro to find the number integer bits in the output.  This macro produces an
+  // log2ceil(width(dividend1)+1) bit int.
+  macro expr int_shift(dividend1,divisor1) = ((dividend1 != 0)?
+    (int)(lmo((unsigned 1)0 @ dividend1)) : (int)0) - (int)(lmo((unsigned 1)0 @ divisor1));
+
+  par
+  {
+    // Clock 0
+    // Extendthe precision of the operands.
+    in_divisor0 = y @ (unsigned (fracBitsOut))0;
+    in_diff0 = x @ (unsigned (fracBitsOut))0;
+
+    // Find shifts necessary to align MSBs.
+    msb_dividend = (x != 0)? lmo(((unsigned 1)0 @ x)) : 0;
+    msb_divisor = lmo(((unsigned 1)0 @ y));
+
+    // Clock 1
+    // Compute the total shift for the divisor to align MSBs.
+    in_shifts = ext(msb_dividend) - ext(msb_divisor);
+    in_divisor = in_divisor0;
+    in_diff = in_diff0;
+
+    // Clocks 2 to (fracBitsOut+width(x)+2)
+    par(i=0 ; i <= (fracBitsOut+width(x)) ; i++){
+      ifselect(i == 0){
+        par
+        {
+
+          quotient[i] = 0;
+
+          // Shift the divisor to align MSBs.
+          if(in_shifts > 0){
+            divisor[i] = in_divisor << (unsigned)in_shifts;
+          } else {
+            divisor[i] = in_divisor >> (unsigned) -in_shifts;
+          }
+
+          // Set the total number of shifts needed to find the quotient.
+          shift[i] = (unsigned) (in_shifts + adjs((int)fracBitsOut,(log2ceil(width(x)+1)+1)));
+
+          diff[i] = in_diff;
+          shift_sign[i] = sign(in_shifts + adjs((int)fracBitsOut,(log2ceil(width(x)+1)+1)));
+        }
+      } else ifselect(i == (fracBitsOut+width(x))){
+
+        if(shift_sign[i-1] == 0){
+
+          // Find LSB of result.
+          if((diff[i-1] >= divisor[i-1]) && (divisor[i-1] != 0)){
+            *val = quotient[i-1] | 1;
+          } else {
+            *val = quotient[i-1];
+          }
+        } else
+
+        // We are (effectively) dividing by zero; set the output to the dividend.
+        *val = diff[i-1] @ 0;
+        //*val = 0;
+
+      } else {
+
+        if((shift[i-1] != 0) && (shift_sign[i-1] == 0)){
+          par
+          {
+
+            if((diff[i-1] >= divisor[i-1]) && (divisor[i-1] != 0)){
+
+              // Subtract off the shifted devisor and set an output bit.
+              par
+              {
+                quotient[i] = (quotient[i-1] | 1) << 1;
+                diff[i] = diff[i-1] - divisor[i-1];
+              }
+            } else {
+
+              par
+              {
+                // Clear an output bit.
+                quotient[i] = quotient[i-1] << 1;
+                diff[i] = diff[i-1];
+              }
+            }
+
+            divisor[i] = divisor[i-1] >> 1;
+            shift[i] = shift[i-1] - 1;
+            shift_sign[i] = shift_sign[i-1];
+          }
+        } else {
+
+          // The quotent is computed; keep the values in the pipe.
+          par
+          {
+            quotient[i] = quotient[i-1];
+            diff[i] = diff[i-1];
+            divisor[i] = divisor[i-1];
+            shift[i] = shift[i-1];
+            shift_sign[i] = shift_sign[i-1];
+          }
+        }
+      }
+    }
+  }
+}
+\end{lstlisting}

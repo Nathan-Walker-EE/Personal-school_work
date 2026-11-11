@@ -1,0 +1,209 @@
+import sys
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from pydub import AudioSegment
+
+plt.rcParams.update({
+    'font.size': 18,
+    'axes.titlesize': 20,     # Make subplot titles slightly larger
+    'figure.titlesize': 22,   # Make the main suptitle stand out
+    'legend.fontsize': 12     # Shrink legend font slightly so it doesn't block data
+})
+
+def load_m4a(filename):
+    """Load an M4A file and return samples, sample rate, and channel count."""
+
+    audio = AudioSegment.from_file(filename, format="m4a")
+
+    # Convert to numpy array
+    samples = np.array(audio.get_array_of_samples())
+
+    # Handle stereo audio
+    if audio.channels > 1:
+        samples = samples.reshape((-1, audio.channels))
+
+    # Convert integer samples to floating point [-1, 1]
+    max_value = float(2 ** (8 * audio.sample_width - 1))
+    samples = samples / max_value
+
+    return samples, audio.frame_rate, audio.channels
+
+
+def compute_fft_data(frequencies, magnitude_db):
+    """
+    Compute the 500 Hz magnitude and the largest spectral component
+    above 500 Hz.
+    """
+
+    # ---------------------------------------------------------
+    # Find magnitude closest to 500 Hz
+    # ---------------------------------------------------------
+
+    index_500 = np.argmin(np.abs(frequencies - 500))
+
+    frequency_500 = frequencies[index_500]
+    magnitude_500 = magnitude_db[index_500]
+
+    # ---------------------------------------------------------
+    # Find largest spectral component above 500 Hz
+    # ---------------------------------------------------------
+
+    above_500 = frequencies > 600
+
+    frequencies_above_500 = frequencies[above_500]
+    magnitude_above_500 = magnitude_db[above_500]
+
+    max_index = np.argmax(magnitude_above_500)
+
+    highest_component_frequency = frequencies_above_500[max_index]
+    highest_component_magnitude = magnitude_above_500[max_index]
+
+    # ---------------------------------------------------------
+    # Print results
+    # ---------------------------------------------------------
+
+    print()
+    print("FFT Measurements")
+    print("----------------")
+    print(f"500 Hz component:")
+    print(f"    Frequency:  {frequency_500:.2f} Hz")
+    print(f"    Magnitude:  {magnitude_500:.3f} dB")
+
+    print()
+    print("Largest component above 500 Hz:")
+    print(f"    Frequency:  {highest_component_frequency:.2f} Hz")
+    print(f"    Magnitude:  {highest_component_magnitude:.3f} dB")
+
+    return (
+        frequency_500,
+        magnitude_500,
+        highest_component_frequency,
+        highest_component_magnitude
+    )
+
+
+def plot_audio(filename):
+
+    samples, sample_rate, channels = load_m4a(filename)
+
+    # ---------------------------------------------------------
+    # Select time segment for FFT
+    # ---------------------------------------------------------
+
+    start_time = 3.000
+    end_time = 3.015
+
+    start_sample = int(start_time * sample_rate)
+    end_sample = int(end_time * sample_rate)
+
+    if channels == 1:
+        segment = samples[start_sample:end_sample]
+    else:
+        # Use left channel
+        segment = samples[start_sample:end_sample, 0]
+
+    # ---------------------------------------------------------
+    # FFT
+    # ---------------------------------------------------------
+
+    N = len(segment)
+
+    fft = np.fft.rfft(segment)
+    frequencies = np.fft.rfftfreq(N, 1 / sample_rate)
+
+    # Magnitude
+    magnitude = np.abs(fft) / N
+
+    # Convert to single-sided amplitude spectrum
+    if N > 1:
+        magnitude[1:-1] *= 2
+
+    # Convert to dB
+    magnitude_db = 20 * np.log10(
+        np.maximum(magnitude, 1e-12)
+    )
+
+    # ---------------------------------------------------------
+    # COMPUTE MEASUREMENTS
+    # ---------------------------------------------------------
+
+    compute_fft_data(
+        frequencies,
+        magnitude_db
+    )
+
+    # ---------------------------------------------------------
+    # Get cutoff frequency from filename
+    # ---------------------------------------------------------
+
+    base_name = os.path.splitext(os.path.basename(filename))[0]
+
+    cutoff_frequency = (
+        base_name
+        .replace("Fc_", "")
+        .replace("kHz", " kHz")
+        .replace("khz", " kHz")
+    )
+
+    # ---------------------------------------------------------
+    # Create figure
+    # ---------------------------------------------------------
+
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+
+    ax.plot(
+        frequencies,
+        magnitude_db,
+        linewidth=0.8
+    )
+
+    # ---------------------------------------------------------
+    # Axis settings
+    # ---------------------------------------------------------
+
+    ax.set_xlim(0, 20000)
+
+    # Keep the same scale for every cutoff frequency
+    ax.set_ylim(-100, 0)
+
+    ax.set_xlabel("Frequency (Hz)")
+    ax.set_ylabel("Magnitude (dB)")
+
+    ax.set_title(f"Fc = {cutoff_frequency}")
+
+    ax.grid(True)
+
+    # ---------------------------------------------------------
+    # Save
+    # ---------------------------------------------------------
+
+    plt.tight_layout()
+
+    output_filename = os.path.splitext(filename)[0] + "_fft_db.png"
+
+    plt.savefig(
+        output_filename,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    print(f"Saved plot to: {output_filename}")
+
+    plt.close(fig)
+
+
+if __name__ == "__main__":
+
+    if len(sys.argv) != 2:
+        print("Usage:")
+        print("    python3 plot_m4a.py filename.m4a")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+
+    if not os.path.exists(filename):
+        print(f"File not found: {filename}")
+        sys.exit(1)
+
+    plot_audio(filename)

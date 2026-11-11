@@ -1,0 +1,443 @@
+%
+%  This is an example of how a LaTeX thesis should be formatted.  This
+%  document contains chapter 2 of the thesis.
+%
+%  Time-stamp: "[sample-chapter2.tex] last modified by Scott Budge (scott) on 2016-07-28 (Thursday, 28 July 2016) at 08:40:50 on goga.ece.usu.edu"
+%
+%  Info: $Id: sample-chapter2.tex 967 2016-07-28 15:33:29Z scott $   USU
+%  Revision: $Rev: 967 $
+% $LastChangedDate: 2016-07-28 09:33:29 -0600 (Thu, 28 Jul 2016) $
+% $LastChangedBy: scott $
+%
+
+\chapter{Experimental Results}
+
+This chapter presents the experimental results obtained from the implemented active noise cancellation system. The experiments evaluate the spatial response of the microphone array, the computational performance of the real-time processing system, the operation of the programmable filter array, and the performance of adaptive ANC using LMS and FARLS algorithms. The results of the adaptive ANC experiments are then used to investigate the effects of system delay through cross-correlation analysis. Finally, a controlled-delay experiment is used to demonstrate spatial acoustic cancellation using a known signal delay and polarity.
+
+\section{Array Processing and Plots}
+
+The purpose of this experiment was to determine whether the microphone-array processing produced the expected spatial response when an acoustic source was moved relative to a specified focal point. For each test, a focal point was selected in front of the microphone array and held fixed while an acoustic source was physically moved toward and away from that location. If the array-processing algorithm correctly focuses on the selected location, the processed signal should have a larger RMS amplitude when the source is near the focal point and a smaller RMS amplitude as the source moves away from it. The variation in RMS amplitude therefore provides an experimental indication of the spatial selectivity of the microphone array.
+
+For each focal-point location, the array-processing algorithm was operated continuously for 15 seconds while the processed array output was recorded. The acoustic source was initially positioned near the selected focal point and was then moved around the focal region during the recording. The source position was not measured or recorded as a function of time. Therefore, the exact source position corresponding to each point in the recorded signal cannot be determined. Instead, the experiment was used to observe whether movement of the acoustic source produced the expected changes in the RMS amplitude of the processed array output.
+
+The experiment was performed using six focal-point locations. The horizontal coordinate of the focal point was varied between $-0.5$, $0$, and $0.5$ m, while the distance from the microphone array was set to either $1.0$ or $1.5$ m. Each focal-point location was tested using both a sinusoidal source and a broadband white-noise source. The two source types were used to determine whether the observed spatial response was present for both narrowband and broadband acoustic signals.
+
+The recorded processed-array signals were analyzed by calculating the RMS amplitude in decibels as a function of time. The RMS amplitude represents the overall signal level of the processed microphone-array output over each analysis interval. Under the expected spatial response, the RMS amplitude should increase when the acoustic source moves toward the selected focal point and decrease when the source moves away from it. Because the source position was not recorded during the experiment, the plots cannot be used to determine the exact spatial coordinates of the source at each point in time. Instead, they show how the processed array output changed as the source was moved around the focal region.
+
+The RMS amplitude response for the sinusoidal source at the six focal-point locations is shown in Figure~\ref{fig:array_sinusoidal_results}. The corresponding response for the broadband white-noise source is shown in Figure~\ref{fig:array_white_noise_results}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Data/Array_processing/plots/sinusoidal_grid.png}
+\caption{Processed signal level of the microphone array for a sinusoidal acoustic source at the six tested focal-point locations.}
+\label{fig:array_sinusoidal_results}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Data/Array_processing/plots/white_noise_grid.png}
+\caption{Processed signal level of the microphone array for a white-noise acoustic source at the six tested focal-point locations.}
+\label{fig:array_white_noise_results}
+\end{figure}
+
+As shown in the figures, the processed RMS amplitude varies over time as the acoustic source is moved around the focal region. In general, the RMS amplitude increases when the source approaches the selected focal region and decreases as the source moves away. This behavior agrees with the expected response of the array-processing algorithm. When the source is located near the selected focal point, the propagation delays applied to the microphone signals allow the received signals to combine more constructively, producing a larger processed output. When the source is farther from the focal point, the signals combine less constructively, resulting in a lower processed RMS amplitude.
+
+To provide a numerical comparison between the different focal-point locations, the maximum and minimum measured RMS amplitudes were extracted from each recording. The difference between these values was also calculated. This maximum-to-minimum difference provides a measure of how much the processed RMS amplitude changed during the source movement. A larger difference indicates a more pronounced change in the array response, while a smaller difference indicates a less pronounced change.
+
+\begin{table}[H]
+\centering
+\caption{Maximum and minimum RMS amplitude and their difference for the six focal-point locations.}
+\label{tab:array_rms_results}
+\begin{tabular}{c c c c c c}
+\hline
+Source & $x$ (m) & $y$ (m) & Max RMS (dB) & Min RMS (dB) & Max-Min (dB) \\
+\hline
+Sinusoidal & -0.5 & 1.0 & -24.912 & -32.379 & 7.467 \\
+Sinusoidal & 0.0  & 1.0 & -12.230 & -32.084 & 19.855 \\
+Sinusoidal & 0.5  & 1.0 & -17.646 & -31.759 & 14.112 \\
+Sinusoidal & -0.5 & 1.5 & -13.420 & -31.947 & 18.527 \\
+Sinusoidal & 0.0  & 1.5 & -12.690 & -32.088 & 16.398 \\
+Sinusoidal & 0.5  & 1.5 & -11.326 & -31.314 & 19.988 \\
+\hline
+White noise & -0.5 & 1.0 & -6.007 & -21.646 & 15.639 \\
+White noise & 0.0  & 1.0 & -6.369 & -22.831 & 16.462 \\
+White noise & 0.5  & 1.0 & -9.214 & -22.686 & 13.472 \\
+White noise & -0.5 & 1.5 & -7.795 & -23.923 & 16.127 \\
+White noise & 0.0  & 1.5 & -5.661 & -21.036 & 15.375 \\
+White noise & 0.5  & 1.5 & -6.367 & -23.090 & 16.723 \\
+\hline
+\end{tabular}
+\end{table}
+
+For the sinusoidal source, the difference between the maximum and minimum RMS amplitudes ranged from $7.467$ dB to $19.988$ dB. Five of the six focal-point locations produced changes greater than $14$ dB. The smallest change occurred for the focal point at $(-0.5,1.0)$ m, where the RMS amplitude varied by $7.467$ dB. This smaller variation indicates that the spatial response was less pronounced during this particular measurement. The remaining focal-point locations exhibited substantially larger changes in RMS amplitude as the source was moved.
+
+For the broadband white-noise source, the maximum-to-minimum RMS amplitude differences ranged from $13.472$ dB to $16.723$ dB. All six focal-point locations therefore exhibited a change greater than $13$ dB. The relatively consistent variation across the six locations indicates that the array produced a measurable spatial response for broadband signals as well as for the sinusoidal source. This result is particularly relevant to active snore cancellation because snoring contains broadband acoustic energy rather than consisting of a single narrowband tone.
+
+The sinusoidal measurement at the $(-0.5,1.0)$ m focal point exhibited a noticeably smaller RMS amplitude variation than the other sinusoidal measurements. This may have resulted from differences in the source positioning or movement during that particular trial. However, because the source position was not measured throughout the recording, the cause of this difference cannot be determined quantitatively.
+
+The similar response observed for both sinusoidal and broadband sources provides evidence that the spatial selectivity of the array-processing algorithm is not limited to a single-frequency signal. Additionally, measurable RMS amplitude changes were observed at both $1.0$ m and $1.5$ m from the array, indicating that the array-processing method produced a spatially varying response over both tested distances.
+
+It is important to note that this experiment does not provide a complete
+two-dimensional characterization of the array response. Because the source position was not recorded simultaneously with the acoustic measurement, an exact relationship between source position and RMS amplitude cannot be established for each point in the recording. Instead, the experiment demonstrates that moving an acoustic source around a selected focal region produces a measurable change in the RMS amplitude of the processed microphone-array output, consistent with the expected spatial selectivity of the array-processing algorithm.
+
+\section{Runtime Performance}
+
+This experiment aims to quantitatively evaluate whether the system is capable of processing data at the rate required for real-time active noise cancellation (ANC). The experiment evaluates the computational performance of the system as processing complexity is progressively increased, from basic data acquisition to the complete array processing and adaptive filtering pipeline.
+
+This evaluation is important because the processing time must remain below the sampling period for the system to operate in real time. If the processing time exceeds the available time between samples, the algorithm will fall behind the incoming data and will be unable to perform ANC correctly.
+
+To conduct this experiment, the Linux-based host machine containing the ADC and DAC cards was used. Because the purpose of this experiment was to evaluate computational performance rather than acoustic performance, the microphone and speaker arrays were not physically connected to the system. However, the software executed the same processing operations as if the full 16-microphone and 16-speaker arrays were connected. The sampling frequency was set to 8~kHz, which was the predetermined sampling frequency for the system.
+
+For each configuration, 80,000 samples were processed while the computational complexity of the algorithm was progressively increased. The tested configurations included sample acquisition alone, processing of a single array, simultaneous microphone and speaker array processing, and finally the addition of the LMS and FARLS adaptive algorithms. The microphone and speaker arrays were configured with 16 channels each. The sinc interpolation filters used for array processing were 61 taps in length, and the adaptive filters contained 400 coefficients. For the LMS algorithm, the adaptation step size was set to $\mu = 0.001$.
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3}
+\caption{Timing performance of the real-time signal processing system for different processing configurations.}
+\label{table:timing_performance}
+
+\centering
+\begin{tabular}{||l|c|c||}
+\hline
+Processing Configuration &
+Median ($\mu$s) &
+95th Percentile ($\mu$s) \\ \hline
+
+Sample acquisition only &
+57.208 &
+58.941 \\ \hline
+
+Single array processing &
+61.416 &
+67.417 \\ \hline
+
+Microphone + speaker array processing &
+65.374 &
+72.907 \\ \hline
+
+Both arrays + LMS &
+68.879 &
+78.879 \\ \hline
+
+Both arrays + FARLS &
+81.173 &
+95.600 \\ \hline
+
+\end{tabular}
+\end{table}
+
+Table~\ref{table:timing_performance} shows the median and 95th-percentile processing times for each configuration. At a sampling frequency of 8~kHz, the available processing time per sample is 125~$\mu$s. The most computationally intensive configuration, which included both array processing and the FARLS adaptive algorithm, had a median processing time of 81.173~$\mu$s and a 95th-percentile processing time of 95.600~$\mu$s. Both values are below the 125~$\mu$s sampling period.
+
+These results indicate that the processing pipeline generally completes within the available time interval for the tested configurations. The increase in processing time as additional processing stages are enabled demonstrates the computational cost associated with each stage while also showing that the complete tested processing pipeline remains below the sampling-period threshold under typical operating conditions.
+
+\section{Programmable Filter Array}
+%show plots of the filter working and plots of DAC output
+The purpose of this experiment is to demonstrate that the programmable filter array can attenuate high-frequency components of the DAC output while maintaining the modularity afforded by the programmable IC. This capability will allow future work to operate the ANC system with reduced interference from frequencies outside the designated operating spectrum, thereby reducing the burden placed on the adaptive algorithms.
+
+The DAC reconstructs signals using a zero-order hold, which can introduce high-frequency spectral images alongside the desired audio content. The programmable filter array, implemented using the MAX270CPP+ IC and configured as a cascaded fourth-order low-pass filter (as described in Section 3.3), was evaluated to determine its effect on the frequency content of the DAC output. By adjusting the programmed cutoff frequency, the frequency response of the filter can be changed to attenuate frequency components above the desired operating bandwidth.
+
+The experiment was conducted using six programmed cutoff frequencies: 25 kHz, 15 kHz, 10 kHz, 5 kHz, 3 kHz, and 2 kHz. A single tone noise was used for the experiment with the frequency of 500 Hz. The 25 kHz setting represents the highest cutoff frequency available from the programmable filter, while the remaining cutoff frequencies were selected as progressively lower values to evaluate the effect of reducing the filter bandwidth. For each cutoff frequency, the DAC output was recorded and analyzed in both the time and frequency domains. The resulting waveforms and FFTs were used to observe how the programmed cutoff frequency affected the output signal and the attenuation of higher-frequency components.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_25kHz_fft_db.png}
+        \caption{$F_c = 25$ kHz}
+        \label{fig:Fc_25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_15kHz_fft_db.png}
+        \caption{$F_c = 15$ kHz}
+        \label{fig:Fc_15}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_10kHz_fft_db.png}
+        \caption{$F_c = 10$ kHz}
+        \label{fig:Fc_10}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_5kHz_fft_db.png}
+        \caption{$F_c = 5$ kHz}
+        \label{fig:Fc_5}
+    \end{subfigure}
+
+    \vspace{0.5cm}
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_3kHz_fft_db.png}
+        \caption{$F_c = 3$ kHz}
+        \label{fig:Fc_3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/programmable_filter/Fc_2kHz_fft_db.png}
+        \caption{$F_c = 2$ kHz}
+        \label{fig:Fc_2}
+    \end{subfigure}
+
+    \caption{Frequency-domain response of the programmable filter array for six programmed cutoff frequencies. Each plot shows the measured FFT magnitude in decibels of the 500 Hz sinusoidal input after filtering.}
+    \label{fig:programmable_filter_results}
+\end{figure}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3}
+\caption{Measured frequency-domain characteristics of the programmable filter array for the six programmed cutoff frequencies.}
+\label{tab:programmable_filter_results}
+
+\centering
+\begin{tabular}{||c|c|c|c||}
+\hline
+$F_c$ (kHz) &
+500 Hz Magnitude (dB) &
+Largest Component Above 500 Hz (Hz) &
+Magnitude (dB) \\ \hline
+
+25 &
+-34.561 &
+5533.33 &
+-29.504 \\ \hline
+
+15 &
+-37.472 &
+5466.67 &
+-38.785 \\ \hline
+
+10 &
+-37.301 &
+5533.33 &
+-35.415 \\ \hline
+
+5 &
+-37.611 &
+2466.67 &
+-42.107 \\ \hline
+
+3 &
+-34.742 &
+666.67 &
+-47.770 \\ \hline
+
+2 &
+-37.932 &
+666.67 &
+-50.432 \\ \hline
+
+\end{tabular}
+\end{table}
+
+The results show that changing the programmed cutoff frequency has a noticeable effect on the frequency content of the DAC output. The measured magnitudes of the 500 Hz input and the largest frequency component above 500 Hz for each cutoff frequency are summarized in Table~\ref{tab:programmable_filter_results}. At the higher cutoff frequencies, such as 25 kHz and 15 kHz, more of the higher-frequency content remains visible in the FFT. For example, the largest component above 500 Hz has a magnitude of $-29.504$ dB at a cutoff frequency of 25 kHz, compared with $-50.432$ dB at a cutoff frequency of 2 kHz. The frequency of the largest component above 500 Hz also shifts from approximately 5.5 kHz at the higher cutoff frequencies to approximately 667 Hz at the 3 kHz and 2 kHz settings. These results demonstrate the increasing attenuation of higher-frequency components as the programmed cutoff frequency is decreased. The time-domain plots also show that the main signal remains present as the cutoff frequency is changed, although the lower cutoff frequencies produce a greater change in the output waveform. Overall, the results show the expected behavior of a low-pass filter as the programmed cutoff frequency is decreased.
+
+
+The results from the six cutoff frequencies also demonstrate the programmability of the filter array. The cutoff frequency can be changed through the configuration of the MAX270CPP+ without requiring a different hardware filter for each frequency range. This provides flexibility for the ANC system because the filter can be configured for the desired operating bandwidth depending on the signal being processed. For example, a higher cutoff frequency can be used when more of the signal bandwidth is required, while a lower cutoff frequency can be used when greater attenuation of higher frequency components is desired. This allows the same filter hardware to be used for different operating conditions and provides a practical way of controlling the frequency content presented to the ANC system.
+
+\section{Simple ANC with Adaptive Filters}
+
+The purpose of this experiment was to evaluate the ability of the hardware to perform adaptive noise cancellation using a simplified setup. This experiment provides a starting point for evaluating the ANC system before incorporating the full microphone array and spatial processing. By beginning with a simplified configuration, the operation of the adaptive algorithms and the acoustic paths could be evaluated independently of the additional complexity introduced by spatial array processing.
+
+This experiment was conducted using two microphones and two speakers. One microphone acted as the input to the adaptive algorithm, while the second microphone measured the error signal used to update the adaptive filter. One speaker acted as the source speaker and produced the noise signal, while the second speaker produced the cancelling signal generated by the adaptive filter. The input microphone was placed close to the source speaker to minimize the acoustic path between the source and the reference microphone. The error microphone was positioned approximately 0.75 meters from the source speaker, while the cancelling speaker was positioned approximately 0.6 meters from the error microphone.
+
+For this experiment, a sinusoidal waveform was played through the source speaker, resulting in a single-tone input signal. Because the acoustic path was primarily composed of propagation through the anechoic chamber, the resulting adaptive filter was expected to approximate the response required to account for the propagation delay and phase of the acoustic path.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/ANC/FARLS/sin/FARLS_experiment_75.png}
+        \caption{FARLS experiment with an input range of 0.75.}
+        \label{fig:farls_75_sin}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Data/ANC/FARLS/sin/FARLS_experiments_small_ranges.png}
+        \caption{FARLS experiments with input ranges of 0.5 and 0.25.}
+        \label{fig:farls_small_sin}
+    \end{subfigure}
+
+    \caption{FARLS adaptive noise cancellation results for the tested input ranges.}
+    \label{fig:farls_results_sin}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Data/ANC/LMS/sin/LMS_experiments.png}
+    \caption{LMS adaptive noise cancellation results for the tested step sizes.}
+    \label{fig:lms_results_sin}
+\end{figure}
+
+Overall, the results show that the error signal does not converge despite testing a variety of $\mu$ values and input ranges. In the LMS experiments, even when the experiment was run for 40 seconds, the system eventually became unstable. Other combinations of algorithm parameters were also tested, but the results shown in Figures~\ref{fig:farls_results_sin} and~\ref{fig:lms_results_sin} represent the general behavior observed throughout the experiments. In addition to the error signal failing to converge, the resulting filter coefficients did not correspond to the expected response of the acoustic path through the anechoic chamber. For a single-tone input, the filter response would be expected to represent the required propagation delay and phase relationship between the reference and error signals. The resulting filters did not exhibit the expected behavior.
+
+The FARLS results demonstrate similar difficulties with convergence. As shown in Figure~\ref{fig:farls_75_sin}, the larger input range causes the amplitude of the adaptive filter output to increase substantially without reaching a stable solution. Reducing the input range did not result in convergence, although the lower input ranges changed the behavior of the algorithm. Figure~\ref{fig:farls_small_sin} shows an example of the algorithm responding to a change in the error signal at approximately four seconds. The filter coefficients change rapidly in an attempt to reduce the error, but the resulting change does not produce a stable solution. The algorithm then adjusts the coefficients again and temporarily reduces the error. This behavior demonstrates that FARLS is responding to changes in the measured error, but it is not able to consistently identify the required acoustic response and converge to a stable solution.
+
+The LMS results also show a lack of stable convergence. At lower $\mu$ values, the filter coefficients change slowly and the algorithm is unable to reduce the error sufficiently within the duration of the experiment. Increasing $\mu$ causes the algorithm to adapt more quickly, but the larger step size eventually causes the filter to become unstable. This behavior is consistent with the sensitivity of the LMS algorithm to the step size, where an excessively large value can cause successive coefficient updates to overshoot the desired solution and result in divergence.
+
+Although neither algorithm successfully achieved the desired ANC behavior, the FARLS results appear somewhat more promising than the LMS results. FARLS is able to respond rapidly to changes in the error and, in some cases, temporarily reduce the error following a change in the filter coefficients. However, neither algorithm was able to converge to a stable steady-state error or produce a filter response corresponding to the expected acoustic path. Despite testing different algorithm parameters, input ranges, and physical configurations, a stable solution was not obtained. Further testing using a broadband excitation is therefore necessary to determine whether the lack of convergence is related to the single-tone excitation or to another characteristic of the system.
+
+
+\section{Broadband ANC}
+
+The purpose of this experiment was to extend the previous ANC experiment from a single-tone input to broadband noise. Snoring is a broadband acoustic signal, and therefore the ANC system must be capable of operating with broadband inputs for the system to be applicable to active snore cancellation. For a properly converging adaptive filter, the error signal should generally decrease as the filter adapts to the acoustic environment and determines an appropriate cancellation response. This experiment was therefore used to determine whether the adaptive filters could converge when operating with a broadband input.
+
+To conduct the experiment, a white-noise signal was generated by the computer and output through the primary speaker. A microphone positioned near the primary speaker provided the reference signal to the adaptive filter. The adaptive filter used this reference signal to calculate the cancellation signal, which was output through the secondary speaker. An error microphone was positioned within the acoustic field to measure the resulting signal after the primary and secondary signals interacted. The error signal was then fed back into the adaptive filter to update the filter coefficients. The experiment was operated for 30 seconds, and the resulting error signal was recorded for analysis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Data/ANC/FARLS/white/FARLS_experiments_all_ranges.png}
+    \caption{Broadband ANC results using the FARLS adaptive filter for the tested input ranges.}
+    \label{fig:FARLS_results_white}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Data/ANC/LMS/White/lms_experiments.png}
+    \caption{Broadband ANC results using the LMS adaptive filter for the tested step sizes.}
+    \label{fig:LMS_results_white}
+\end{figure}
+
+The results did not show the expected reduction in the error signal associated with convergence. Instead, the error remained relatively consistent throughout the experiments, with neither adaptive filter producing a sustained reduction toward a steady-state value. This behavior was observed across the different input ranges and adaptive filter parameters that were tested. The results therefore indicate that changing the input level or adaptive filter parameters alone was not sufficient to achieve convergence with the broadband input.
+
+The FARLS and LMS algorithms exhibited similar difficulties when operating with the broadband signal, although their adaptation behavior differed. The FARLS results show that the filter coefficients continued to change as the algorithm attempted to respond to the measured error, but these changes did not result in a stable reduction in the error signal. Similarly, the LMS algorithm responded to changes in its step size, with smaller values producing slower adaptation and larger values producing more rapid changes but a greater tendency toward instability. The inability of both algorithms to achieve stable convergence suggests that the observed behavior is not limited to a particular adaptive algorithm.
+
+Several possible causes of the lack of convergence were investigated during the debugging process. The first step was to verify the hardware and signal paths. The signal path from the computer to both speakers was traced to verify that the source and cancellation signals were being transmitted correctly. The microphone signal paths were also examined to verify that the reference and error signals were being correctly received by the computer. After the hardware signal paths were verified, the investigation was focused on the software and adaptive filter parameters.
+
+For the LMS implementation, multiple values of the step size $\mu$ were tested to determine whether the adaptation rate was preventing convergence. The initial conditions of the adaptive filters were also varied. The filters were initialized using an impulse response with a delay corresponding to the expected acoustic propagation time, white-noise values, and zero-valued coefficients. Additionally, the filter length was varied by testing lengths both longer and shorter than the expected acoustic response. None of these changes produced a significant improvement in the convergence behavior.
+
+The results from these tests suggest that the adaptive filter parameters and initial conditions were unlikely to be the primary cause of the observed behavior. Another possible cause is the timing relationship between the reference signal, the calculated cancellation signal, and the resulting acoustic signal. In particular, a delay within the computer and audio system could cause the cancellation signal to arrive at the error microphone later than required. If the delay is sufficiently large, the adaptive filter may be unable to generate the cancellation signal at the appropriate time relative to the noise being cancelled. This would prevent the adaptive filter from accurately modeling the acoustic path, even if the filter parameters were otherwise appropriate.
+
+The possibility of an unaccounted system delay is investigated in the following experiment using cross-correlation. By measuring the relative timing between the generated signal and the microphone signals, the experiment can determine whether the computer-based signal path introduces additional delay beyond the expected acoustic propagation time. This provides a means of testing whether system timing may be contributing to the lack of convergence observed in the broadband ANC experiments.
+
+\section{Cross-Correlation Analysis of System Delay}
+
+The purpose of this experiment was to investigate the source of the behavior observed in the previous broadband ANC experiment. In particular, the experiment was used to investigate the delay between the signal generated inside the computer and the signal observed at the microphones. A delay between the generated signal and the signal received by the microphones can affect the ability of the adaptive filter to correctly model the acoustic path and produce a cancelling signal at the appropriate time.
+
+Cross-correlation was used to determine the relative delay between the recorded signals. The peak of the cross-correlation indicates the lag at which the two signals have the greatest similarity. For the two microphone signals, this lag represents the relative propagation delay between the two microphone locations. The cross-correlation between the generated signal and a microphone signal includes both the acoustic propagation time and any additional delay introduced by the computer and audio system.
+
+For this experiment, a sinusoidal signal was generated inside the computer and output through the audio system to a speaker. Two microphones were used to record the resulting acoustic signal. One microphone was positioned near the speaker, while the second microphone was positioned farther away from the speaker. The signals from both microphones were recorded along with the generated signal so that the relative delays between the signals could be determined.
+
+Two cross-correlations were used to analyze the system delay. The first was calculated between the two microphone signals. This measurement was used to determine the relative delay caused by the difference in acoustic propagation distance between the two microphones. The second cross-correlation was calculated between the generated signal and the farther microphone signal. This measurement represents the combined delay from generating the signal, passing through the computer and audio system, and propagating through the acoustic path to the microphone.
+
+Comparing the delay measured between the two microphones with the delay between the generated signal and the far microphone provides a way to identify the additional delay present in the computer-based signal path. The difference between these measurements can be compared with the expected acoustic propagation delay to determine whether the system contains a delay that was not accounted for in the adaptive filter.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Data/Cross_cor/plots/mic_far_mic_close.png}
+    \caption{Cross-correlation between the near and far microphone signals for a sinusoidal acoustic source.}
+    \label{fig:two_mic_cor}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Data/Cross_cor/plots/mic_far_white_noise.png}
+    \caption{Cross-correlation between the generated sinusoidal source signal and the far microphone signal.}
+    \label{fig:mic_speaker_cor}
+\end{figure}
+
+Looking at Figure~\ref{fig:two_mic_cor}, the cross-correlation between the two microphones shows a peak at a lag of approximately 32 samples. This indicates that it takes approximately 32 samples for the acoustic signal to propagate from the location of one microphone to the other. Using the sampling frequency of 8000 Hz and the speed of sound of approximately 343 m/s, the distance corresponding to this delay can be calculated as
+
+\[
+\frac{32\ \text{samples}}{8000\ \text{samples/s}}
+\times 343\ \text{m/s}
+= 1.372\ \text{m}.
+\]
+
+This calculated distance corresponds closely with the distance between the two microphones in the experimental setup. This shows that the cross-correlation accurately measures the relative propagation delay between the two microphones.
+
+In Figure~\ref{fig:mic_speaker_cor}, the cross-correlation between the generated signal and the far microphone shows a much larger delay. Since the near microphone was positioned very close to the speaker, the propagation time from the speaker to the far microphone should have been only slightly greater than the propagation time measured between the two microphones. However, the cross-correlation shows a peak at approximately 77 samples. This corresponds to a propagation distance of
+
+\[
+\frac{77\ \text{samples}}{8000\ \text{samples/s}}
+\times 343\ \text{m/s}
+= 3.301\ \text{m}.
+\]
+
+This distance is significantly greater than the physical distance between the speaker and the far microphone. The difference indicates that the measured delay includes additional latency from the computer-based signal path in addition to the acoustic propagation time. The results therefore indicate that there is an unaccounted-for delay between generating the signal in the computer and the signal being observed at the microphone.
+
+The additional delay is significant for the ANC system because the adaptive filter must produce a cancelling signal that is correctly aligned in time with the acoustic signal being cancelled. If the delay introduced by the computer and audio system is not included in the model used by the adaptive filter, the cancelling signal may arrive at the error microphone later than the portion of the noise signal it is intended to cancel. This temporal misalignment can prevent the adaptive filter from correctly reducing the error signal and may explain the lack of convergence observed during the previous broadband ANC experiment. Further investigation of the system delay and its inclusion in the adaptive filter could therefore improve the ability of the ANC system to converge. 
+
+
+\section{Spatial ANC with LAGS}
+
+The purpose of this experiment is to demonstrate that spatial ANC is possible using the existing hardware setup and to provide a simple method for determining the delay required to produce acoustic cancellation. The previous ANC experiments used adaptive filters to determine the appropriate cancellation signal. However, the results of those experiments indicated that the delay within the system may prevent the adaptive algorithms from correctly adapting to the acoustic environment. This experiment therefore removes the adaptive portion of the system and instead uses a known delay to determine whether cancellation can be achieved when the timing of the cancellation signal is controlled.
+
+The experiment uses an internally generated white-noise signal as the source signal. The signal is generated by the computer and output through a source speaker. Rather than using a reference microphone and adaptive filter to determine the cancellation signal, the same internally generated signal is used directly to produce the cancellation signal. A delayed copy of the source signal is generated and output through a second speaker. The second speaker therefore produces a cancellation signal that is related directly to the source signal but delayed by a known number of samples. The sign of the cancellation signal can also be changed to produce either an in-phase or out-of-phase signal at the cancelling speaker.
+
+A single microphone is used as the error microphone to measure the combined acoustic response of the source and cancelling speakers. Using a single error microphone simplifies the experiment because the objective is not to adaptively determine the cancellation signal, but rather to determine whether a suitable delay exists that produces a minimum measured error. The experiment therefore provides a controlled test of whether the spatial arrangement of the speakers and microphone can produce acoustic cancellation when the signal timing is known.
+
+The delay applied to the cancellation signal is swept through a range of whole-sample delays. Each delay value is maintained for four seconds. During the first two seconds, the delayed signal is output with one polarity, and during the second two seconds, the polarity is reversed. This produces two measurements for each delay value and allows the effect of the relative phase between the source and cancelling signals to be observed. The delay is then changed and the process is repeated for the next delay value.
+
+The mean-square (MS) value of the error signal is calculated separately for each two-second interval. The mean-square value is calculated according to
+
+$$
+\mathrm{MS} = \frac{1}{N}\sum_{n=0}^{N-1} e[n]^2,
+$$
+
+where $e[n]$ is the sampled error signal and $N$ is the number of samples contained within the two-second interval. The calculated mean-square value provides a measure of the residual acoustic signal measured by the error microphone. A lower mean-square value therefore indicates that the source and cancelling signals are producing greater acoustic cancellation at the microphone.
+
+The delay sweep provides a direct method of determining the delay that produces the greatest cancellation. If the cancellation speaker produces a signal with the appropriate delay and polarity relative to the source speaker, the measured mean-square error should decrease. Conversely, delays that do not correctly align the cancellation signal with the acoustic signal from the source speaker should produce a larger mean-square error. The minimum measured mean-square value can therefore be used to identify the delay that most closely matches the required acoustic propagation and system timing.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Data/ANC_LAGS/lag_error_plot.png}
+  \caption{Measured mean-square error as a function of the delay applied to the cancellation signal.}
+  \label{fig:lags_error}
+\end{figure}
+
+\begin{table}[H]
+\renewcommand{\arraystretch}{1.3}
+\caption{Mean-square error values calculated over selected two-second time windows.}
+\label{tab:lags_ms_results}
+
+\centering
+\begin{tabular}{||c|c||}
+\hline
+Time Window (s) &
+Mean-Square Error \\ \hline
+
+12.0--14.0 &
+0.006552 \\ \hline
+
+16.0--18.0 &
+0.007804 \\ \hline
+
+22.0--24.0 &
+0.009699 \\ \hline
+
+26.0--28.0 &
+0.003814 \\ \hline
+
+30.0--32.0 &
+0.006500 \\ \hline
+
+36.0--38.0 &
+0.005162 \\ \hline
+
+\end{tabular}
+\end{table}
+
+The results in Figure~\ref{fig:lags_error} show that the measured mean-square error changes as the delay applied to the cancellation signal is varied. As the delay approaches the delay required for the acoustic signals to align at the error microphone, the measured mean-square error decreases. The lowest mean-square value occurs between approximately 26 and 28 seconds in the recording, corresponding to a cancellation-signal delay of 14 samples with negative polarity. As shown in Table~\ref{tab:lags_ms_results}, the 26--28~s window produced a mean-square value of 0.003814, which was the lowest value among the selected time windows. This indicates that the cancellation signal produces the greatest reduction in the measured acoustic response when it is delayed by approximately 14 samples and inverted relative to the source signal.
+
+The delay corresponding to the minimum error can be converted to a time delay using the sampling frequency of 8 kHz. The measured delay is therefore
+
+$$
+t_d = \frac{14}{8000} = 0.00175~\text{s} = 1.75~\text{ms}.
+$$
+
+This measured delay agrees with the estimated difference in acoustic propagation time between the source and cancelling speakers to the error microphone. The result indicates that the timing of the cancellation signal has a significant effect on the amount of acoustic cancellation produced at the error microphone.
+
+The experiment does not produce complete cancellation because the delay is limited to integer numbers of samples. The actual acoustic propagation delay may fall between two sample periods, resulting in a fractional-sample delay that cannot be represented by the simple delay used in this experiment. Nevertheless, the experiment demonstrates that the hardware is capable of producing spatial acoustic cancellation when the relative timing and polarity of the source and cancellation signals are appropriately selected. A future implementation using fractional-delay filtering could provide finer control of the cancellation-signal timing and potentially produce greater cancellation.
+
+% Local Variables:
+% TeX-master: "newhead"
+% End:

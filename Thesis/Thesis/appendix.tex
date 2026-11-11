@@ -1,0 +1,654 @@
+%
+%  Example Appendix pages.
+%  Modified to use new usu-thesis-mk2 appendix facilities.
+%
+%  Time-stamp: "[appendix.tex] last modified by Scott Budge (scott) on 2021-06-28 (Monday, 28 June 2021) at 09:03:44 on goga.ece.usu.edu"
+%
+%  Info: $Id: appendix.tex 1183 2021-06-28 16:49:30Z scott $   USU
+%  Revision: $Rev: 1183 $
+% $LastChangedDate: 2021-06-28 10:49:30 -0600 (Mon, 28 Jun 2021) $
+% $LastChangedBy: scott $
+%
+%
+% For a single appendix, use \makeappendix, and place the 
+% body of the appendix after it
+
+%\makeappendix
+
+% < single appendix body here >
+
+% For multiple appendices, use \makeappendices, and create each appendix
+% using \appendix{}
+% For sub-appendices use \appendixsection{} and \appendixsubsection{}
+
+\makeappendices
+\appendix{System Operation and Implementation}
+\label{chap:appendix}
+
+\appendixsection{Setting Up the ADC and DAC in a Linux Environment}
+\label{sec:ADC_DAC_linux_commands}
+
+After the computer is powered off, restarted, or rebooted, several commands must be executed before the ADC and DAC APIs can be used. The first step is to obtain superuser privileges. For the \texttt{tmoon} account, this is accomplished using the following command:
+
+\begin{lstlisting}[language=bash]
+sudo su
+\end{lstlisting}
+
+When prompted, enter the password associated with the \texttt{tmoon} account:
+
+\begin{lstlisting}[language=bash]
+[sudo] password for tmoon: shoelace
+\end{lstlisting}
+
+After obtaining superuser privileges, the directories containing the ADC and DAC driver files must be accessed. The following commands initialize the ADC and DAC drivers, respectively.
+
+For the ADC driver, navigate to the ADC driver directory and execute the following commands:
+
+\begin{lstlisting}[language=bash]
+cd /usr/src/linux/drivers/16ai32ssc/driver
+make clean
+make all
+./start
+\end{lstlisting}
+
+For the DAC driver, navigate to the DAC driver directory and execute the same commands:
+
+\begin{lstlisting}[language=bash]
+cd /usr/src/linux/drivers/16ao16/driver
+make clean
+make all
+./start
+\end{lstlisting}
+
+The commands above must be executed in both the ADC and DAC driver directories. Failure to initialize either driver may result in errors when attempting to use the ADC or DAC APIs.
+
+After these steps have been completed for both drivers, the ADC and DAC APIs are initialized and ready for use.
+
+\appendixsection{How to Use the Code}
+\label{sec:how_to_use_code}
+
+From the home directory of the \texttt{tmoon} account, navigate to the directory containing the real-time array processing code using the following command:
+
+\begin{lstlisting}[language=bash]
+cd /Documents/Nathan/code/real_time_array_processing
+\end{lstlisting}
+
+The following files are the primary source files used during the experiments:
+
+\begin{lstlisting}[language=bash]
+main.c
+main.h
+Continuous_reading.c
+makefile
+pmatlib.h
+pmatlib.c
+\end{lstlisting}
+
+The files \texttt{main.c}, \texttt{main.h}, and \texttt{Continuous\_reading.c} contain the primary code used to configure and execute the experiments and are the main files that may need to be modified when changing the experimental configuration. The \texttt{pmatlib.h} and \texttt{pmatlib.c} files contain supporting functions used by the program and generally do not need to be modified.
+
+The \texttt{makefile} should only need to be modified when an additional source file is added to the program. If a new source file is added, the appropriate source-file list in the \texttt{makefile} must be updated so that the new file is included during compilation.
+
+To compile the program and run the selected test, execute the following commands:
+
+\begin{lstlisting}[language=bash]
+make all
+./continuous_reading
+\end{lstlisting}
+
+The \texttt{make all} command compiles the source code and generates the executable. The \texttt{./continuous\_reading} command then executes the compiled program using the configuration specified in the source files.
+
+The following sections describe the purpose of each of the primary files and explain which portions of the code should be modified when configuring the system for different experiments.
+
+\appendixsection{Supporting Functions}
+\label{sec:supplemental_code_base}
+
+This appendix presents selected functions from the main source file used
+to implement the active snore cancellation system. The primary source file is \texttt{Continuous\_reading.c}. The complete source file contains additional hardware configuration, data acquisition, and supporting functions that are not reproduced here. The functions included in this appendix were selected because they illustrate the principal computational steps of the proposed system.
+
+The following function implements the LMS update step used for adaptive filtering. The filter coefficients are updated using the error signal, the step size, and the corresponding samples stored in the filter buffer.
+
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=false,
+    columns=fullflexible,
+    keepspaces=true
+}
+
+\begin{lstlisting}[language=C]
+void update_filter(double* filter, double* filter_buffer, double error, double step_size, int length){
+  for(int i = 0; i < length; i++){
+    filter[i] = filter[i] + step_size * error * filter_buffer[i];
+  }
+}
+\end{lstlisting}
+
+The following function implements the FIR filtering operation. The input buffer is shifted to make room for the newest sample, after which the filter output is calculated as the sum of the products between the filter coefficients and the corresponding buffer samples.
+
+\begin{lstlisting}[language=C]
+double FIR_filtering(double new_input, double* filter, double* filter_buffer, int filter_length){
+   double sum = 0;
+
+   for(int i = filter_length - 1; i > 0; i--){
+      filter_buffer[i] = filter_buffer[i - 1];
+      sum += filter[i] * filter_buffer[i];
+   }
+   filter_buffer[0] = new_input;
+   sum += filter[0] * filter_buffer[0];
+
+   return(sum);
+}
+\end{lstlisting}
+
+The following functions implement the fractional-delay filters used for
+array processing. The function \texttt{build\_filters()} calculates the propagation delay between the source position and each microphone position. The maximum propagation delay is then used as a reference to determine the relative delay for each sensor. This allows the individual sensor signals to be aligned to a common reference.
+
+The relative delay is separated into an integer-sample delay and a fractional-sample delay. The integer portion is implemented using leading zeros, while the fractional portion is implemented using a truncated sinc filter. The resulting filter therefore combines the bulk delay and fractional delay into a single filter. The filter length is determined by the integer delay and the interpolation length, where $P$ defines the half-length of the sinc filter.
+
+The function \texttt{delaysinc()} computes the fractional-delay sinc coefficients. The parameter $D$ defines the spacing between adjacent microphones.
+
+\begin{lstlisting}[language=C]
+void build_filters(double x_pos, double y_pos, double** filter_bank, u32* filter_length, double** filter_buffer, int num_sensors, float start_pos){
+   double tau[num_sensors];
+   double taup;
+   double mic_pos = start_pos;
+   double max = 0;
+
+   for(int i = 0; i < num_sensors; i++){
+      tau[i] = sqrt((mic_pos - x_pos)*(mic_pos - x_pos)+(-y_pos)*(-y_pos))/C;
+
+      if (tau[i] > max){
+         max = tau[i];
+      }
+      mic_pos += D;
+   }
+
+/* Build combined delay + fractional-delay filter */
+   for (int i = 0; i < num_sensors; i++){
+      taup = max - tau[i];
+
+      double nTs = taup * Fs;
+      int nTsint = floor(nTs);
+
+      CALLOCVECTOR(filter_buffer[i], double,nTsint + 2 * P + 1);
+      filter_length[i] = nTsint + 2 * P + 1;
+      delaysinc(taup, filter_bank[i]);
+   }
+}
+
+void delaysinc(double taup, double* filter){
+   double nTs = taup * Fs;
+   int nTsint = floor(nTs);
+   double nTsfrac = nTs - nTsint;
+   taup = nTsfrac * Ts;
+
+   double tlist[2 * P + 1];
+
+   if(nTsint != 0){
+      for(int i = 0; i < nTsint; i++)
+         filter[i] = 0;
+   }
+
+   for(int i = 0; i < 2 * P + 1; i++){
+      tlist[i] = (((double)(i - P) / Fs) - taup)* B * 2 * M_PI;
+   }
+
+/*
+ * Store the sinc filter immediately after the
+ * integer-delay zeros.
+ */
+   for(int i = 0; i < 2 * P + 1; i++){
+      if(tlist[i] != 0){
+         filter[nTsint + i] = sin(tlist[i]) / tlist[i];
+      }
+      else{
+        filter[nTsint + i] = 1.0;
+      }
+   }
+}
+\end{lstlisting}
+
+The following functions configure the input and output devices used during the experiments. The output configuration function initializes the analog output hardware, selects the operating mode, and configures the sampling rate, output range, and data format. The input configuration function similarly configures the analog input hardware and selects the channels and input range used for data acquisition.
+
+\begin{lstlisting}[language=C]
+int setup_output(int* errs, int _io_mode){
+   int qty = 0;
+   s32 def_index = 0;
+   int fd = 0;
+
+   *errs += ao16_init_util(1);
+   *errs += os_id_driver(ao16_open, ao16_read, ao16_close);
+   *errs += ao16_count_boards(1, &qty);
+
+   if ((*errs) || (qty <= 0))
+      return(*errs);
+
+   *errs = ao16_open_util(def_index, 0, -1, 1, &fd);
+   *errs += ao16_config_ao(fd, -1, 1, RATE);
+   *errs += ao16_tx_io_mode(fd, -1, 1, _io_mode, NULL);
+   *errs += ao16_buffer_over_frame(fd, -1, 1, AO16_BUFFER_OVER_FRAME_CLR, NULL);
+   *errs += ao16_buffer_over_data(fd, -1, 1, AO16_BUFFER_OVER_DATA_CLR, NULL);
+   *errs += ao16_range(fd, -1, 1, AO16_RANGE_1_25, NULL);
+   *errs += ao16_channel_sel(fd, -1, 1, 0xFFFF, NULL);
+   *errs += ao16_fsamp_report_all(fd, -1, 1, NULL);
+   *errs += ao16_data_format(fd, -1, 1, AO16_DATA_FORMAT_2S_COMP, NULL);
+   return(fd);
+}
+
+int setup_input(int fd, int _io_mode){
+   s32 chans = 0;
+   int errs = 0;
+
+   errs += ai32ssc_config_ai(fd, -1, 1, NRATE);
+   errs += ai32ssc_rx_io_mode(fd, -1, 1, _io_mode, NULL);
+   errs += _set_channels(fd, &chans);
+   errs += _set_threshold(fd);
+   errs += ai32ssc_data_format(fd, -1, 1, AI32SSC_DATA_FORMAT_2S_COMP, NULL);
+   errs += ai32ssc_ain_range(fd, -1, 1, AI32SSC_AIN_RANGE_5V, NULL);
+   return(errs);
+}
+\end{lstlisting}
+
+The following functions implement the numerical operations used by the FARLS adaptive filtering algorithm. The matrix initialization establishes the initial state of the recursive filter, while the mixed circular and hyperbolic rotations are used to update the factorized representation during each iteration.
+
+\begin{lstlisting}[language=C]
+void init_A(float A[][3]){
+   int i,j;
+
+   /* Initialize filter */
+   for(i=0; i<M+2; i++){
+      for(j=0; j<3; j++){
+         A[i][j] = 0.0;
+      }
+   }
+
+   A[0][0] = 1.01; /* Gamma */
+   A[1][1] = etart*lamrt;            /* L initialization */
+   A[M+1][2] = etart*lamrt*lamrtM;   /* L initialization */
+}
+
+
+void givens_mixed(float a, float b, float* rho, float* rootoneplusrhosquared){
+   if(b == 0.0){
+      *rho = 0.0;
+      *rootoneplusrhosquared = 1.0;
+   }
+   else if(a == 0.0){
+      fprintf(stderr,"Problem with givens rotation\n");
+   }
+   else{
+      if(a < FLT_EPSILON*3.0){
+         fprintf(stderr,"Dividing by small number %20.10f\n",a);
+      }
+
+      *rho = b/a;
+      *rootoneplusrhosquared = sqrt(1.0+(*rho)*(*rho));
+   }
+}
+
+void apply_circ_mixed_rot(float* a, float* b, float rho, float rootoneplusrhosquared){
+   *a = ((*a) + rho*(*b))/rootoneplusrhosquared;
+   *b = rootoneplusrhosquared*(*b) - rho*(*a);
+}
+
+int hyper_OD(float a, float b, float *c, float *s){
+   int flag = 1;
+
+   if(a-b == 0.0){
+      fprintf(stderr,"Divide by zero %f,%f\n",a,b);
+   }
+
+   *c = sqrt((a+b)/(a-b))*0.5;
+   *s = sqrt((a-b)/(a+b))*0.5;
+
+   return flag;
+}
+
+
+void apply_hyper_OD(float* a, float* b, float c, float s){
+   float x, y;
+
+   x = (*a)-(*b);
+   y = (*a)+(*b);
+
+   x *= c;
+   y *= s;
+
+   (*a) = y+x;
+   (*b) = y-x;
+}
+
+
+
+\appendixsection{Active Snore Cancellation Implementation}
+\label{sec:functional_code}
+
+This section presents selected portions of the functional code used to implement the active snore cancellation system. The primary function presented is \texttt{snore_cancellation()}, which integrates the major components of the system, including microphone-array processing, adaptive filtering, and speaker-array processing. The function demonstrates how these individual components are combined to perform real-time active noise cancellation.
+
+The code can also be separated into individual components to implement or evaluate specific portions of the system independently. For example, the microphone-array processing and speaker-array processing can be isolated from the adaptive filtering algorithm for individual testing. Similarly, the adaptive filtering portion can be modified to evaluate different adaptive algorithms or parameter configurations.
+
+The microphone-array processing applies the calculated propagation-delay filters to the microphone signals before the resulting array output is provided to the adaptive filtering algorithm. The adaptive filter then generates the cancellation signal \(y\), which is subsequently processed by the speaker-array filters before being transmitted to the output channels.
+
+\begin{lstlisting}[language=C]
+int snore_cancellation(int i_fd, int _io_mode){
+   int errs = 0;
+   s32 fd = 0;
+   int i = 0;
+   int seconds = 10;
+   int num_samples = Fs * seconds;
+
+   fd = setup_output(&errs, _io_mode);
+   errs += setup_input(i_fd, _io_mode);
+
+   float A[M+2][3] = {0}; /* Pre & post array */
+   float u[M+1] = {0};
+   float s, c; /* Circular rotation parameters */
+   float sh, ch; /* Hyperbolic rotation parameters */
+   float e_new=0.0;    /* A priori prediction error */
+   float e_old=0.0;
+   float g_old=0.0;
+   int j;
+
+   /* Filter parameters */
+   float lam = 1;
+   float lamrtinv;
+   float eta = 1.0;
+   lamrt = sqrt(lam);
+   etart = sqrt(eta);
+   lamrtM = pow(lamrt,(float)M);
+   lamrtinv = .999;
+   init_A(A);
+
+   double** filter_bank_m;
+   u32* filter_lengths_m;
+   double** filter_buffer_m;
+
+   CALLOCVECTOR(filter_bank_m, double*, NUM_MICS);
+   CALLOCVECTOR(filter_lengths_m, u32, NUM_MICS);
+   CALLOCVECTOR(filter_buffer_m, double*, NUM_MICS);
+
+   build_filters(0, .75, filter_bank_m, filter_lengths_m,
+   filter_buffer_m, NUM_MICS, MIC_START);
+
+   double** filter_bank_s;
+   u32* filter_lengths_s;
+   double** filter_buffer_s;
+
+   CALLOCVECTOR(filter_bank_s, double*, NUM_SPEAKERS);
+   CALLOCVECTOR(filter_lengths_s, u32, NUM_SPEAKERS);
+   CALLOCVECTOR(filter_buffer_s, double*, NUM_SPEAKERS);
+
+   build_filters(0.4572, 0.5588, filter_bank_s, filter_lengths_s,
+   filter_buffer_s, NUM_SPEAKERS, SPEAKER_START);
+
+   double* ad_filter;
+   double* ad_filter_buffer;
+
+   CALLOCVECTOR(ad_filter, double, NUM_TAPS);
+   CALLOCVECTOR(ad_filter_buffer, double, NUM_TAPS);
+
+   for(int i = 0; i < NUM_TAPS; i++){
+      ad_filter[i] = ((rand()&0xF)/16.0 - .5)/10000;
+      ad_filter_buffer[i] = 0;
+   }
+
+   u32* out;
+   CALLOCVECTOR(out, u32, 16);
+
+   double* error;
+   CALLOCVECTOR(error, double, num_samples);
+
+   float y = 0;
+
+   for(int k = 0; k < 16; k++)
+      out[k] = 0;
+
+   int k = 0;
+   double temp = 0;
+
+   errs += ai32ssc_ain_buf_clear(i_fd, -1, 1, 1);
+
+   while(i < num_samples){
+      errs += _read_data(i_fd);
+      errs += ai32ssc_ain_buf_overflow(i_fd, -1, 0, -1, NULL);
+      errs += ai32ssc_ain_buf_underflow(i_fd, -1, 0, -1, NULL);
+
+      /* Microphone array processing */
+      temp = 0;
+
+     for(k = 0; k < NUM_MICS; k++){
+        temp += FIR_filtering(
+        (double)(_buffer[k] & 0x0000FFFF)/32767.0,
+        filter_bank_m[k],
+        filter_buffer_m[k],
+        filter_lengths_m[k]);
+     }
+
+     /* Input a new sample */
+     u[0] = (double)((s16)(_buffer[0]&0x0000FFFF)/32768.0);
+
+     /* Initialize for this iteration */
+     A[0][1] += u[0]*A[1][1];
+     A[0][2] += u[0]*A[1][2];
+     g_old = A[M+1][0];
+
+     /* Compute rotations and apply them to the array */
+     givens_mixed(A[0][0], A[0][1], &c, &s);
+     apply_circ_mixed_rot(&(A[0][0]),&(A[0][1]), c, s);
+     apply_circ_mixed_rot(&(A[M+1][0]),&(A[M+1][1]), c, s);
+
+     hyper_OD(A[0][0],A[0][2], &ch, &sh);
+     apply_hyper_OD(&(A[0][0]),&(A[0][2]), ch, sh);
+     apply_hyper_OD(&(A[M+1][0]),&(A[M+1][2]), ch, sh);
+
+     /* Complete last iteration */
+     A[M+1][1] *= lamrtinv;
+     A[M+1][2] *= lamrtinv;
+
+     /* Set the a priori error */
+     e_new = temp;
+
+     A[0][1] = 0.0;
+     A[0][2] = 0.0;
+
+     y = 0;
+
+     for(j=M; j>0; j--){
+        /* Update adaptive filter coefficients */
+        ad_filter[j-1] += g_old*e_old;
+
+        /* Generate adaptive filter output */
+        y += u[j-1]*ad_filter[j-1];
+
+        /* Apply circular and hyperbolic rotations */
+        g_old = A[j][0];
+
+        apply_circ_mixed_rot(&(A[j][0]),&(A[j][1]), c, s);
+        apply_hyper_OD(&(A[j][0]),&(A[j][2]), ch, sh);
+
+        A[j][1] *= lamrtinv;
+        A[j][2] *= lamrtinv;
+
+        /* Shift the input data vector */
+        u[j]=u[j-1];
+
+        A[0][1] += u[j]*A[j+1][1];
+        A[0][2] += u[j]*A[j+1][2];
+
+        /* Shift Kalman gain */
+        A[j+1][0] = A[j][0];
+     }
+
+     /* Calculate posterior error */
+     e_old = e_new/A[0][0];
+
+     A[1][0] = 0.0;
+
+     /* Save posterior filter error */
+     error[i] = e_old/A[0][0];
+
+     /* Speaker array processing */
+     for(k = 0; k < NUM_SPEAKERS; k++){
+        out[k] = (u32)(32767 * FIR_filtering(
+           y,
+           filter_bank_s[k],
+           filter_buffer_s[k],
+           filter_lengths_s[k]));
+     }
+
+     /* Output signals to speaker array */
+     ao16_write(fd, out, 4*16);
+
+     if(errs > 0)
+        break;
+
+     i++;
+   }
+   return(errs);
+}
+\end{lstlisting}
+
+The following function implements the lag experiment used to characterize the system delay. The code demonstrates the procedure used to evaluate different candidate delays by measuring the accumulated error energy over each test interval.
+
+\begin{lstlisting}[language=C]
+int lags(int i_fd, int _io_mode){
+   int errs = 0;
+   s32 fd = 0;
+   int i = 0;
+   int seconds = 100;
+   int num_samples = seconds * Fs;
+      
+   int delay_start = 0;
+   int delay_end = 50;
+   int lag_index = delay_start;
+
+   double scale_factor = .3;
+   double y = 0;
+
+   fd += setup_output(&errs, _io_mode);
+   errs += setup_input(i_fd, _io_mode);
+
+   double* speaker_output;
+   CALLOCVECTOR(speaker_output, double, num_samples);
+
+   double* adaptive_output;
+   CALLOCVECTOR(adaptive_output, double, num_samples);
+
+   double* adaptive_input;
+   CALLOCVECTOR(adaptive_input, double, num_samples);
+
+   double* lag_buffer;
+   CALLOCVECTOR(lag_buffer, double, 200);
+
+   double* lag_filter;
+   CALLOCVECTOR(lag_filter, double, 200);
+
+   for(int j = 0; j < 200; j++){
+      lag_filter[j] = 0;
+      lag_buffer[j] = 0;
+   }
+
+   lag_filter[delay_start] = scale_factor;
+
+   u32* out;
+   CALLOCVECTOR(out, u32, 16);
+
+   for(int j = 0; j < NUM_SPEAKERS; j++)
+      out[j] = 0;
+
+   double* error;
+   CALLOCVECTOR(error, double, num_samples);
+
+   int action = 0;
+   double cum_energy = 0;
+   double min_energy = 1E99;
+   double sign_min;
+   int lag_min = 0;
+   
+   errs += ai32ssc_ain_buf_clear(i_fd, -1, 1, 1);
+
+   while(i < num_samples){
+      errs += _read_data(i_fd);
+      errs += ai32ssc_ain_buf_overflow(i_fd, -1, 0, -1, NULL);
+      errs += ai32ssc_ain_buf_underflow(i_fd, -1, 0, -1, NULL);
+        
+      float random_val = ((float)rand()/RAND_MAX - 0.5);
+
+      if(i > 1600 && (i % 16000) == 0 && lag_index < delay_end){
+         if(cum_energy < min_energy){
+            min_energy = cum_energy;
+            lag_min = lag_index;
+            sign_min = copysign(1.0, lag_filter[lag_index]);
+            printf("found new min! min_energy = %f, lag_min = %d, sign_min = %f\n", min_energy/Fs, lag_min, sign_min);
+            printf("lags = %d, cum_energy = %f, sign is %.0f\n", lag_index, cum_energy/Fs, copysign(1.0, lag_filter[lag_index]));
+         }
+
+         cum_energy = 0;
+
+         if(action == 0){
+            lag_filter[lag_index] *= -1;
+            action = 1;
+         }
+         else if(action == 1){
+            lag_filter[lag_index++] = 0;
+            lag_filter[lag_index] = scale_factor;
+            action = 0;
+         }
+      }
+
+      y = 0;
+
+      for(int k = 199; k > 0; k--){
+         lag_buffer[k] = lag_buffer[k-1];
+         y += lag_buffer[k] * lag_filter[k];
+      }
+
+      lag_buffer[0] = random_val;
+      y += lag_buffer[0] * lag_filter[0];
+
+      if(errs != 0)
+         break;
+
+      error[i] = (double)((s16)(_buffer[0]&0x0000FFFF)/32768.0);
+      cum_energy += error[i]*error[i];
+
+      out[0] = (u32)(random_val*20000) & 0x0000FFFF;
+      out[15] = (u32)((y*20000)) & 0x0000FFFF;
+
+      speaker_output[i] = (double)random_val;
+      adaptive_output[i] = y;
+
+      ao16_write(fd, out, 4*16);
+
+      adaptive_input[i] = random_val;
+      i++;
+   }
+
+   printf("min_lag = %d, min_energy = %f\n", lag_min, min_energy/Fs);
+
+   FILE* file1;
+
+   file1 = fopen("DATA PATH", "wb");
+   fwrite(error, sizeof(double), num_samples, file1);
+   fclose(file1);
+
+   file1 = fopen("DATA PATH", "wb");
+   fwrite(lag_filter, sizeof(double), 200, file1);
+   fclose(file1);
+
+   file1 = fopen("DATA PATH", "wb");
+   fwrite(adaptive_output, sizeof(double), num_samples, file1);
+   fclose(file1);
+
+   file1 = fopen("DATA PATH", "wb");
+   fwrite(adaptive_input, sizeof(double), num_samples, file1);
+   fclose(file1);
+
+   file1 = fopen("DATA PATH", "wb");
+   fwrite(speaker_output, sizeof(double), num_samples, file1);
+   fclose(file1);
+
+   return(errs);
+}
+\end{lstlisting}

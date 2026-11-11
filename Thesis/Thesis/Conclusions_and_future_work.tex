@@ -1,0 +1,115 @@
+%
+%  This is an example of how a LaTeX thesis should be formatted.  This
+%  document contains chapter 2 of the thesis.
+%
+%  Time-stamp: "[sample-chapter2.tex] last modified by Scott Budge (scott) on 2016-07-28 (Thursday, 28 July 2016) at 08:40:50 on goga.ece.usu.edu"
+%
+%  Info: $Id: sample-chapter2.tex 967 2016-07-28 15:33:29Z scott $   USU
+%  Revision: $Rev: 967 $
+% $LastChangedDate: 2016-07-28 09:33:29 -0600 (Thu, 28 Jul 2016) $
+% $LastChangedBy: scott $
+%
+
+\chapter{Conclusions and Future Work}
+
+\section{Summary of Research}
+
+The objective of this research was to investigate the feasibility of using Active Noise Control (ANC) to reduce the perceived sound of snoring in a shared sleeping environment. Snoring is a common source of sleep disturbance that can negatively affect both the individual who snores and their sleeping partner. Existing approaches, such as earplugs, earbuds, or CPAP devices require the user to wear physical devices or address only specific medical causes of snoring. This work explored an alternative approach in which unwanted sound is reduced acoustically without requiring either individual to wear additional equipment.
+
+The long-term vision of this research is the development of a practical active noise control system that could be integrated into a bedroom environment, such as within a headboard or bedside fixture. Such a system would provide localized noise reduction while remaining unobtrusive to both occupants.
+
+To investigate this concept, a configurable experimental platform was designed and constructed. A 16-element microphone array and a 16-element loudspeaker array were developed to support near-field array processing experiments. Additional hardware, including custom interface enclosures and a programmable analog low-pass filter bank, was designed and fabricated to improve system integration and signal quality. The resulting platform provides a flexible environment for evaluating beamforming and adaptive noise control algorithms.
+
+The accompanying software was expanded from previous work to support real-time operation under Linux. Fractional delay beamforming was implemented using a combination of integer delay compensation and sinc interpolation, enabling accurate time alignment across the microphone array. Adaptive filtering algorithms were then incorporated to generate acoustic cancellation signals. A Least Mean Squares (LMS) implementation was initially developed to establish a computationally efficient baseline, followed by implementation of the Fast Array Recursive Least Squares (FARLS) algorithm to improve convergence speed while maintaining real-time performance.
+
+In general, this research established a complete hardware and software platform for investigating active snore cancellation. The developed system integrates microphone arrays, loudspeaker arrays, custom electronics, real-time signal processing, and adaptive filtering into a single experimental framework that provides a foundation for future research in acoustic noise control.
+
+\section{Contributions}
+
+This research resulted in several contributions toward the development of a real-time active snore cancellation platform.
+
+The first contribution was the design and construction of a configurable experimental platform consisting of a 16-element microphone array and a 16-element loudspeaker array. Unlike the previous experimental setup, the new platform allows the height, orientation, and spacing of both arrays to be adjusted independently. This flexibility enables the system geometry to be modified for different beamforming and localization experiments while also providing a reusable platform for future research.
+
+The second contribution was the implementation of real-time near-field array processing using integer delay compensation combined with sinc interpolation. The developed implementation provides accurate fractional delay estimation while remaining computationally efficient for real-time execution. This capability serves as the foundation for the beamforming and adaptive noise control algorithms used throughout this work.
+
+The third contribution was the design and fabrication of supporting electronics, including custom interface enclosures and a programmable analog low-pass filter bank. These components improved signal quality between the digital-to-analog converter and the loudspeaker array while providing a practical interface between the experimental hardware and the workstation.
+
+The fourth contribution was the implementation of adaptive noise control algorithms within the real-time software framework. A Least Mean Squares (LMS) implementation was developed to establish a computationally efficient baseline for testing the acoustic channel. Building upon previous offline implementations developed within the research group, the Fast Array Recursive Least Squares (FARLS) algorithm was adapted for real-time operation, providing a platform for evaluating improved convergence performance under practical operating conditions.
+
+Together, these contributions establish a complete hardware and software platform capable of supporting future research in active snore cancellation and adaptive acoustic array processing.
+
+\section{Discussion}
+
+Throughout the development of the active noise control platform, several design decisions proved successful while others revealed limitations that provide opportunities for future improvement. The following discussion reflects on the major components developed during this research and the lessons learned throughout the design and implementation process.
+
+\subsection{Real-Time Array Processing}
+
+The real-time array processing implementation was one of the strongest aspects of this research. From the beginning, the software was designed to be modular and easily configurable so that future modifications could be made with minimal changes to the source code. Given the desired steering coordinates, the algorithm automatically computes the propagation delay for each sensor and generates the required integer and fractional delay filters. As a result, steering the array toward a new location only requires specifying a new set of coordinates rather than modifying the underlying implementation.
+
+Dynamic memory allocation was also incorporated into the design, allowing the array processing algorithms to support different array geometries and interpolation filter lengths without requiring substantial code modifications. This flexibility will simplify future research involving different microphone configurations or beamforming strategies.
+
+The same sinc interpolation implementation was successfully adapted for the loudspeaker array. Rather than filtering incoming microphone signals, the interpolation filters were used to generate the appropriately delayed loudspeaker outputs, allowing the same processing framework to be used for both signal acquisition and signal reproduction.
+
+\subsection{Adjustable Experimental Platform}
+
+The adjustable microphone and loudspeaker platform also proved to be a significant improvement over the original experimental setup. Initially, the microphone array consisted of microphones taped to a 2$\times$4 that was suspended from the ceiling using string. Although this arrangement allowed preliminary testing to be performed, modifying the array geometry or sensor height was cumbersome and time consuming.
+
+Replacing the original structure with a PVC-based support frame produced a lightweight, adjustable support structure. The completed structure allows the height, orientation, and spacing of both the microphone and loudspeaker arrays to be adjusted independently. This flexibility significantly reduced setup time and enabled rapid evaluation of different array configurations throughout the research.
+
+The addition of a removable acoustic baffle between the loudspeaker and microphone arrays also reduced direct acoustic coupling between the arrays, improving the quality of experimental measurements. One limitation of the PVC structure was its relatively low stiffness compared to the previous wooden support. Because the upper portion of the structure was heavier, slight movement of the array could occasionally occur. While this movement did not produce any noticeable degradation in experimental performance, a more rigid support structure could further improve mechanical stability in future implementations.
+
+\subsection{Programmable Filter Bank}
+
+The programmable analog filter bank performed as intended throughout testing. The ability to rapidly adjust the cutoff frequency allowed the hardware to accommodate multiple sampling configurations without requiring circuit modifications. During experimental evaluation, the filter bank successfully reduced the high-frequency artifacts produced by the DAC while preserving the desired audio content.
+
+Although the PCB functioned reliably, several design improvements became apparent after fabrication. The overall board footprint was larger than necessary because minimizing board size was not a primary design objective during the initial layout. A more compact design with shorter trace lengths would likely improve manufacturability and produce a cleaner layout.
+
+Another issue encountered during testing involved several capacitors that occasionally failed, resulting in intermittent operation of the filter bank. An infrared thermometer was used to identify the failing components, allowing the defective capacitors to be replaced. Following replacement, the PCB operated as expected for the remainder of the experiments. Despite these minor issues, the programmable filter bank proved to be an effective component of the overall active noise control platform.
+
+\subsection{Adaptive Filtering}
+
+The implementation of the LMS and FARLS adaptive filtering algorithms demonstrated that both algorithms were capable of adapting their filter coefficients in response to the measured error signal; however, neither algorithm achieved stable convergence during the experiments. For narrowband signals, including sinusoidal inputs, both algorithms exhibited adaptation, but the resulting filter coefficients did not converge to the expected acoustic response or produce sustained acoustic cancellation. Similar behavior was observed when broadband signals were introduced, with neither algorithm producing a consistent reduction in the measured error signal. These results indicate that the lack of successful cancellation was not limited to a particular adaptive algorithm or signal bandwidth.
+
+The observed lack of convergence led to an investigation of the timing characteristics of the system. Cross-correlation analysis identified approximately 45 samples, or 5.625~ms at the 8-kHz sampling rate, of additional delay in the computer-based signal path beyond the expected acoustic propagation delay. This additional latency can significantly affect adaptive noise cancellation because the cancellation signal must be appropriately aligned with the acoustic signal at the error microphone. A subsequent controlled-delay experiment demonstrated that spatial acoustic cancellation could be achieved when the cancellation signal was manually delayed and inverted, supporting the conclusion that system timing is an important consideration for the adaptive ANC implementation.
+
+This observation suggests that improvements in the hardware platform may provide greater performance gains than further algorithmic optimization alone. Future implementations using dedicated digital signal processors (DSPs), field-programmable gate arrays (FPGAs), or lower-latency acquisition hardware could significantly reduce system latency and improve broadband active noise cancellation performance.
+
+Overall, the adaptive filtering algorithms successfully demonstrated the feasibility of real-time active noise control within the developed experimental platform. Although hardware limitations prevented optimal broadband performance, the software framework provides a solid foundation for continued research and future implementation of more advanced adaptive filtering techniques.
+
+Overall, this research successfully integrated configurable array hardware, custom electronics, real-time signal processing, and adaptive filtering into a unified experimental platform. While several opportunities for improvement remain, the completed system establishes a strong foundation for future investigations into active snore cancellation and adaptive acoustic array processing.
+
+\section{Future Work}
+
+Although this research established a functional platform for investigating active snore cancellation, several opportunities remain to improve both the hardware and software. The following sections outline the most promising directions for future development.
+
+\subsection{Hardware}
+
+The most significant limitation encountered during this research was the latency introduced by the data acquisition and playback hardware. Experimental results indicated that the delay between acquiring microphone data and reproducing the corresponding loudspeaker output limited the performance of the adaptive filtering algorithms, particularly for broadband signals.
+
+Future work should first characterize the limitations of the existing hardware to determine the maximum performance achievable with the current platform. Understanding these limitations will provide valuable design requirements for the next generation of hardware.
+
+To further improve system performance, lower-latency hardware should be investigated. Possible solutions include newer analog-to-digital and digital-to-analog converters, dedicated digital signal processors (DSPs), or field-programmable gate arrays (FPGAs). These platforms would provide greater control over the acquisition and playback process while eliminating many of the software overheads associated with commercial data acquisition hardware. In addition, a custom data acquisition PCB designed specifically for the requirements of this project could further reduce latency and improve system integration.
+
+\subsection{Adaptive Algorithms}
+
+Although both the LMS and FARLS algorithms were successfully implemented, the hardware limitations prevented a complete evaluation of their performance for broadband active noise control. Once improved hardware is available, additional investigation should be conducted to compare the convergence speed, computational complexity, and cancellation performance of multiple adaptive filtering algorithms.
+
+Potential algorithms for future evaluation include Normalized LMS (NLMS), Filtered-x LMS (FxLMS), conventional Recursive Least Squares (RLS), and further refinements of the FARLS algorithm. A systematic comparison of these approaches would help determine the most appropriate adaptive algorithm for real-time active snore cancellation.
+
+\subsection{Full Array Evaluation}
+
+During the development process, many experiments were intentionally simplified to isolate individual subsystems and reduce sources of error. While this approach accelerated development and debugging, it limited the evaluation of the complete active noise control system.
+
+Future work should include comprehensive testing using the full microphone and loudspeaker arrays operating within the anechoic chamber. After validating the complete system under controlled laboratory conditions, experiments should be extended to acoustically realistic environments, such as a simulated bedroom. These experiments would provide insight into the effects of reflections, room acoustics, and changing source positions on overall cancellation performance and would represent an important step toward practical deployment of the technology.
+
+\section{Final Remarks}
+
+Overall, this research successfully demonstrated the design and implementation of a configurable real-time active noise control platform for investigating acoustic snore cancellation. The completed system integrates adjustable microphone and loudspeaker arrays, custom interface electronics, programmable analog filtering, real-time near-field array processing, and adaptive filtering algorithms into a unified experimental framework.
+
+Although additional work is required before the system can be deployed in practical bedroom environments, this research establishes a strong foundation for future development. The modular hardware and software architecture allows future researchers to improve individual components without redesigning the entire system, making the platform well suited for continued investigation into adaptive acoustic array processing and active noise control.
+
+Ultimately, this work demonstrates the feasibility of developing a flexible research platform capable of supporting future advancements in active snore cancellation. It is hoped that the hardware, software, and methodologies developed throughout this research will contribute to future systems that improve sleep quality through unobtrusive acoustic noise control.
+
+% Local Variables:
+% TeX-master: "newhead"
+% End:

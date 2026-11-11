@@ -1,0 +1,123 @@
+\begin{tikzpicture}
+  \draw (1.19,4.44) circle (0.58cm);
+  \node[
+  % draw,
+  node font=\tiny
+] (node5) at (1.19,4.44) {Snore
+Source};
+  \node[node font=\tiny] at (2.01,1.81) {Adaptive 
+Algorithm};
+  \node[
+    % draw,
+    node font=\tiny
+  ] at (0.89,1.91) {x(n)};
+  \node[
+      % draw,
+      node font=\tiny
+    ] at (6.43,2.07) {H1};
+  \node[
+        % draw,
+        node font=\tiny
+      ] at (6.43,1.51) {HN};
+  \draw (0.33,1.79) circle (0.21cm);
+  \draw (5.47,2.07) circle (0.1cm);
+  \node[draw, shape=trapezium, rotate=90] (node2) at (5.7,2.07) {};
+  \draw (5.47,1.51) circle (0.1cm);
+  \node[draw, shape=trapezium, rotate=90] (node3) at (5.7,1.51) {};
+
+  \draw (0.06,2) -- (0.6,2);
+  \draw[arrows=-Latex] (0.33,3.07) -- (0.33,2);
+  \draw[arrows=-Latex] (0.54,1.79) -- (1.2,1.79);
+  \draw (1.19,1.44) rectangle (2.83,2.17);
+  \draw (2.02,3.02) circle (0.25cm);
+
+  \draw (2.12,3.16) -- (1.93,3.16) -- (2.08,3.02) -- (1.94,2.91) -- (2.12,2.91);
+  \draw[arrows=-Latex] (2.01,2.77) -- (2.01,2.17);
+  \draw[arrows=-Latex] (2.83,1.81) -- (3.32,1.81);
+  \draw (3.29,1.43) rectangle (4.67,2.17);
+
+  \node[node font=\tiny] at (3.97,1.8) {Array  
+  Algorithm};
+  \draw (3.32,2.63) rectangle (4.7,3.37);
+  \node[node font=\tiny] (node4) at (4,3) {Array  
+    Algorithm};
+  \draw[arrows=-Latex] (4.67,2.07) -- (5.39,2.07);
+  \draw[arrows=-Latex] (4.67,1.52) -- (5.39,1.52);
+  \draw[fill=black] (5.27,1.93) circle (0.04cm);
+  \draw[fill=black] (5.27,1.8) circle (0.04cm);
+  \draw[fill=black] (5.27,1.67) circle (0.04cm);
+  \draw[fill=black] (5.28,3.11) circle (0.04cm);
+  \draw[fill=black] (5.28,2.98) circle (0.04cm);
+  \draw[fill=black] (5.28,2.85) circle (0.04cm);
+  \draw[fill=black] (6.38,1.86) circle (0.04cm);
+  \draw[fill=black] (6.38,1.73) circle (0.04cm);
+  \draw (0.33,3.06) -- (0.9,3.93);
+  \draw (6.1,1.95) rectangle (6.71,2.19);
+  \draw (6.1,1.39) rectangle (6.71,1.63);
+  \node[
+        % draw,
+        node font=\tiny
+      ] at (6.44,3.25) {H1};
+  \node[
+          % draw,
+          node font=\tiny
+        ] at (6.44,2.69) {HN};
+  \draw[fill=black] (6.39,3.04) circle (0.04cm);
+  \draw[fill=black] (6.39,2.91) circle (0.04cm);
+  \draw (6.11,3.13) rectangle (6.72,3.37);
+  \node[
+          % draw,
+          node font=\tiny
+        ] at (4.23,4.44) {HP};
+  \draw (3.89,4.32) rectangle (4.5,4.56);
+  \draw (6.11,2.57) rectangle (6.72,2.81);
+  \draw (6.71,2.07) -- (6.9,2.07);
+  \draw (6.71,1.5) -- (7.1,1.5);
+
+  \draw (7.58,4.44) circle (0.58cm);
+  \node[
+    % draw,
+    node font=\tiny
+  ] at (7.58,4.44) {Hearer};
+  \draw[arrows=-Latex] (node2.south) -- (6.11,2.07);
+  \draw[arrows=-Latex] (node3.south) -- (6.11,1.51);
+  \draw[arrows=-Latex] (6.9,2.07) -- (7.4,3.91);
+  \draw[arrows=-Latex] (7.1,1.5) -- (7.54,3.86);
+  \draw[arrows=-Latex] (6.92,3.27) -- (6.7,3.27);
+  \draw[arrows=-Latex] (6.92,2.69) -- (6.7,2.69);
+  \draw (6.92,2.69) -- (7.27,3.94);
+  \draw (6.92,3.27) -- (7.2,4);
+
+  \draw[rotate=-90] (-3.25,5.71) circle (0.21cm);
+  \draw[rotate=-90] (-2.69,5.71) circle (0.21cm);
+  \draw[rotate=-90] (-2.87,5.92) -- (-2.48,5.92);
+  \draw[rotate=-90] (-3.46,5.92) -- (-3.07,5.92);
+  \draw[arrows=-Latex] (6.11,3.25) -- (5.9,3.25);
+  \draw[arrows=-Latex] (6.11,2.69) -- (5.9,2.69);
+  \draw[arrows=-Latex] (5.5,2.69) -- (4.69,2.69);
+  \draw[arrows=-Latex] (5.5,3.25) -- (4.69,3.25);
+  \draw[arrows=-Latex] (3.32,3) -- (2.26,3);
+
+  \draw[arrows=-Latex] (1.76,4.44) -- (3.89,4.44);
+  \draw[arrows=-Latex] (4.49,4.44) -- (7,4.44);
+  
+  
+
+  \node[
+      % draw,
+      node font=\tiny
+    ] at (2.75,4.59) {s(n)};
+  \node[
+        % draw,
+        node font=\tiny
+      ] at (2.8,3.14) {e(n)};
+  \node[
+          % draw,
+          node font=\tiny
+        ] at (3.06,2) {y(n)};
+
+  \node[
+        % draw,
+        node font=\tiny
+      ] at (5.25,4.6) {r(n)};
+\end{tikzpicture}

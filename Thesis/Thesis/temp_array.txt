@@ -1,0 +1,129 @@
+\section{Array Processing and Plots}
+
+The purpose of this experiment was to determine whether the microphone-array processing produced the expected spatial response when an acoustic source was moved relative to a specified focal point. For each test, a focal point was selected in front of the microphone array and held fixed while an acoustic source was physically moved toward and away from that location. If the array-processing algorithm correctly focuses on the selected location, the processed signal amplitude should increase as the source approaches the focal point and decrease as the source moves away from it. The change in processed amplitude therefore provides an experimental measure of the spatial selectivity of the array.
+
+For each focal-point location, the array-processing algorithm was operated continuously for 15 seconds while the output of the array was recorded. The acoustic source was initially positioned near the focal point and was then moved around the focal region during the recording. The source was not tracked or recorded as a function of time; therefore, the exact source position corresponding to each point in the recorded waveform cannot be determined. Instead, the experiment was used to observe the overall relationship between source movement and the amplitude of the processed array output.
+
+The experiment was performed using six focal-point locations. The horizontal coordinate of the focal point was varied between $-0.5$ m, $0$ m, and $0.5$ m, while the distance from the array was set to either $1.0$ m or $1.5$ m. Each focal-point location was tested using both a sinusoidal acoustic source and a broadband white-noise source. This resulted in six narrowband measurements and six broadband measurements.
+
+The recorded signals were analyzed by calculating the RMS amplitude of the processed array output as a function of time. The resulting measurements are shown in Figures~\ref{fig:array_sinusoidal_results} and~\ref{fig:array_white_noise_results}. Each plot represents one focal-point location and shows the change in processed signal level as the acoustic source was moved during the recording. The expected behavior is a localized increase in amplitude when the source is positioned near the selected focal point, followed by a decrease in amplitude as the source moves away from the focal region.
+
+\begin{figure}[H]
+\centering
+
+% Row 1
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/n5_1_sinusoidal.png}
+    \caption{$(-0.5,1)$}
+    \label{fig:n5_1_sine}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/0_1_sinusoidal.png}
+    \caption{$(0,1)$}
+    \label{fig:0_1_sine}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/5_1_sinusoidal.png}
+    \caption{$(0.5,1)$}
+    \label{fig:5_1_sine}
+\end{subfigure}
+
+\vspace{0.5em}
+
+% Row 2
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/n5_15_sinusoidal.png}
+    \caption{$(-0.5,1.5)$}
+    \label{fig:n5_15_sine}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/0_15_sinusoidal.png}
+    \caption{$(0,1.5)$}
+    \label{fig:0_15_sine}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/5_15_sinusoidal.png}
+    \caption{$(0.5,1.5)$}
+    \label{fig:5_15_sine}
+\end{subfigure}
+
+\caption{Processed signal level of the microphone array for a sinusoidal acoustic source at the six tested focal-point locations.}
+\label{fig:array_sinusoidal_results}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+% Row 1
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/n5_1_white_noise.png}
+    \caption{$(-0.5,1)$}
+    \label{fig:n5_1_white_noise}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/0_1_white_noise.png}
+    \caption{$(0,1)$}
+    \label{fig:0_1_white_noise}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/5_1_white_noise.png}
+    \caption{$(0.5,1)$}
+    \label{fig:5_1_white_noise}
+\end{subfigure}
+
+\vspace{0.5em}
+
+% Row 2
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/n5_15_white_noise.png}
+    \caption{$(-0.5,1.5)$}
+    \label{fig:n5_15_white_noise}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/0_15_white_noise.png}
+    \caption{$(0,1.5)$}
+    \label{fig:0_15_white_noise}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Data/Array_processing/plots/5_15_white_noise.png}
+    \caption{$(0.5,1.5)$}
+    \label{fig:5_15_white_noise}
+\end{subfigure}
+
+\caption{Processed signal level of the microphone array for a white-noise acoustic source at the six tested focal-point locations.}
+\label{fig:array_white_noise_results}
+
+\end{figure}
+
+The maximum and minimum RMS signal levels measured during each recording, along with the difference between these values, are summarized in Table~\ref{tab:array_rms_results}. The maximum-minus-minimum value provides a measure of how strongly the processed signal level changed during each source-movement experiment. A larger value indicates a greater change in the array output as the source was moved through the test region, while a smaller value indicates a less pronounced spatial response.
+
+The sinusoidal measurements produced maximum-to-minimum differences ranging from 7.467 dB to 19.988 dB. Five of the six measurements produced differences greater than 14 dB, while the measurement at $(-0.5,1.0)$ produced the smallest change of 7.467 dB. The broadband measurements produced differences ranging from 13.472 dB to 16.723 dB, with all six measurements exhibiting a change greater than 13 dB. These results indicate that the processed signal level changed measurably as the source was moved for both narrowband and broadband signals.
+
+The figures also show that the processed signal generally increased when the acoustic source was moved toward the selected focal region and decreased when the source was moved away from it. Because the source position was not recorded during the experiment, the exact position associated with each maximum cannot be determined from the recorded data alone. However, visual observations made during the recordings indicated that the largest responses occurred when the source was positioned near the selected focal point. The measured amplitude variations therefore agree with the expected spatial response of the near-field array-processing algorithm.
+
+The measurement at $(-0.5,1.0)$ produced a notably smaller response range for the sinusoidal source than the other narrowband measurements, with a maximum-to-minimum difference of 7.467 dB. This may have resulted from less accurate positioning of the acoustic source relative to the selected focal point during that recording. Since the source position was not independently measured, the effect of positioning accuracy cannot be quantified from this experiment.
+
+The narrowband and broadband measurements exhibited similar spatial behavior. In particular, the broadband measurements consistently produced measurable changes in processed signal level as the source was moved through the focal region. This is significant for the intended active snore cancellation application because snoring is a broadband acoustic signal. The observation that spatial selectivity was maintained for the broadband source indicates that the array-processing approach is applicable to the broadband signals expected in the target application.
+
+The results at both $1.0$ m and $1.5$ m also exhibited measurable changes in processed signal level. This indicates that the array maintained spatial selectivity over the range of source distances tested. However, because the source position was not measured continuously, the experiment demonstrates the presence of a spatially varying response rather than providing a precise measurement of the spatial beam pattern or focal-point accuracy.

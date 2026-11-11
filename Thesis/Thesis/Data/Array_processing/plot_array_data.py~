@@ -1,0 +1,292 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+plt.rcParams.update({
+    'font.size': 18,
+    'axes.titlesize': 20,     # Make subplot titles slightly larger
+    'figure.titlesize': 22,   # Make the main suptitle stand out
+    'legend.fontsize': 12     # Shrink legend font slightly so it doesn't block data
+})
+
+def read_binary(filename, dtype):
+    try:
+        with open(filename, 'rb') as file:
+            data = np.fromfile(file, dtype=dtype)
+    except OSError:
+        raise RuntimeError(f"Error opening file: {filename}")
+
+    return data
+
+
+def plot_array_data(filename, title, save_directory, save_name, Fs=8000):
+
+    # --------------------------------------------------
+    # Read binary data
+    # --------------------------------------------------
+
+    error = read_binary(filename, np.float64)
+
+    # Create time vector
+    time = np.arange(len(error)) / Fs
+
+    # --------------------------------------------------
+    # Convert to dB
+    # --------------------------------------------------
+
+    error_db = 20 * np.log10(
+        np.maximum(error, np.finfo(float).tiny)
+    )
+
+    # --------------------------------------------------
+    # Create dB figure
+    # --------------------------------------------------
+
+    fig, ax = plt.subplots(figsize=(8, 4.5))
+
+    ax.plot(time, error_db)
+
+    ax.set_title(title)
+    ax.set_xlabel("Time (s)")
+    ax.set_ylabel("Amplitude (dB)")
+
+    # dB range
+    ax.set_ylim(-40, 5)
+    ax.set_yticks(np.arange(-40, 6, 10))
+
+    ax.grid(True)
+
+    fig.tight_layout()
+
+    # --------------------------------------------------
+    # Save figure
+    # --------------------------------------------------
+
+    save_path = os.path.join(
+        save_directory,
+        save_name + ".png"
+    )
+
+    fig.savefig(
+        save_path,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    print(f"Saved: {save_path}")
+
+    plt.close(fig)
+
+def calculate_rms(filename, title, Fs=8000, window_duration=0.1):
+    """
+    Calculate windowed RMS values from an energy.bin file and
+    print the minimum RMS, maximum RMS, and corresponding dB values.
+
+    Parameters:
+        filename: Path to binary data file
+        title: Descriptive name of the experiment
+        Fs: Sampling frequency in Hz
+        window_duration: RMS window length in seconds
+    """
+
+    # --------------------------------------------------
+    # Read binary data
+    # --------------------------------------------------
+
+    data = read_binary(filename, np.float64)
+
+    # --------------------------------------------------
+    # Calculate window size
+    # --------------------------------------------------
+
+    window_size = int(Fs * window_duration)
+
+    # Number of complete windows
+    num_windows = len(data) // window_size
+
+    # Discard incomplete samples at the end
+    data = data[:num_windows * window_size]
+
+    # Reshape into windows
+    windows = data.reshape(num_windows, window_size)
+
+    # --------------------------------------------------
+    # Calculate RMS for each window
+    # --------------------------------------------------
+
+    rms_values = np.sqrt(np.mean(windows**2, axis=1))
+
+    # --------------------------------------------------
+    # Convert RMS values to dB
+    # --------------------------------------------------
+
+    rms_db = 20 * np.log10(
+        np.maximum(rms_values, np.finfo(float).tiny)
+    )
+
+    # --------------------------------------------------
+    # Find minimum and maximum
+    # --------------------------------------------------
+
+    min_rms = np.min(rms_values)
+    max_rms = np.max(rms_values)
+
+    min_db = np.min(rms_db)
+    max_db = np.max(rms_db)
+
+    # --------------------------------------------------
+    # Print results
+    # --------------------------------------------------
+
+    print("\n" + "=" * 60)
+    print(f"RMS Analysis: {title}")
+    print("=" * 60)
+
+    print(f"Window duration:       {window_duration:.3f} s")
+    print(f"Window size:           {window_size} samples")
+    print(f"Number of windows:     {num_windows}")
+
+    print(f"\nMinimum RMS:           {min_rms:.6f}")
+    print(f"Maximum RMS:           {max_rms:.6f}")
+
+    print(f"\nMinimum RMS level:     {min_db:.3f} dB")
+    print(f"Maximum RMS level:     {max_db:.3f} dB")
+
+    print(f"\nRMS level variation:   {max_db - min_db:.3f} dB")
+
+    print("=" * 60)
+
+    
+def main():
+
+    # Sampling frequency
+    Fs = 8000
+
+    # Directory for saved plots
+    save_directory = "plots"
+
+    # Create directory if it doesn't exist
+    os.makedirs(save_directory, exist_ok=True)
+
+    # --------------------------------------------------
+    # Array processing data
+    #
+    # filename
+    # plot title
+    # saved filename
+    # --------------------------------------------------
+
+    arrays = [
+
+        # ==================================================
+        # WHITE NOISE
+        # ==================================================
+
+        (
+            "microphone_array/white_noise/n5_15_array/energy.bin",
+            "(-0.5, 1.5) White Noise",
+            "n5_15_white_noise"
+        ),
+
+        (
+            "microphone_array/white_noise/5_15_array/energy.bin",
+            "(0.5, 1.5) White Noise",
+            "5_15_white_noise"
+        ),
+
+        (
+            "microphone_array/white_noise/n5_1_array/energy.bin",
+            "(-0.5, 1.0) White Noise",
+            "n5_1_white_noise"
+        ),
+
+        (
+            "microphone_array/white_noise/5_1_array/energy.bin",
+            "(0.5, 1.0) White Noise",
+            "5_1_white_noise"
+        ),
+
+        (
+            "microphone_array/white_noise/0_15_array/energy.bin",
+            "(0, 1.5) White Noise",
+            "0_15_white_noise"
+        ),
+
+        (
+            "microphone_array/white_noise/0_1_array/energy.bin",
+            "(0, 1.0) White Noise",
+            "0_1_white_noise"
+        ),
+
+        # ==================================================
+        # SINUSOIDAL
+        # ==================================================
+
+        (
+            "microphone_array/sinusoidal/n5_15_array/energy.bin",
+            "(-0.5, 1.5) Sinusoidal",
+            "n5_15_sinusoidal"
+        ),
+
+        (
+            "microphone_array/sinusoidal/5_15_array/energy.bin",
+            "(0.5, 1.5) Sinusoidal",
+            "5_15_sinusoidal"
+        ),
+
+        (
+            "microphone_array/sinusoidal/n5_1_array/energy.bin",
+            "(-0.5, 1.0) Sinusoidal",
+            "n5_1_sinusoidal"
+        ),
+
+        (
+            "microphone_array/sinusoidal/5_1_array/energy.bin",
+            "(0.5, 1.0) Sinusoidal",
+            "5_1_sinusoidal"
+        ),
+
+        (
+            "microphone_array/sinusoidal/0_15_array/energy.bin",
+            "(0, 1.5) Sinusoidal",
+            "0_15_sinusoidal"
+        ),
+
+        (
+            "microphone_array/sinusoidal/0_1_array/energy.bin",
+            "(0, 1.0) Sinusoidal",
+            "0_1_sinusoidal"
+        ),
+    ]
+
+    # --------------------------------------------------
+    # Generate plots
+    # --------------------------------------------------
+
+    for filename, title, save_name in arrays:
+
+        plot_array_data(
+            filename,
+            title,
+            save_directory,
+            save_name,
+            Fs
+        )
+
+    # --------------------------------------------------
+    # Calculate RMS statistics
+    # --------------------------------------------------
+
+    print("\n\nRMS RESULTS FOR ALL EXPERIMENTS")
+
+    for filename, title, save_name in arrays:
+
+        calculate_rms(
+            filename,
+            title,
+            Fs
+        )
+
+
+if __name__ == "__main__":
+    main()

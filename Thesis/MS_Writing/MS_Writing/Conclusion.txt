@@ -1,0 +1,124 @@
+5.1 Summary of Research
+
+One to two pages.
+
+Answer:
+
+What problem were you trying to solve?
+Why is active snore cancellation important?
+What did you build?
+What algorithms did you investigate?
+
+This should read almost like an executive summary.
+
+Example topics
+
+Motivation
+Objectives
+Fractional delay implementation
+Mechanical platform
+Electronics
+LMS implementation
+FARLS implementation
+
+5.2 Contributions
+
+This is where you explain what you contributed.
+
+For example
+
+The primary contributions of this work include:
+
+Development of a configurable microphone/speaker array.
+Real-time sinc interpolation implementation in C.
+Design of the PCB and analog filter bank.
+Integration of the ANC platform.
+Implementation of LMS.
+Implementation of FARLS.
+Creation of an experimental test platform.
+
+Notice these are accomplishments—not necessarily research results.
+
+5.3 Discussion
+
+This is probably the most important section.
+
+Talk honestly about the project.
+
+Questions to answer:
+
+What worked well?
+
+Examples
+
+Fractional delay worked.
+Adjustable array made testing easier.
+PCB performed well.
+FARLS converged faster.
+Real-time timing was achieved.
+What challenges occurred?
+
+Examples
+
+Mechanical redesigns.
+DAC distortion.
+Learning PCB design.
+Learning manual machining.
+Real-time optimization.
+Debugging adaptive filters.
+
+Committee members actually like reading this because it shows engineering judgment.
+
+What limitations remain?
+
+Examples
+
+Limited testing.
+Snoring database not yet integrated.
+Single-person testing.
+Only anechoic chamber evaluated.
+Limited speaker power.
+Future optimization needed.
+
+No project is perfect. Acknowledging limitations makes the work more credible.
+
+5.4 Future Work
+
+This is where you get to talk about what comes next.
+
+For example
+
+Improve the adaptive algorithms
+Normalize LMS
+FxLMS
+Variable step-size LMS
+Further optimize FARLS
+Better hardware
+Smaller array
+Custom microphone PCB
+Better speakers
+Integrated amplifier
+Clinical testing
+Human snoring recordings
+Bedroom environments
+Multiple sleeping positions
+Multiple listeners
+Embedded implementation
+
+Right now you're on Linux.
+
+Eventually
+
+ARM processor
+DSP
+FPGA
+Dedicated hardware
+5.5 Final Remarks
+
+Half a page.
+
+End on a positive note.
+
+Something like
+
+This work successfully demonstrated the design and implementation of a configurable active snore cancellation research platform. Although additional work remains before deployment in real-world environments, the developed hardware and software provide a foundation for future investigations into adaptive acoustic noise control for sleep applications.

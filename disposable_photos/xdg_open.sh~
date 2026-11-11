@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for file in *.pdf; do xdg-open "$file"; done
